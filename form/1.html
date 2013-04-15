@@ -1,0 +1,1258 @@
+<div data-dojo-type="dijit.layout.BorderContainer" data-dojo-props='style:"width: 100%; height: 100%; "'>
+    <div data-dojo-type="dijit.layout.ContentPane" data-dojo-props='region:"top", style:"height: 60px;"'>
+      <div style="text-align: center; font-weight:bold;"><font face="tahoma" size="4" color="#0099FF">OPERATION & MAINTENANCE METER REGULATING STATION</Font><br/></div>
+            <table border="0" cellpadding="5" cellspacing="5" width="100%">
+              <tr>
+                    <td>Tanggal Inspeksi</td>
+                <td>:</td>
+                  <td ><input class="myField" style="width: 100px;" dojoType="dijit.form.DateTextBox" /></td>
+                  <td>Nama Pelanggan</td>
+                  <td>:</td>
+                  <td><input class="myField" id="nama" style="width: 150px;" dojotype="dijit.form.TextBox" /></td>
+                  <td>Identifikasi</td>
+                  <td>:</td>
+                  <td><input class="myField" style="width: 150px;" dojotype="dijit.form.TextBox" /></td>
+                  <td><button dojoType="dijit.form.Button" id="btnSimpan" >Simpan</button><button dojoType="dijit.form.Button">Refresh</button></td>
+                </tr>
+            </table>
+    </div>
+    <div data-dojo-type="dijit.layout.ContentPane" data-dojo-props='region:"center", style:"height: 50px;"'>
+             <div dojoType="dijit.layout.TabContainer" tabPosition="bottom"   style="margin: -5px;">
+                  <div dojoType="dijit.layout.ContentPane" title="O&M MR/S 1">
+                         <table border="0" cellpadding="3" cellspacing="3" width="100%">
+                            <tr valign="top">
+                                <td><b>1.</b></td>
+                                <td colspan="4"><b>PEMERIKSAAN KONDISI LINGKUNGAN </b></td>
+                            </tr>
+                            <tr valign="top">
+                              <td></td>
+                              <td>&nbsp;</td>
+                              <td>&nbsp;</td>
+                              <td>&nbsp;</td>
+                              <td>&nbsp;</td>
+                            </tr>
+                            <tr valign="top">
+                                <td> </td>
+                                <td width="50%">A.Pembersihan Debu</td>
+                                <td>:</td>
+                                <td>
+                                    <select id="sel1" class="myFieldSelect" style="width: 150px;" >
+                                        <option value="Sudah">Sudah</option>
+                                        <option value="Belum">Belum</option>
+                                    </select>
+                              </td>
+                                <td width="60%"><input class="myField" style="width: 300px;" dojoType="dijit.form.TextBox" placeHolder="Keterangan" /></td>
+                            </tr> 
+                            <tr valign="top">
+                                <td> </td>
+                                <td>B.Pembersihan Sampah dan Rumput</td>
+                                <td>:</td>
+                                <td>
+                                    <select class="myFieldSelect" style="width: 150px;" >
+                                        <option value="Ada,Sudah">Ada,Sudah</option>
+                                        <option value="Ada,Belum">Ada,Belum</option>
+                                        <option value="Tidak Ada">Tidak Ada</option>
+                                    </select>
+                              </td>
+                                <td><input class="myField" style="width: 300px;" dojoType="dijit.form.TextBox" placeHolder="Keterangan" /></td>
+                            </tr>
+                            <tr valign="top">
+                                <td> </td>
+                                <td>C.Penerangan sekitar MR/S</td>
+                                <td>:</td>
+                                <td>
+                                    <select class="myFieldSelect" style="width: 150px;" >
+                                        <option value="Ada,Berfungsi">Ada,Berfungsi</option>
+                                        <option value="Ada,Tidak Berfungsi">Ada,Tidak Berfungsi</option>
+                                        <option value="Tidak Ada">Tidak Ada</option>
+                                    </select>
+                              </td>
+                                <td><input class="myField" style="width: 300px;" dojoType="dijit.form.TextBox" placeHolder="Keterangan" /></td>
+                            </tr>
+                            <tr valign="top">
+                                <td> </td>
+                                <td>D.Dilakukan pencucian MR/S</td>
+                                <td>:</td>
+                                <td>
+                                    <select class="myFieldSelect" style="width: 150px;" >
+                                        <option value="Ya">Ya</option>
+                                        <option value="Tidak">Tidak</option>                                      
+                                    </select>
+                              </td>
+                                <td><input class="myField" style="width: 300px;" dojoType="dijit.form.TextBox" placeHolder="Keterangan" /><br /><br /></td>
+                            </tr>
+                            <tr valign="top">
+                                <td><b>2.</b></td>
+                                <td colspan="4"><b>PEMERIKSAAN KEBOCORAN</b></td>
+                            </tr>
+                            <tr valign="top">
+                              <td></td>
+                              <td>&nbsp;</td>
+                              <td>&nbsp;</td>
+                              <td>&nbsp;</td>
+                              <td>&nbsp;</td>
+                            </tr>
+                            <tr valign="top">
+                                <td> </td>
+                                <td>A.Pemeriksaan dan penanganan kebocoran</td>
+                                <td>:</td>
+                                <td>
+                                    <select class="myFieldSelect"  >
+                                        <option value="Ada,Sudah">Ada,Sudah</option>
+                                        <option value="Ada,Belum">Ada,Belum</option>
+                                        <option value="Tidak Ada">Tidak Ada</option>
+                                    </select>
+                                </td>
+                                <td><input class="myField" style="width: 300px;" dojoType="dijit.form.TextBox" placeHolder="Keterangan" /></td>
+                            </tr> 
+                            <tr valign="top">
+                                <td> </td>
+                                <td>B.Korosi perpipaan</td>
+                                <td>:</td>
+                                <td>
+                                    <select class="myFieldSelect"  >
+                                        <option value="Korosi">Korosi</option>
+                                        <option value="Tidak">Tidak</option>
+                                        <option value="Perlu diganti">Perlu diganti</option>
+                                    </select>
+                                </td>
+                                <td><input class="myField" style="width: 300px;" dojoType="dijit.form.TextBox" placeHolder="Keterangan" /></td>
+                             </tr>
+                             <tr valign="top">
+                                <td> </td>
+                                <td>C.Korosi flange, bolt & nuts</td>
+                                <td>:</td>
+                                <td>
+                                    <select class="myFieldSelect"  >
+                                       <option value="Korosi">Korosi</option>
+                                        <option value="Tidak">Tidak</option>
+                                        <option value="Perlu diganti">Perlu diganti</option>
+                                    </select>
+                                </td>
+                                <td><input class="myField" style="width: 300px;" dojoType="dijit.form.TextBox" placeHolder="Keterangan" /></td>
+                            </tr>
+                            <tr valign="top">
+                                <td>  </td>
+                                <td>D.Korosi valve's</td>
+                                <td>:</td>
+                                <td>
+                                    <select class="myFieldSelect"  >
+                                       <option value="Korosi">Korosi</option>
+                                        <option value="Tidak">Tidak</option>
+                                        <option value="Perlu diganti">Perlu diganti</option>
+                                    </select>
+                                </td>
+                                <td><input class="myField" style="width: 300px;" dojoType="dijit.form.TextBox" placeHolder="Keterangan" /></td>
+                            </tr>
+                            <tr valign="top">
+                                <td> </td>
+                                <td>E.Pemeriksaan tingkat kekencangan baut</td>
+                                <td>:</td>
+                                <td>
+                                    <select class="myFieldSelect"  >
+                                        <option value="Sudah">Sudah</option>
+                                        <option value="Belum">Belum</option>                                      
+                                    </select>
+                                </td>
+                                <td><input class="myField" style="width: 300px;" dojoType="dijit.form.TextBox" placeHolder="Keterangan" /></td>
+                            </tr>
+                            <tr valign="top">
+                                <td> </td>
+                                <td>F.Korosi ringan (Pengecatan ringan)</td>
+                                <td>:</td>
+                                <td>
+                                    <select class="myFieldSelect"  >
+                                        <option value="Ya,Sudah">Ya,Sudah</option>
+                                        <option value="Ya,Belum">Ya,Belum</option>
+                                        <option value="Tidak ada korosi">Tidak ada korosi</option>                                      
+                                    </select>
+                                </td>
+                                <td><input class="myField" style="width: 300px;" dojoType="dijit.form.TextBox" placeHolder="Keterangan" /></td>
+                            </tr>
+                        </table>
+            </div>
+                  <div dojoType="dijit.layout.ContentPane" title="O&M MR/S 2">
+                        <table border="0" cellpadding="3" cellspacing="3" width="100%">
+                            <tr valign="top">
+                                <td><b>3.</b></td>
+                                <td colspan="4"><b>PEMERIKSAAN KONDISI OPERASI PERALATAN</b></td>
+                            </tr>
+                            <tr valign="top">
+                                <td> </td>
+                                <td width="35%">A.Regulator Monitor A</td>
+                                <td>:</td>
+                                <td>
+                                    <select class="myFieldSelect"  id="sel2">
+                                        <option value="Ada,Aktif">Ada,Aktif</option>
+                                        <option value="Ada,Tidak Aktif">Ada,Tidak Aktif</option>
+                                        <option value="Tidak Ada">Tidak Ada</option>
+                                        <option value="Setting Ulang">Setting Ulang</option>
+                                    </select>
+                                </td>
+                                <td>
+                                    Type: <input class="myField" style="width: 100px;" dojoType="dijit.form.TextBox" placeHolder="Pressure gauge" />
+                                    Dia : <input class="myField" style="width: 50px;" dojoType="dijit.form.TextBox" placeHolder="Inch" />
+                                    Pset: <input class="myField" style="width: 87px;" dojoType="dijit.form.TextBox" placeHolder="BarG" />   
+                                </td>
+                            </tr> 
+                                <tr valign="top">
+                                <td> </td>
+                                <td>B.Regulator Active A</td>
+                                <td>:</td>
+                                <td>
+                                    <select class="myFieldSelect"  >
+                                        <option value="Ada,Aktif">Ada,Aktif</option>
+                                        <option value="Ada,Tidak Aktif">Ada,Tidak Aktif</option>
+                                        <option value="Tidak Ada">Tidak Ada</option>
+                                        <option value="Setting Ulang">Setting Ulang</option>
+                                    </select>
+                                </td>
+                                <td>
+                                    Type: <input class="myField" style="width: 100px;" dojoType="dijit.form.TextBox" placeHolder="Pressure gauge" />
+                                    Dia : <input class="myField" style="width: 50px;" dojoType="dijit.form.TextBox" placeHolder="Inch" />
+                                    Pset: <input class="myField" style="width: 87px;" dojoType="dijit.form.TextBox" placeHolder="BarG" />   
+                                </td>
+                            </tr> 
+                                <tr valign="top">
+                                <td> </td>
+                                <td>C.Regulator Monitor B</td>
+                                <td>:</td>
+                                <td>
+                                    <select class="myFieldSelect"  >
+                                        <option value="Ada,Aktif">Ada,Aktif</option>
+                                        <option value="Ada,Tidak Aktif">Ada,Tidak Aktif</option>
+                                        <option value="Tidak Ada">Tidak Ada</option>
+                                        <option value="Setting Ulang">Setting Ulang</option>
+                                    </select>
+                                </td>
+                                <td>
+                                    Type: <input class="myField" style="width: 100px;" dojoType="dijit.form.TextBox" placeHolder="Pressure gauge" />
+                                    Dia : <input class="myField" style="width: 50px;" dojoType="dijit.form.TextBox" placeHolder="Inch" />
+                                    Pset: <input class="myField" style="width: 87px;" dojoType="dijit.form.TextBox" placeHolder="BarG" />   
+                                </td>
+                            </tr>
+                            <tr valign="top">
+                                <td> </td>
+                                <td>D.Regulator Active B</td>
+                                <td>:</td>
+                                <td>
+                                    <select class="myFieldSelect"  >
+                                        <option value="Ada,Aktif">Ada,Aktif</option>
+                                        <option value="Ada,Tidak Aktif">Ada,Tidak Aktif</option>
+                                        <option value="Tidak Ada">Tidak Ada</option>
+                                        <option value="Setting Ulang">Setting Ulang</option>
+                                    </select>
+                                </td>
+                                <td>
+                                    Type: <input class="myField" style="width: 100px;" dojoType="dijit.form.TextBox" placeHolder="Pressure gauge" />
+                                    Dia : <input class="myField" style="width: 50px;" dojoType="dijit.form.TextBox" placeHolder="Inch" />
+                                    Pset: <input class="myField" style="width: 87px;" dojoType="dijit.form.TextBox" placeHolder="BarG" />   
+                                </td> 
+                            </tr>
+                            <tr valign="top">
+                                <td> </td>
+                                <td>E.SSOV Stream A</td>
+                                <td>:</td>
+                                <td>
+                                    <select class="myFieldSelect"  >
+                                        <option value="Terbuka">Terbuka</option>
+                                        <option value="Tertutup">Tertutup</option>                                        
+                                        <option value="Setting Ulang">Setting Ulang</option>
+                                    </select>
+                                </td>
+                                <td>
+                                    Type: <input class="myField" style="width: 100px;" dojoType="dijit.form.TextBox" placeHolder="Pressure gauge" />
+                                    Dia : <input class="myField" style="width: 50px;" dojoType="dijit.form.TextBox" placeHolder="Inch" />
+                                    Pset: <input class="myField" style="width: 87px;" dojoType="dijit.form.TextBox" placeHolder="BarG" />   
+                                </td> 
+                            </tr>
+                            <tr valign="top">
+                                <td> </td>
+                                <td>F.SSOV Stream B</td>
+                                <td>:</td>
+                                <td>
+                                    <select class="myFieldSelect"  >
+                                        <option value="Terbuka">Terbuka</option>
+                                        <option value="Tertutup">Tertutup</option>                                        
+                                        <option value="Setting Ulang">Setting Ulang</option>
+                                    </select>
+                                </td>
+                                <td>
+                                    Type: <input class="myField" style="width: 100px;" dojoType="dijit.form.TextBox" placeHolder="Pressure gauge" />
+                                    Dia : <input class="myField" style="width: 50px;" dojoType="dijit.form.TextBox" placeHolder="Inch" />
+                                    Pset: <input class="myField" style="width: 87px;" dojoType="dijit.form.TextBox" placeHolder="BarG" />   
+                                </td> 
+                            </tr>
+                            <tr valign="top">
+                                <td> </td>
+                                <td>G.Relief Valve Stream A</td>
+                                <td>:</td>
+                                <td>
+                                    <select class="myFieldSelect"  >
+                                        <option value="Ada,Aktif">Ada,Aktif</option>
+                                        <option value="Ada,Tidak Aktif">Ada,Tidak Aktif</option>
+                                        <option value="Tidak Ada">Tidak Ada</option>
+                                        <option value="Setting Ulang">Setting Ulang</option>
+                                    </select>
+                                </td>
+                                <td>
+                                    Type: <input class="myField" style="width: 100px;" dojoType="dijit.form.TextBox" placeHolder="Pressure gauge" />
+                                    Dia : <input class="myField" style="width: 50px;" dojoType="dijit.form.TextBox" placeHolder="Inch" />
+                                    Pset: <input class="myField" style="width: 87px;" dojoType="dijit.form.TextBox" placeHolder="BarG" />   
+                                </td> 
+                            </tr>                               
+                            <tr valign="top">
+                                <td> </td>
+                                <td>H.Relief Valve Stream B</td>
+                                <td>:</td>
+                                <td>
+                                    <select class="myFieldSelect"  >
+                                        <option value="Ada,Aktif">Ada,Aktif</option>
+                                        <option value="Ada,Tidak Aktif">Ada,Tidak Aktif</option>
+                                        <option value="Tidak Ada">Tidak Ada</option>
+                                        <option value="Setting Ulang">Setting Ulang</option>
+                                    </select>
+                                </td>
+                                <td>
+                                    Type: <input class="myField" style="width: 100px;" dojoType="dijit.form.TextBox" placeHolder="Pressure gauge" />
+                                    Dia : <input class="myField" style="width: 50px;" dojoType="dijit.form.TextBox" placeHolder="Inch" />
+                                    Pset: <input class="myField" style="width: 87px;" dojoType="dijit.form.TextBox" placeHolder="BarG" />   
+                                </td> 
+                            </tr>
+                            <tr valign="top">
+                                <td> </td>
+                                <td>I.Sistem Pembuangan (Valve Venting)</td>
+                                <td>:</td>
+                                <td>
+                                    <select class="myFieldSelect"  >
+                                        <option value="Ada,Baik">Ada,Baik</option>
+                                        <option value="Ada,Tidak Baik">Ada,Tidak Baik</option>
+                                        <option value="Tidak Ada">Tidak Ada</option>                                      
+                                    </select>
+                                </td>
+                                <td><input class="myField" style="width: 300px;margin-left: 34px;" dojoType="dijit.form.TextBox" placeHolder="Keterangan" /></td>
+                             </tr> 
+                             <tr valign="top">
+                                <td> </td>
+                                <td>J.Plug Valve Venting</td>
+                                <td>:</td>
+                                <td>
+                                    <select class="myFieldSelect"  >
+                                        <option value="Ada,Baik">Ada,Baik</option>
+                                        <option value="Ada,Tidak Baik">Ada,Tidak Baik</option>
+                                        <option value="Tidak Ada">Tidak Ada</option>                                      
+                                    </select>                                     
+                                </td>
+                                <td><input class="myField" style="width: 300px;margin-left: 34px;" dojoType="dijit.form.TextBox" placeHolder="Keterangan" /></td>
+                            </tr> 
+                            <tr valign="top">
+                                <td> </td>
+                                <td>K.Thermometer</td>
+                                <td>:</td>
+                                <td>
+                                    <select class="myFieldSelect"  >
+                                        <option value="Ada,Fungsi">Ada,Fungsi</option>
+                                        <option value="Ada,Tidak Fungsi">Ada,Tidak Fungsi</option>
+                                        <option value="Tidak Ada">Tidak Ada</option>                                      
+                                    </select>
+                                </td>
+                                <td>
+                                    Suhu:<input class="myField" style="width: 100px; margin-left: 3px;" dojoType="dijit.form.TextBox" placeHolder="Degree's" />
+                                    *C &emsp;Waktu Kalibrasi: 
+                                    <input class="myField" style="width: 80px;" dojoType="dijit.form.TextBox" placeHolder="Month,Year" />                                       
+                              </td>
+                            </tr> 
+                            <tr valign="top">
+                                <td> </td>
+                                <td>L.Pressure Gauge (Outlet)</td>
+                                <td>:</td>
+                                <td>
+                                    <select class="myFieldSelect"  >
+                                        <option value="Ada,Fungsi">Ada,Fungsi</option>
+                                        <option value="Ada,Tidak Fungsi">Ada,Tidak Fungsi</option>
+                                        <option value="Tidak Ada">Tidak Ada</option>                                      
+                                    </select>
+                                </td>
+                                <td> 
+                                    <input dojoType="dijit.form.TextBox" class="myField" placeHolder="Pressure" style="width: 100px; margin-left: 34px;" />BarG                                    
+                                    Waktu Kalibrasi: <input class="myField" style="width: 80px;" dojoType="dijit.form.TextBox" placeHolder="Month,Year" />                                       
+                                </td>
+                            </tr> 
+                            <tr valign="top">
+                                <td> </td>
+                                <td>M.Pressure Gauge (Inlet)</td>
+                                <td>:</td>
+                                <td>
+                                    <select class="myFieldSelect"  >
+                                        <option value="Ada,Fungsi">Ada,Fungsi</option>
+                                        <option value="Ada,Tidak Fungsi">Ada,Tidak Fungsi</option>
+                                        <option value="Tidak Ada">Tidak Ada</option>                                      
+                                    </select>
+                                </td>
+                                <td> 
+                                    <input dojoType="dijit.form.TextBox" class="myField" placeHolder="Pressure" style="width: 100px; margin-left: 34px;" />BarG                                    
+                                    Waktu Kalibrasi: <input class="myField" style="width: 80px;" dojoType="dijit.form.TextBox" placeHolder="Month,Year" />                                       
+                                </td>
+                            </tr> 
+                            <tr valign="top">
+                                <td> </td>
+                                <td>N.Pressure Gauge (Regulator Stream A)</td>
+                                <td>:</td>
+                                <td>
+                                    <select class="myFieldSelect"  >
+                                        <option value="Ada,Fungsi">Ada,Fungsi</option>
+                                        <option value="Ada,Tidak Fungsi">Ada,Tidak Fungsi</option>
+                                        <option value="Tidak Ada">Tidak Ada</option>                                      
+                                    </select>
+                                </td>
+                                <td> 
+                                    <input dojoType="dijit.form.TextBox" class="myField" placeHolder="Pressure" style="width: 100px; margin-left: 34px;" />BarG                                    
+                                    Waktu Kalibrasi: <input class="myField" style="width: 80px;" dojoType="dijit.form.TextBox" placeHolder="Month,Year" />                                       
+                                </td>
+                            </tr> 
+                            <tr valign="top">
+                                <td> </td>
+                                <td>O.Pressure Gauge (Regulator Stream B)</td>
+                                <td>:</td>
+                                <td>
+                                    <select class="myFieldSelect"  >
+                                        <option value="Ada,Fungsi">Ada,Fungsi</option>
+                                        <option value="Ada,Tidak Fungsi">Ada,Tidak Fungsi</option>
+                                        <option value="Tidak Ada">Tidak Ada</option>                                      
+                                    </select>
+                                </td>
+                                <td> 
+                                    <input dojoType="dijit.form.TextBox" class="myField" placeHolder="Pressure" style="width: 100px; margin-left: 34px;" />BarG                                    
+                                    Waktu Kalibrasi: <input class="myField" style="width: 80px;" dojoType="dijit.form.TextBox" placeHolder="Month,Year" />                                       
+                                </td>
+                            </tr>
+                            <tr valign="top">
+                                <td> </td>
+                                <td>P.Insulating Joint Inlet/Outlet</td>
+                                <td>:</td>
+                                <td>
+                                    <select class="myFieldSelect"  >
+                                        <option value="Ada,Baik">Ada,Baik</option>
+                                        <option value="Ada,Tidak Baik">Ada,Tidak Baik</option>
+                                        <option value="Tidak Ada">Tidak Ada</option>                                      
+                                    </select>                                     
+                                </td>
+                                <td><input class="myField" style="width: 300px; margin-left: 34px;" dojoType="dijit.form.TextBox" placeHolder="Keterangan" /></td>
+                            </tr> 
+                            <tr valign="top">
+                                <td> </td>
+                                <td>Q.Blind Flange Bypass Stream</td>
+                                <td>:</td>
+                                <td>
+                                    <select class="myFieldSelect"  >
+                                        <option value="Terpasang">Terpasang</option>
+                                        <option value="Tidak Terpasang">Tidak Terpasang</option>                                                                     
+                                    </select>                                     
+                                </td>
+                                <td><input class="myField" style="width: 300px;margin-left: 34px;" dojoType="dijit.form.TextBox" placeHolder="Keterangan" /></td>
+                            </tr> 
+                            <tr valign="top">
+                                <td> </td>
+                                <td>R.Spool Bypass Stream</td>
+                                <td>:</td>
+                                <td>
+                                    <select class="myFieldSelect"  >
+                                        <option value="Ada">Ada</option>
+                                        <option value="Tidak Ada">Tidak Ada</option>                                                                     
+                                    </select>                                     
+                                </td>
+                                <td><input class="myField" style="width: 300px; margin-left: 34px;" dojoType="dijit.form.TextBox" placeHolder="Keterangan" /></td>
+                            </tr> 
+                            <tr valign="top">
+                                <td> </td>
+                                <td>S.Segel Valve Bypass Inlet & Outlet</td>
+                                <td>:</td>
+                                <td>
+                                    <select class="myFieldSelect"  >
+                                        <option value="Terpasang">Terpasang</option>
+                                        <option value="Tidak Terpasang">Tidak Terpasang</option>                                                                     
+                                    </select>
+                                </td>
+                                <td>   
+                                    Segel: 
+                                      <input class="myField" style="width: 300px; margin-left: -3px;" dojoType="dijit.form.TextBox" placeHolder=" " />                                  
+                                </td>
+                            </tr>
+                            <tr valign="top">
+                                <td> </td>
+                                <td>T.Perpipaan</td>
+                                <td>:</td>
+                                <td>
+                                    <select class="myFieldSelect"  >
+                                        <option value="Ada,Baik">Ada,Baik</option>
+                                        <option value="Ada,Tidak Baik">Ada,Tidak Baik</option>
+                                        <option value="Tidak Ada">Tidak Ada</option>                                                                     
+                                    </select>                                                                   
+                                </td>
+                                <td><input class="myField" style="width: 300px; margin-left: 34px;" dojoType="dijit.form.TextBox" placeHolder="Keterangan" /></td>
+                            </tr>
+                        </table>
+                  </div>
+                  <div dojoType="dijit.layout.ContentPane" title="O&M MR/S 3">
+                      <table border="0" cellpadding="5" cellspacing="5" width="100%">
+                        <tr valign="top">
+                                <td><b>4.</b></td>
+                            <td colspan="4"><b>PEMERIKSAAN KELENGKAPAN STASIUN</b></td>
+                            </tr>
+                            <tr valign="top">
+                                <td> </td>
+                                <td width="50%">A.Papan Nama Pelanggan</td>
+                                <td>:</td>
+                                <td>
+                                    <select class="myFieldSelect"  >
+                                        <option value="Ada,Terawat">Ada,Terawat</option>
+                                        <option value="Ada,Tidak Terawat">Ada,Tidak Terawat</option>
+                                        <option value="Tidak Ada">Tidak Ada</option>                                        
+                                    </select>
+                                </td>
+                                <td><input class="myField" style="width: 300px;" dojoType="dijit.form.TextBox" placeHolder="Keterangan" /></td>
+                            </tr> 
+                                <tr valign="top">
+                                <td> </td>
+                                <td>B.Rambu Larangan Masuk</td>
+                                <td>:</td>
+                                <td>
+                                    <select class="myFieldSelect"  >
+                                        <option value="Ada,Terawat">Ada,Terawat</option>
+                                        <option value="Ada,Tidak Terawat">Ada,Tidak Terawat</option>
+                                        <option value="Tidak Ada">Tidak Ada</option>                                        
+                                    </select>
+                                </td>  
+                                <td><input class="myField" style="width: 300px;" dojoType="dijit.form.TextBox" placeHolder="Keterangan" /></td>
+                            </tr> 
+                            <tr valign="top">
+                                <td> </td>
+                                <td>C.Rambu Kondisi Darurat</td>
+                                <td>:</td>
+                                <td>
+                                    <select class="myFieldSelect"  >
+                                        <option value="Ada,Terawat">Ada,Terawat</option>
+                                        <option value="Ada,Tidak Terawat">Ada,Tidak Terawat</option>
+                                        <option value="Tidak Ada">Tidak Ada</option>                                        
+                                    </select>
+                                </td>
+                                <td><input class="myField" style="width: 300px;" dojoType="dijit.form.TextBox" placeHolder="Keterangan" /></td>
+                            </tr> 
+                            <tr valign="top">
+                                <td> </td>
+                                <td>D.Marker Post</td>
+                                <td>:</td>
+                                <td>
+                                    <select class="myFieldSelect"  >
+                                        <option value="Ada,Terawat">Ada,Terawat</option>
+                                        <option value="Ada,Tidak Terawat">Ada,Tidak Terawat</option>
+                                        <option value="Tidak Ada">Tidak Ada</option>                                        
+                                    </select>
+                                </td>
+                                <td><input class="myField" style="width: 300px;" dojoType="dijit.form.TextBox" placeHolder="Keterangan" /></td>
+                            </tr> 
+                            <tr valign="top">
+                                <td> </td>
+                                <td>E.Gambar PID MR/S</td>
+                                <td>:</td>
+                                <td>
+                                    <select class="myFieldSelect"  >
+                                        <option value="Ada,Terawat">Ada,Terawat</option>
+                                        <option value="Ada,Tidak Terawat">Ada,Tidak Terawat</option>
+                                        <option value="Tidak Ada">Tidak Ada</option>                                        
+                                    </select>
+                                </td>
+                                <td><input class="myField" style="width: 300px;" dojoType="dijit.form.TextBox" placeHolder="Keterangan" /></td>
+                            </tr> 
+                            <tr valign="top">
+                                <td><b>5.</b></td>
+                                <td colspan="4"><b>PEMELIHARAAN VALVE GREASING</b></td>
+                            </tr>
+                            <tr valign="top">
+                                <td> </td>
+                                <td>A.Keadaan Valve</td>
+                                <td>:</td>
+                                <td>
+                                    <select class="myFieldSelect"  >
+                                        <option value="Fungsi">Fungsi</option>
+                                        <option value="Tidak Berfungsi">Tidak Berfungsi</option>                                                                                
+                                    </select>
+                                </td>
+                                <td><input class="myField" style="width: 300px;" dojoType="dijit.form.TextBox" placeHolder="Keterangan" /></td>
+                            </tr> 
+                            <tr valign="top">
+                                <td> </td>
+                                <td>B.Kondisi Valve</td>
+                                <td>:</td>
+                                <td>
+                                    <select class="myFieldSelect"  >
+                                        <option value="Bersih,Terawat">Bersih,Terawat</option>
+                                        <option value="Kotor,Berdebu">Kotor,Berdebu</option>                                                                             
+                                    </select>
+                                </td>
+                                <td><input class="myField" style="width: 300px;" dojoType="dijit.form.TextBox" placeHolder="Keterangan" /></td>
+                            </tr> 
+                            <tr valign="top">
+                                <td> </td>
+                                <td>C.Check Valve</td>
+                                <td>:</td>
+                                <td>
+                                    <select class="myFieldSelect"  >
+                                        <option value="Fungsi">Fungsi</option>
+                                        <option value="Tidak Berfungsi">Tidak Berfungsi</option>                                       
+                                    </select>
+                                </td>
+                                <td><input class="myField" style="width: 300px;" dojoType="dijit.form.TextBox" placeHolder="Keterangan" /></td>
+                            </tr> 
+                            <tr valign="top">
+                                <td> </td>
+                                <td>D.Kondisi Semua Valve MR/S</td>
+                                <td>:</td>
+                                <td>
+                                    <select class="myFieldSelect"  >
+                                        <option value="Fungsi">Fungsi</option>
+                                        <option value="Tidak Berfungsi">Tidak Berfungsi</option>                                        
+                                    </select>
+                                </td>
+                                <td><input class="myField" style="width: 300px;" dojoType="dijit.form.TextBox" placeHolder="Keterangan" /></td>                                      
+                            </tr>                                 
+                            <tr valign="top">
+                                <td><b>6.</b></td>
+                                <td colspan="4"><b>PENGECEKAN KEPASTIAN METER BERFUNGSI & TERKALINRASI</b></td>
+                            </tr>
+                            <tr valign="top">
+                                <td> </td>
+                                <td>A.Stream</td>
+                                <td>:</td>
+                                <td colspan="2">
+                                    <select class="myFieldSelect"  >
+                                        <option value="Single">Single</option>
+                                        <option value="Double">Double</option>                                                                                                                        
+                                    </select>                                                                        
+                                </td>
+                            </tr>
+                            <tr valign="top">
+                                <td> </td>
+                                <td>B.Stream Aktif</td>
+                                <td>:</td>
+                                <td>
+                                    <select class="myFieldSelect"  >
+                                        <option value="Stream A">Stream A</option>
+                                        <option value="Stream B">Stream B</option>                                                                                                                        
+                                    </select>
+                                </td>
+                                <td> 
+                                Pilih Apabila Double Stream                                                                          
+                                </td>
+                            </tr>
+                            <tr valign="top">
+                                <td> </td>
+                                <td>C.Meter Berfungsi</td>
+                                <td>:</td>
+                                <td>
+                                    <select class="myFieldSelect"  >
+                                        <option value="Berfungsi">Berfungsi</option>
+                                        <option value="Tidak Berfungsi/ Bermasalah">Bermasalah</option>                                                                                                                        
+                                    </select> 
+                                </td>
+                                <td>
+                                    Waktu Kalibrasi: <input class="myField" style="width: 80px;" dojoType="dijit.form.TextBox" placeHolder="Month,Year" />                                                                                                         
+                                </td>
+                            </tr>
+                            <tr valign="top">
+                                <td> </td>
+                                <td>D.Type Meter</td>
+                                <td>:</td>
+                                <td>
+                                    <select class="myFieldSelect"  >
+                                        <option value="Rotary">Rotary</option>
+                                        <option value="Turbin">Turbin</option>
+                                        <option value="Diafragma">Diafragma</option>
+                                        <option value="Orifice">Orifice</option>                                                                                                                                                                
+                                    </select>
+                                </td>
+                                <td> 
+                                    Tahun :<input class="myField" style="width: 50px;" dojoType="dijit.form.TextBox" placeHolder=" " />
+                                    Serial Number : <input class="myField" style="width: 100px;" dojoType="dijit.form.TextBox" placeHolder=" " />                                                                                                         
+                                </td>
+                            </tr>
+                            <tr valign="top">
+                                <td> </td>
+                                <td>E.Merk Meter & G.Size</td>
+                                <td>:</td>
+                                <td>
+                                    <select class="myFieldSelect"  >
+                                        <option value="Actaris">Actaris</option>
+                                        <option value="CNIM">CNIM</option>
+                                        <option value="Daniel">Daniel</option>
+                                        <option value="Delta G">Delta G</option>
+                                        <option value="Dongxin">Dongxin</option>
+                                        <option value="Elster">Elster</option>
+                                        <option value="Instromet">Instromet</option>
+                                        <option value="Elster Instromet">Elster Instromet</option>
+                                        <option value="Fiorentini">Fiorentini</option>
+                                        <option value="Gallus">Gallus</option>
+                                        <option value="IGA">IGA</option>
+                                        <option value="Itron">Itron</option>
+                                        <option value="Kimon">Kimon</option>
+                                        <option value="Ricoh NHN">Ricoh NHN</option>
+                                        <option value="RMG">RMG</option>
+                                        <option value="Schlumberger">Schlumberger</option>
+                                        <option value="UGI">UGI</option>
+                                        <option value="Vemmtec">Vemmtec</option>
+                                        <option value="Wilson">Wilson</option>                                                                                                                                                                
+                                    </select> 
+                                    <select class="myFieldSelect"  >
+                                        <option value="G.4">G.4</option>
+                                        <option value="G.16">G.16</option>
+                                        <option value="G.25">G.25</option>
+                                        <option value="G.40">G.40</option>
+                                        <option value="G.65">G.65</option>
+                                        <option value="G.100">G.100</option>
+                                        <option value="G.160">G.160</option>
+                                        <option value="G.250">G.250</option>
+                                        <option value="G.400">G.400</option>
+                                        <option value="G.650">G.650</option>
+                                        <option value="G.1000">G.1000</option>
+                                        <option value="G.1600">G.1600</option>
+                                        <option value="G.2500">G.2500</option>
+                                        <option value="G.4000">G.4000</option>
+                                        <option value="G.6500">G.6500</option>                                                                                                                                                                                                        
+                                    </select>
+                                </td>
+                                <td>
+                                    QMin :<input class="myField" style="width: 52px;" dojoType="dijit.form.TextBox" placeHolder="M3/Jam" />
+                                    QMax :<input class="myField" style="width: 52px;" dojoType="dijit.form.TextBox" placeHolder="M3/Jam" />
+                                    PMax :<input class="myField" style="width: 40px;" dojoType="dijit.form.TextBox" placeHolder="BarG" />                                                                                                         
+                                </td>
+                            </tr>
+                            <tr valign="top">
+                                <td> </td>
+                                <td>F.Dia, Panjang & Lubang Baut</td>
+                                <td>:</td>
+                                <td colspan="2">
+                                    <input class="myField" style="width: 30px;" dojoType="dijit.form.TextBox" placeHolder="Inch" />
+                                    <input class="myField" style="width: 65px;" dojoType="dijit.form.TextBox" placeHolder="Milimeters" />
+                                    <input class="myField" style="width: 50px;" dojoType="dijit.form.TextBox" placeHolder="Lubang" />                                                                                                
+                                    <input class="myField" style="width: 100px;" dojoType="dijit.form.TextBox" placeHolder="Baut Terpasang" />
+                                </td>
+                            </tr>
+                            <tr valign="top">
+                                <td> </td>
+                                <td>G.Pengukuran Flow Meter</td>
+                                <td>:</td>
+                                <td>
+                                    <input class="myField" style="width: 55px;" dojoType="dijit.form.TextBox" placeHolder="M2/Jam" />                                                                                                                                
+                                </td>
+                                <td><b>Pengamatan Selama 10 Menit</b>   </td>
+                            </tr>
+                            <tr valign="top">
+                                <td> </td>
+                                <td>H.Pelumasan Meter</td>
+                                <td>:</td>
+                                <td>
+                                    <select class="myFieldSelect"  >
+                                        <option value="Ada">Ada</option>
+                                        <option value="Tidak Ada">Tidak Ada</option>                                                                                                                                                                                               
+                                    </select>                                                                                                           
+                                </td>
+                                <td><input class="myField" style="width: 300px;" dojoType="dijit.form.TextBox" placeHolder="Keterangan" /></td>
+                            </tr>
+                            <tr valign="top">
+                                <td> </td>
+                                <td>I.Angka Stand Meter</td>
+                                <td>:</td>
+                                <td>
+                                    <input class="myField" style="width: 55px;" dojoType="dijit.form.TextBox" placeHolder="M3" />M3                                                                                                     
+                                </td>
+                                <td><input class="myField" style="width: 300px;" dojoType="dijit.form.TextBox" placeHolder="Keterangan" /></td>
+                            </tr>
+                        </table>
+
+            </div>
+                  <div dojoType="dijit.layout.ContentPane" title="O&M MR/S 4">
+                     <table border="0" cellpadding="5" cellspacing="5" width="100%">
+                        <tr valign="top">
+                                <td><b>7.</b></td>
+                                <td colspan="4"><b>PENGGANTIAN, PERBAIKAN & PENGECATAN KECIL PERLENGKAPAN MR/S</b></td>
+                            </tr>
+                            <tr valign="top">
+                                <td> </td>
+                                <td width="50%">A.Kunci Gembok Pagar</td>
+                                <td>:</td>
+                                <td>
+                                    <select class="myFieldSelect"  >
+                                        <option value="Terawat">Terawat</option>
+                                        <option value="Perlu Perbaikan">Perlu Perbaikan</option>
+                                        <option value="Semprot WD">Semprot WD</option>
+                                        <option value="Penggantian">Penggantian</option>                                                                                                                        
+                                    </select>                                                                        
+                                </td>
+                                <td><input class="myField" style="width: 300px;" dojoType="dijit.form.TextBox" placeHolder="Keterangan" /></td>
+                            </tr>
+                            <tr valign="top">
+                                <td> </td>
+                                <td>B.Kunci Gembok Kios</td>
+                                <td>:</td>
+                                <td>
+                                    <select class="myFieldSelect"  >
+                                        <option value="Terawat">Terawat</option>
+                                        <option value="Perlu Perbaikan">Perlu Perbaikan</option>
+                                        <option value="Semprot WD">Semprot WD</option>
+                                        <option value="Penggantian">Penggantian</option>                                                                                                                        
+                                    </select>                                                                        
+                                </td>
+                                <td><input class="myField" style="width: 300px;" dojoType="dijit.form.TextBox" placeHolder="Keterangan" /></td>
+                            </tr>
+                            <tr valign="top">
+                                <td> </td>
+                                <td>C.Engsel Pintu Kios</td>
+                                <td>:</td>
+                                <td>
+                                    <select class="myFieldSelect"  >
+                                        <option value="Terawat">Terawat</option>
+                                        <option value="Perlu Perbaikan">Perlu Perbaikan</option>
+                                        <option value="Pengecatan">Pengecatan</option>
+                                        <option value="Penggantian">Penggantian</option>                                                                                                                        
+                                    </select>                                                                        
+                                </td>
+                                <td><input class="myField" style="width: 300px;" dojoType="dijit.form.TextBox" placeHolder="Keterangan" /></td>
+                            </tr>
+                            <tr valign="top">
+                                <td> </td>
+                                <td>D.Overpall</td>
+                                <td>:</td>
+                                <td>
+                                    <select class="myFieldSelect"  >
+                                        <option value="Terawat">Terawat</option>
+                                        <option value="Perlu Perbaikan">Perlu Perbaikan</option>
+                                        <option value="Pengecatan">Pengecatan</option>
+                                        <option value="Penggantian">Penggantian</option>                                                                                                                        
+                                    </select>                                                                        
+                                </td>
+                                <td><input class="myField" style="width: 300px;" dojoType="dijit.form.TextBox" placeHolder="Keterangan" /></td>
+                            </tr>
+                            <tr valign="top">
+                                <td> </td>
+                                <td>E.Pagar</td>
+                                <td>:</td>
+                                <td>
+                                    <select class="myFieldSelect"  >
+                                        <option value="Terawat">Terawat</option>
+                                        <option value="Perlu Perbaikan">Perlu Perbaikan</option>
+                                        <option value="Pengecatan">Pengecatan</option>
+                                        <option value="Penggantian">Penggantian</option>                                                                                                                        
+                                    </select>                                                                        
+                                </td>
+                                <td><input class="myField" style="width: 300px;" dojoType="dijit.form.TextBox" placeHolder="Keterangan" /></td>
+                            </tr>
+                            <tr valign="top">
+                                <td><b>8.</b></td>
+                                <td colspan="4"><b>PERLENGKAPAN MR/S</b></td>
+                            </tr>
+                            <tr valign="top">
+                                <td> </td>
+                                <td>A.Ketersediaan Kartu Record MR/S</td>
+                                <td>:</td>
+                                <td>
+                                    <select class="myFieldSelect"  >
+                                        <option value="Ada,Terawat">Ada,Terawat</option>
+                                        <option value="Ada,Tidak Terawat">Ada,Tidak Terawat</option>
+                                        <option value="Tidak Ada">Tidak Ada</option>
+                                    </select>                                                                        
+                                </td>
+                                <td><input class="myField" style="width: 300px;" dojoType="dijit.form.TextBox" placeHolder="Keterangan" /></td>
+                            </tr>
+                            <tr valign="top">
+                                <td> </td>
+                                <td>B.Kartu Catat Meter</td>
+                                <td>:</td>
+                                <td>
+                                    <select class="myFieldSelect"  >
+                                        <option value="Ada,Terawat">Ada,Terawat</option>
+                                        <option value="Ada,Tidak Terawat">Ada,Tidak Terawat</option>
+                                        <option value="Tidak Ada">Tidak Ada</option>
+                                    </select>                                                                        
+                                </td>
+                                <td><input class="myField" style="width: 300px;" dojoType="dijit.form.TextBox" placeHolder="Keterangan" /></td>
+                            </tr>
+                            <tr valign="top">
+                                <td> </td>
+                                <td>C.Ketersedian Tempat Kartu Pemeliharaan</td>
+                                <td>:</td>
+                                <td>
+                                    <select class="myFieldSelect"  >
+                                        <option value="Ada,Terawat">Ada,Terawat</option>
+                                        <option value="Ada,Tidak Terawat">Ada,Tidak Terawat</option>
+                                        <option value="Tidak Ada">Tidak Ada</option>
+                                    </select>                                                                        
+                                </td>
+                                <td><input class="myField" style="width: 300px;" dojoType="dijit.form.TextBox" placeHolder="Keterangan" /></td>
+                            </tr>
+                            <tr valign="top">
+                                <td> </td>
+                                <td>D.Updating Pengisian Kartu Saat Inspeksi</td>
+                                <td>:</td>
+                                <td>
+                                    <select class="myFieldSelect"  >
+                                        <option value="Ya,Sudah">Ya,Sudah</option>
+                                        <option value="Belum">Belum</option>
+                                    </select>                                                                        
+                                </td>
+                                <td><input class="myField" style="width: 300px;" dojoType="dijit.form.TextBox" placeHolder="Keterangan" /></td>
+                            </tr>
+                            <tr valign="top">
+                                <td><b>9.</b></td>
+                                <td colspan="4"><b>PENGGANTIAN ALAT UKUR</b></td>
+                            </tr>
+                            <tr valign="top">
+                                <td> </td>
+                                <td>A.Meter</td>
+                                <td>:</td>
+                                <td>
+                                    <select class="myFieldSelect"  >
+                                        <option value="Baik,Tidak Diganti">Baik,Tidak Diganti</option>
+                                        <option value="Ganti,Habis Kalibrasi">Ganti,Habis Kalibrasi</option>
+                                        <option value="Ganti,Rusak">Ganti,Rusak</option>
+                                    </select>                                                                        
+                                </td>
+                                <td><input class="myField" style="width: 300px;" dojoType="dijit.form.TextBox" placeHolder="Keterangan" /></td>
+                            </tr>
+                            <tr valign="top">
+                                <td> </td>
+                                <td>B.Thermometer</td>
+                                <td>:</td>
+                                <td>
+                                    <select class="myFieldSelect"  >
+                                        <option value="Baik,Tidak Diganti">Baik,Tidak Diganti</option>
+                                        <option value="Ganti,Habis Kalibrasi">Ganti,Habis Kalibrasi</option>
+                                        <option value="Ganti,Rusak">Ganti,Rusak</option>
+                                    </select>                                                                        
+                                </td>
+                                <td><input class="myField" style="width: 300px;" dojoType="dijit.form.TextBox" placeHolder="Keterangan" /></td>
+                                </tr>
+                            <tr valign="top">
+                                <td> </td>
+                                <td>C.Pressure Gauge</td>
+                                <td>:</td>
+                                <td>
+                                    <select class="myFieldSelect"  >
+                                        <option value="Baik,Tidak Diganti">Baik,Tidak Diganti</option>
+                                        <option value="Ganti,Habis Kalibrasi">Ganti,Habis Kalibrasi</option>
+                                        <option value="Ganti,Rusak">Ganti,Rusak</option>
+                                    </select>                                                                        
+                                </td>
+                                <td><input class="myField" style="width: 300px;" dojoType="dijit.form.TextBox" placeHolder="Keterangan" /></td>
+                            </tr>
+                            <tr valign="top">
+                                <td><b>10.</b></td>
+                                <td colspan="4"><b>PERAWATAN DAN PENGGANTIAN FILTER</b></td>
+                            </tr>
+                            <tr valign="top">
+                                <td> </td>
+                                <td>A.Kondisi Filter</td>
+                                <td>:</td>
+                                <td>
+                                    <select class="myFieldSelect"  >
+                                        <option value="Baik">Baik</option>
+                                        <option value="Tidak">Tidak</option>
+                                        <option value="1/3 DP">1/3 DP</option>
+                                    </select>
+                                </td>
+                                <td><input class="myField" style="width: 300px;" dojoType="dijit.form.TextBox" placeHolder="Keterangan" /></td>
+                            </tr>
+                            <tr valign="top">
+                                <td> </td>
+                                <td>B.Drain Filter</td>
+                                <td>:</td>
+                                <td>
+                                    <select class="myFieldSelect"  >
+                                        <option value="Ada,Fungsi">Ada,Fungsi</option>
+                                        <option value="Ada,Tidak Berfungsi">Ada,Tidak Berfungsi</option>
+                                        <option value="Tidak Ada">Tidak Ada</option>
+                                    </select>
+                                </td>
+                                <td><input class="myField" style="width: 300px;" dojoType="dijit.form.TextBox" placeHolder="Keterangan" /></td>
+                            </tr>
+                            <tr valign="top">
+                                <td> </td>
+                                <td>C.Differential Pressure Gauge Filter</td>
+                                <td>:</td>
+                                <td>
+                                    <select class="myFieldSelect"  >
+                                        <option value="Ada,Fungsi">Ada,Fungsi</option>
+                                        <option value="Ada,Tidak Berfungsi">Ada,Tidak Berfungsi</option>
+                                        <option value="Tidak Ada">Tidak Ada</option>
+                                    </select>
+                                </td>
+                                <td><input class="myField" style="width: 300px;" dojoType="dijit.form.TextBox" placeHolder="Keterangan" /></td>
+                            </tr>
+                            <tr valign="top">
+                                <td> </td>
+                                <td>D.Pembersihan Filter</td>
+                                <td>:</td>
+                                <td>
+                                    <select class="myFieldSelect"  >
+                                        <option value="Ya">Ya</option>
+                                        <option value="Tidak Perlu">Tidak Perlu</option>
+                                        <option value="Harus Diganti">Harus Diganti</option>
+                                    </select>
+                                </td>
+                                <td>
+                                    DP Filter :<input class="myField" style="width: 55px;" dojoType="dijit.form.TextBox" placeHolder="MBar" />
+                                </td>
+                            </tr>
+                            <tr valign="top">
+                                <td> </td>
+                                <td>E.Penggantian Filter</td>
+                                <td>:</td>
+                                <td>
+                                    <select class="myFieldSelect"  >
+                                        <option value="Ya,Berkala">Ya,Berkala</option>
+                                        <option value="Ya,Rusak 1/3 DP">Ya,Rusak 1/3 DP</option>
+                                        <option value="Tidak">Tidak</option>
+                                    </select>                                    
+                                </td>
+                                <td><input class="myField" style="width: 300px;" dojoType="dijit.form.TextBox" placeHolder="Keterangan" /></td>
+                            </tr>
+                        </table>
+                  </div>
+                  <div dojoType="dijit.layout.ContentPane" title="O&M MR/S 5">
+                        <table border="0" cellpadding="5" cellspacing="5" width="100%">
+                            <tr valign="top">
+                                <td><b>11.</b></td>
+                                <td colspan="4"><b>PENGGANTIAN SPARE PART'S REGULATOR</b></td>
+                            </tr>
+                            <tr valign="top">
+                                <td> </td>
+                                <td>A.Membran</td>
+                                <td>:</td>
+                                <td>
+                                    <select class="myFieldSelect"  >
+                                        <option value="Tidak,Masih Baik">Tidak,Masih Baik</option>
+                                        <option value="Rusak,Diganti">Rusak,Diganti</option>                                        
+                                    </select>
+                                </td>
+                                <td><input class="myField" style="width: 300px;" dojoType="dijit.form.TextBox" placeHolder="Keterangan" /></td>
+                            </tr>
+                            <tr valign="top">
+                                <td> </td>
+                                <td>B.Spring Regulator</td>
+                                <td>:</td>
+                                <td>
+                                    <select class="myFieldSelect"  >
+                                        <option value="Tidak,Masih Baik">Tidak,Masih Baik</option>
+                                        <option value="Rusak,Diganti">Rusak,Diganti</option>                                        
+                                    </select>
+                                </td>
+                                <td><input class="myField" style="width: 300px;" dojoType="dijit.form.TextBox" placeHolder="Keterangan" /></td>
+                            </tr>
+                            <tr valign="top">
+                                <td> </td>
+                                <td>C.Valve Disk</td>
+                                <td>:</td>
+                                <td>
+                                    <select class="myFieldSelect"  >
+                                        <option value="Tidak,Masih Baik">Tidak,Masih Baik</option>
+                                        <option value="Rusak,Diganti">Rusak,Diganti</option>                                        
+                                    </select>
+                                </td>
+                                <td><input class="myField" style="width: 300px;" dojoType="dijit.form.TextBox" placeHolder="Keterangan" /></td>
+                            </tr>
+                            <tr valign="top">
+                                <td><b>12.</b></td>
+                                <td colspan="4"><b>OVERSTREAM REGULATOR</b></td>
+                            </tr>
+                            <tr valign="top">
+                                <td> </td>
+                                <td>A.Dilakukan Overstream Regulator</td>
+                                <td>:</td>
+                                <td>
+                                    <select class="myFieldSelect"  >
+                                        <option value="Ya">Ya</option>
+                                        <option value="Tidak">Tidak</option>                                        
+                                    </select>
+                                </td>
+                                <td><input class="myField" style="width: 300px;" dojoType="dijit.form.TextBox" placeHolder="Keterangan" /></td>
+                            </tr>
+                            <tr valign="top">
+                                <td><b>13.</b></td>
+                                <td colspan="4"><b>OVERHAUL MR/S</b></td>
+                            </tr>    
+                            <tr valign="top">
+                                <td> </td>
+                                <td>A.Dilakukan Overhaul MR/S</td>
+                                <td>:</td>
+                                <td>
+                                    <select class="myFieldSelect"  >
+                                        <option value="Ya">Ya</option>
+                                        <option value="Tidak">Tidak</option>                                        
+                                    </select>
+                                </td>
+                                <td><input class="myField" style="width: 300px;" dojoType="dijit.form.TextBox" placeHolder="Keterangan" /></td>
+                            </tr>
+                            <tr valign="top">
+                                <td><b>14.</b></td>
+                                <td colspan="4"><b>PENGECATAN DAN PERBAIKAN</b></td>
+                            </tr>
+                            <tr valign="top">
+                                <td> </td>
+                                <td>A.Pipping Line</td>
+                                <td>:</td>
+                                <td>
+                                    <select class="myFieldSelect"  >
+                                        <option value="Terawat">Terawat</option>
+                                        <option value="Perlu Perbaikan">Perlu Perbaikan</option>
+                                        <option value="Pengecatan">Pengecatan</option>
+                                        <option value="Penggantian">Penggantian</option>                                        
+                                    </select>
+                                </td>
+                                <td><input class="myField" style="width: 300px;" dojoType="dijit.form.TextBox" placeHolder="Keterangan" /></td>
+                            </tr>
+                            <tr valign="top">
+                                <td> </td>
+                                <td>B.Box MR/S</td>
+                                <td>:</td>
+                                <td>
+                                    <select class="myFieldSelect"  >
+                                        <option value="Terawat">Terawat</option>
+                                        <option value="Perlu Perbaikan">Perlu Perbaikan</option>
+                                        <option value="Pengecatan">Pengecatan</option>
+                                    </select>
+                                </td>
+                                <td><input class="myField" style="width: 300px;" dojoType="dijit.form.TextBox" placeHolder="Keterangan" /></td>
+                            </tr>
+                            <tr valign="top">
+                                <td> </td>
+                                <td>C.Pagar MR/S</td>
+                                <td>:</td>
+                                <td>
+                                    <select class="myFieldSelect"  >
+                                        <option value="Terawat">Terawat</option>
+                                        <option value="Perlu Perbaikan">Perlu Perbaikan</option>
+                                        <option value="Pengecatan">Pengecatan</option>
+                                        <option value="Penggantian">Penggantian</option>                                        
+                                    </select>
+                                </td>
+                                <td><input class="myField" style="width: 300px;" dojoType="dijit.form.TextBox" placeHolder="Keterangan" /></td>
+                            </tr>
+                            <tr valign="top">
+                                <td> </td>
+                                <td>D.Pondasi MR/S</td>
+                                <td>:</td>
+                                <td>
+                                    <select class="myFieldSelect"  >
+                                        <option value="Terawat">Terawat</option>
+                                        <option value="Perlu Perbaikan">Perlu Perbaikan</option>                                                                               
+                                    </select>
+                                </td>
+                                <td><input class="myField" style="width: 300px;" dojoType="dijit.form.TextBox" placeHolder="Keterangan" /></td>
+                            </tr>
+                            <tr valign="top">
+                                <td> </td>
+                                <td>E.Pasir Urug (Dalam Box)</td>
+                                <td>:</td>
+                                <td>
+                                    <select class="myFieldSelect"  >
+                                        <option value="Terawat">Terawat</option>
+                                        <option value="Perlu Penambahan">Perlu Penambahan</option>
+                                        <option value="Nihil">Nihil</option>                                                                               
+                                    </select>
+                                </td>
+                                <td>
+                                    Panjang :<input class="myField" style="width: 20px;" dojoType="dijit.form.TextBox" placeHolder="M" />
+                                    Lebar :<input class="myField" style="width: 20px;" dojoType="dijit.form.TextBox" placeHolder="M" />
+                                    Tinggi :<input class="myField" style="width: 20px;" dojoType="dijit.form.TextBox" placeHolder="M" />
+                                    <b>Volume :</b><input class="myField" style="width: 20px;" dojoType="dijit.form.TextBox" placeHolder="M" />
+                                </td>
+                            </tr>
+                            <tr valign="top">
+                                <td> </td>
+                                <td>F.Pasir Urug (Luar Box)</td>
+                                <td>:</td>
+                                <td>
+                                    <select class="myFieldSelect"  >
+                                        <option value="Terawat">Terawat</option>
+                                        <option value="Perlu Penambahan">Perlu Penambahan</option>                                                                                                                       
+                                    </select>
+                                </td>
+                                <td>
+                                    Panjang :<input class="myField" style="width: 20px;" dojoType="dijit.form.TextBox" placeHolder="M" />
+                                    Lebar :<input class="myField" style="width: 20px;" dojoType="dijit.form.TextBox" placeHolder="M" />
+                                    <b>Volume :</b><input class="myField" style="width: 20px;" dojoType="dijit.form.TextBox" placeHolder="M" />
+                                </td>
+                            </tr>
+                            <tr valign="top">
+                                <td><b>15.</b></td>
+                                <td colspan="4"><b>KELENGKAPAN MR/S</b></td>
+                            </tr>
+                            <tr valign="top">
+                                <td> </td>
+                                <td>A.Papan Nama Stasiun MR/S</td>
+                                <td>:</td>
+                                <td>
+                                    <select class="myFieldSelect"  >
+                                        <option value="Terawat">Terawat</option>
+                                        <option value="Tidak Terawat">Tidak Terawat</option>
+                                        <option value="Tidak Ada">Tidak Ada</option>                                        
+                                    </select>
+                                </td>
+                                <td><input class="myField" style="width: 300px;" dojoType="dijit.form.TextBox" placeHolder="Keterangan" /></td>
+                            </tr>
+                            <tr valign="top">
+                                <td> </td>
+                                <td>B.Identitas Stasiun MR/S</td>
+                                <td>:</td>
+                                <td>
+                                    <select class="myFieldSelect"  >
+                                        <option value="Terawat">Terawat</option>
+                                        <option value="Tidak Terawat">Tidak Terawat</option>
+                                        <option value="Tidak Ada">Tidak Ada</option>                                        
+                                    </select>
+                                </td>
+                                <td><input class="myField" style="width: 300px;" dojoType="dijit.form.TextBox" placeHolder="Keterangan" /></td>
+                            </tr>
+                            <tr valign="top">
+                                <td> </td>
+                                <td>C.Rambu-Rambu K3</td>
+                                <td>:</td>
+                                <td>
+                                    <select class="myFieldSelect"  >
+                                        <option value="Terawat">Terawat</option>
+                                        <option value="Tidak Terawat">Tidak Terawat</option>
+                                        <option value="Tidak Ada">Tidak Ada</option>                                        
+                                    </select>
+                                </td>
+                                <td><input class="myField" style="width: 300px;" dojoType="dijit.form.TextBox" placeHolder="Keterangan" /></td>
+                            </tr>
+                            <tr valign="top">
+                                <td> </td>
+                                <td>D.Petunjuk Kodisi Darurat</td>
+                                <td>:</td>
+                                <td>
+                                    <select class="myFieldSelect"  >
+                                        <option value="Terawat">Terawat</option>
+                                        <option value="Tidak Terawat">Tidak Terawat</option>
+                                        <option value="Tidak Ada">Tidak Ada</option>                                        
+                                    </select>
+                                </td>
+                                <td><input class="myField" style="width: 300px;" dojoType="dijit.form.TextBox" placeHolder="Keterangan" /></td>
+                            </tr>
+                            <tr valign="top">
+                                <td> </td>
+                                <td>E.Catatan Perbaikan Dan Pemeriksaan</td>
+                                <td>:</td>
+                                <td>
+                                    <select class="myFieldSelect"  >
+                                        <option value="Terawat">Terawat</option>
+                                        <option value="Tidak Terawat">Tidak Terawat</option>
+                                        <option value="Tidak Ada">Tidak Ada</option>                                        
+                                    </select>
+                                </td>
+                                <td><input class="myField" style="width: 300px;" dojoType="dijit.form.TextBox" placeHolder="Keterangan" /></td>
+                            </tr>
+                        </table>
+                  </div>
+             </div>
+    </div>
+</div>

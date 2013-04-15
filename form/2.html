@@ -1,0 +1,188 @@
+<div data-dojo-type="dijit.layout.BorderContainer" data-dojo-props='style:"width: 100%; height: 100%; "'>
+    <div data-dojo-type="dijit.layout.ContentPane" data-dojo-props='region:"top", style:"height: 60px;"'>
+            <div style="text-align: center;  font-weight:bold;"><font face="tahoma" size="4" color="#0099FF">OERATION & MAINTENANCE ELECTRONIC VOLUME CORRECTOR</Font><br/></div>
+            <table border="0" cellpadding="5" cellspacing="5" width="100%">
+              <tr>
+                    <td>Tanggal Inspeksi</td>
+                <td>:</td>
+                  <td ><input class="myField" style="width: 100px;" dojoType="dijit.form.DateTextBox" /></td>
+                  <td>Nama Pelanggan</td>
+                  <td>:</td>
+                  <td><input class="myField" style="width: 150px;" dojotype="dijit.form.TextBox" /></td>
+                  <td>Identifikasi</td>
+                  <td>:</td>
+                  <td><input class="myField" style="width: 150px;" dojotype="dijit.form.TextBox" /></td>
+                  <td><button dojoType="dijit.form.Button">Simpan</button><button dojoType="dijit.form.Button">Refresh</button></td>
+                </tr>
+            </table>
+    </div>
+    <div data-dojo-type="dijit.layout.ContentPane" data-dojo-props='region:"center", style:"height: 50px;"'>
+        <table border="0" cellpadding="3" cellspacing="3" width="100%">
+            <tr valign="top">
+                <td>2.</td>
+                <td width="25%">Lokasi</td>
+                <td>:</td>
+                <td><input class="myField" style="width: 300px;" dojoType="dijit.form.TextBox" placeHolder=" " /></td>                                
+                </tr>
+            <tr valign="top">
+                <td>3.</td>
+                <td>Merk EVC</td>
+                <td>:</td>
+                <td><input class="myField" style="width: 300px;" dojoType="dijit.form.TextBox" placeHolder=" " /></td>                                
+                </tr>
+            <tr valign="top">
+                <td>4.</td>
+                <td>Model/Type EVC</td>
+                <td>:</td>
+                <td><input class="myField" style="width: 300px;" dojoType="dijit.form.TextBox" placeHolder=" " /></td>                                
+                </tr>
+            <tr valign="top">
+                <td>5.</td>
+                <td>Nomor Seri EVC</td>
+                <td>:</td>
+                <td><input class="myField" style="width: 300px;" dojoType="dijit.form.TextBox" placeHolder=" " /></td>                                
+                </tr>
+            <tr valign="top">
+                <td>6.</td>
+                <td>Tahun</td>
+                <td>:</td>
+                <td><input class="myField" style="width: 300px;" dojoType="dijit.form.TextBox" placeHolder=" " /></td>                                
+                </tr>
+            <tr valign="top">
+                <td>7.</td>
+                <td>Download & Back-up Data</td>
+                <td>:</td>
+                <td>
+                    <select class="myFieldSelect"  >
+                        <option value="Ya">Ya</option>
+                        <option value="Tidak">Tidak</option>                                       
+                    </select>
+                </td>                                
+            </tr>
+            <tr valign="top">
+                <td>8.</td>
+                <td>Kondisi Segel</td>
+                <td> </td>                 
+            </tr>
+                    <tr valign="top">
+                        <td> </td>
+                        <td>- Segel Body L/F</td>
+                        <td>:</td>
+                        <td>
+                        <select class="myFieldSelect"  >
+                            <option value="Baik">Baik</option>
+                            <option value="Tidak">Tidak</option>                                       
+                        </select>
+                        No. Segel :<input class="myField" style="width: 170px;" dojotype="dijit.form.TextBox" placeholder=" " />
+                        </td>                
+                    </tr>                                        
+                    <tr valign="top">
+                        <td> </td>
+                        <td>- Segel Body EVC</td>
+                        <td>:</td>
+                        <td>
+                        <select class="myFieldSelect"  >
+                            <option value="Baik">Baik</option>
+                            <option value="Tidak">Tidak</option>                                       
+                        </select>
+                        No. Segel :<input class="myField" style="width: 170px;" dojotype="dijit.form.TextBox" placeholder=" " />
+                        </td>
+                    </tr>
+                    <tr valign="top">
+                        <td> </td>
+                        <td>- Segel Pressure Tranducer</td>
+                        <td>:</td>
+                        <td>
+                        <select class="myFieldSelect"  >
+                            <option value="Baik">Baik</option>
+                            <option value="Tidak">Tidak</option>                                       
+                        </select>
+                        No. Segel :<input class="myField" style="width: 170px;" dojotype="dijit.form.TextBox" placeholder=" " />
+                        </td>
+                    </tr>
+                    <tr valign="top">
+                        <td> </td>
+                        <td>- Segel Thermometer Probe</td>
+                        <td>:</td>
+                        <td>
+                        <select class="myFieldSelect"  >
+                            <option value="Baik">Baik</option>
+                            <option value="Tidak">Tidak</option>                                       
+                        </select>
+                        No. Segel :<input class="myField" style="width: 170px;" dojotype="dijit.form.TextBox" placeholder=" " />
+                        </td>
+                    </tr>
+            <tr valign="top">
+                <td>9.</td>
+                <td>Kesesuaian Pengukuran</td>
+                <td> </td>                 
+            </tr>
+                    <tr valign="top">
+                        <td> </td>
+                        <td>- Pengukuran Pulsa</td>
+                        <td>:</td>
+                        <td>
+                        <select class="myFieldSelect"  >
+                            <option value="Baik">Baik</option>
+                            <option value="Tidak">Tidak</option>                                       
+                        </select>
+                        Pengamatan :<input class="myField" style="width: 155px;" dojotype="dijit.form.TextBox" placeholder="5-10 Menit" />
+                        </td>
+                    </tr>
+                            <tr valign="top">
+                                <td> </td>
+                                <td> </td>
+                                <td> </td>                                                
+                                <td><B>Stand Meter________:</B><input class="myField" style="width: 155px;" dojotype="dijit.form.TextBox" placeholder="m3" /></td>
+                            </tr>
+                            <tr valign="top">
+                                <td> </td>
+                                <td> </td>
+                                <td> </td>                                                
+                                <td><B>Stand Uncorrection__:</B><input class="myField" style="width: 155px;" dojotype="dijit.form.TextBox" placeholder="m3" /></td>
+                            </tr>
+                            <tr valign="top">
+                                <td> </td>
+                                <td> </td>
+                                <td> </td>                                                
+                                <td><B>Stand Correction____:</B><input class="myField" style="width: 155px;" dojotype="dijit.form.TextBox" placeholder="Nm3" /></td>
+                            </tr>
+                    <tr valign="top">
+                        <td> </td>
+                        <td>- Pengukuran Tekanan</td>
+                        <td>:</td>
+                        <td>
+                        <select class="myFieldSelect"  >
+                            <option value="Baik">Baik</option>
+                            <option value="Tidak">Tidak</option>                                       
+                        </select>
+                        <input class="myField" style="width: 235px;" dojotype="dijit.form.TextBox" placeholder="Bar Absolute" />
+                        </td>
+                    </tr>
+                    <tr valign="top">
+                        <td> </td>
+                        <td>- Pengukuran Temperatur</td>
+                        <td>:</td>
+                        <td>
+                        <select class="myFieldSelect"  >
+                            <option value="Baik">Baik</option>
+                            <option value="Tidak">Tidak</option>                                       
+                        </select>
+                        <input class="myField" style="width: 235px;" dojotype="dijit.form.TextBox" placeholder="Derajat Celcius" />
+                        </td>
+                    </tr>
+            <tr valign="top">
+                <td>10.</td>
+                <td>Level Battery</td>
+                <td>:</td>      
+                <td><input class="myField" style="width: 300px;" dojotype="dijit.form.TextBox" placeholder="Day's/Percent" /></td>           
+            </tr>
+            <tr valign="top">
+                <td>11.</td>
+                <td>Catatan Khusus</td>
+                <td>:</td>      
+                <td><input class="myField" style="width: 300px;" dojotype="dijit.form.TextBox" placeholder=" " /></td>           
+            </tr>
+                </table>
+    </div>
+</div>

@@ -1,0 +1,10 @@
+@charset "utf-8";
+/* CSS Document */
+
+.myField {
+	padding: 3px;
+}
+.myFieldSelect {
+	padding: 1.5px;
+	width: 150px;
+}
