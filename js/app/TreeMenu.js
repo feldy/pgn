@@ -18,6 +18,10 @@ js.app.TreeMenu.create = function () {
 	            "name": "O&M EVC",
 	            "type": "subNode"
 	        }, {
+	            "id": "menu_laporan",
+	            "name": "Laporan",
+	            "type": "subNode"
+	        }, {
 	            "id": "menu_3",
 	            "name": "Sub Menu 3",
 	            "type": "subNode"
@@ -88,7 +92,11 @@ js.app.TreeMenu.create = function () {
 	        } else if (evt.id == "chart_4") {
 	            dijit.byId('mainCenterPanel').set('href', 'form/chart/4.html');
 	            setTimeout(js.app.chartUtil.chart4, 50);
-	        }
+	        } 
+	        // else if (evt.id == "menu_laporan") {
+	        //     dijit.byId('mainCenterPanel').set('href', 'form/laporan.html');
+	        //     setTimeout(js.app.eventUtil.formLaporan, 1000);
+	        // }
 	    }
 	});
 }
