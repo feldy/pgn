@@ -2,7 +2,7 @@
 	include("../configuration/config.php");
 	include("generate_uuid.php");	
 
-	$nama = $_POST['nama'];
+	$pelanggan = $_POST['pelanggan'];
 	$tanggal = $_POST['tanggal'];
 	$identifikasi = $_POST['identifikasi'];
 	//CONTENT 1
@@ -38,7 +38,6 @@
 	$_3r = $_POST['_3r'];
 	$_3s = $_POST['_3s'];
 	$_3t = $_POST['_3t'];
-
 	//CONTENT 4
 	$_4a = $_POST['_4a'];
 	$_4b = $_POST['_4b'];
@@ -105,22 +104,22 @@
 
 	$gen = gen_uuid(); 
 	
-	// mysql_query("INSERT INTO m_ommrs VALUES ('$gen','$nama', '$tanggal', '$identifikasi')");
-	// mysql_query("INSERT INTO d_pemeriksaan_kondisi_lingkungan VALUES ('', '$gen', '$_1a', '$_1b', '$_1c', '$_1d'); 
-	// mysql_query("INSERT INTO d_pemeriksaan_kebocoran VALUES ('', '$gen', '$_2a', '$_2b', '$_2c', '$_2d','$_2e', '$_2f'); 
-	// mysql_query("INSERT INTO d_pemeriksaan_kondisi_operasi_peralatan VALUES ('', '$gen', '$_3a', '$_3b', '$_3c', '$_3d','$_3e', '$_3f', '$_3g', '$_3h','$_3i', '$_3j', '$_3k', '$_3l', '$_3m', '$_3n', '$_3o', '$_3p','$_3q', '$_3r', '$_3s', '$_3t'); 
-	// mysql_query("INSERT INTO d_pemeriksaan_kelengkapan_stasiun VALUES ('', '$gen', '$_4a', '$_4b', '$_4c', '$_4d','$_4e'); 
-	// mysql_query("INSERT INTO d_pemeliharaan_valve_greasing VALUES ('', '$gen', '$_5a', '$_5b', '$_5c', '$_5d'); 
-	// mysql_query("INSERT INTO d_pengecekan_kepastian_meter_berfungsi_dan_terkalibrasi VALUES ('', '$gen', '$_6a', '$_6b', '$_6c', '$_6d','$_6e', '$_6f', '$_6g', '$_6h','$_6i'); 
-	// mysql_query("INSERT INTO d_penggantian_perbaikan_dan_pengecatan_kecil_kelengkapan_mrs VALUES ('', '$gen', '$_7a', '$_7b', '$_7c', '$_7d','$_7e'); 
-	// mysql_query("INSERT INTO d_perlengkapan_mrs VALUES ('', '$gen', '$_8a', '$_8b', '$_8c', '$_8d'); 
-	// mysql_query("INSERT INTO d_penggantian_alat_ukur VALUES ('', '$gen', '$_9a', '$_9b', '$_9c'); 
-	// mysql_query("INSERT INTO d_perawatan_dan_penggantian_filter VALUES ('', '$gen', '$_10a', '$_10b', '$_10c', '$_10d','$_10e'); 
-	// mysql_query("INSERT INTO d_penggantian_sparepart_regulator VALUES ('', '$gen', '$_11a', '$_11b', '$_11c'); 
-	// mysql_query("INSERT INTO d_overstream_regulator VALUES ('', '$gen', '$_12a'); 
-	// mysql_query("INSERT INTO d_overhaul_mrs VALUES ('', '$gen', '$_13a'); 
-	// mysql_query("INSERT INTO d_pengecatan_dan_perbaikan VALUES ('', '$gen', '$_14a', '$_14b', '$_14c', '$_14d','$_14e', '$_14f'); 
-	// mysql_query("INSERT INTO d_kelengkapan_mrs VALUES ('', '$gen', '$_15a', '$_15b', '$_15c', '$_15d','$_15e'); 
+	mysql_query("INSERT INTO m_ommrs VALUES ('$gen','$tanggal', '$pelanggan', '$identifikasi')");
+	mysql_query("INSERT INTO d_pemeriksaan_kondisi_lingkungan VALUES ('', '$gen', '$_1a', '$_1b', '$_1c', '$_1d')"); 
+	mysql_query("INSERT INTO d_pemeriksaan_kebocoran VALUES ('', '$gen', '$_2a', '$_2b', '$_2c', '$_2d','$_2e', '$_2f')"); 
+	mysql_query("INSERT INTO d_pemeriksaan_kondisi_operasi_peralatan VALUES ('', '$gen', '$_3a', '$_3b', '$_3c', '$_3d','$_3e', '$_3f', '$_3g', '$_3h','$_3i', '$_3j', '$_3k', '$_3l', '$_3m', '$_3n', '$_3o', '$_3p','$_3q', '$_3r', '$_3s', '$_3t')"); 
+	mysql_query("INSERT INTO d_pemeriksaan_kelengkapan_stasiun VALUES ('', '$gen', '$_4a', '$_4b', '$_4c', '$_4d','$_4e')"); 
+	mysql_query("INSERT INTO d_pemeliharaan_valve_greasing VALUES ('', '$gen', '$_5a', '$_5b', '$_5c', '$_5d')"); 
+	mysql_query("INSERT INTO d_pengecekan_kepastian_meter_berfungsi_dan_terkalibrasi VALUES ('', '$gen', '$_6a', '$_6b', '$_6c', '$_6d','$_6e', '$_6f', '$_6g', '$_6h','$_6i')"); 
+	mysql_query("INSERT INTO d_penggantian_perbaikan_dan_pengecatan_kecil_kelengkapan_mrs VALUES ('', '$gen', '$_7a', '$_7b', '$_7c', '$_7d','$_7e')"); 
+	mysql_query("INSERT INTO d_perlengkapan_mrs VALUES ('', '$gen', '$_8a', '$_8b', '$_8c', '$_8d')"); 
+	mysql_query("INSERT INTO d_penggantian_alat_ukur VALUES ('', '$gen', '$_9a', '$_9b', '$_9c')"); 
+	mysql_query("INSERT INTO d_perawatan_dan_penggantian_filter VALUES ('', '$gen', '$_10a', '$_10b', '$_10c', '$_10d','$_10e')"); 
+	mysql_query("INSERT INTO d_penggantian_sparepart_regulator VALUES ('', '$gen', '$_11a', '$_11b', '$_11c')"); 
+	mysql_query("INSERT INTO d_overstream_regulator VALUES ('', '$gen', '$_12a')"); 
+	mysql_query("INSERT INTO d_overhaul_mrs VALUES ('', '$gen', '$_13a')"); 
+	mysql_query("INSERT INTO d_pengecatan_dan_perbaikan VALUES ('', '$gen', '$_14a', '$_14b', '$_14c', '$_14d','$_14e', '$_14f')"); 
+	mysql_query("INSERT INTO d_kelengkapan_mrs VALUES ('', '$gen', '$_15a', '$_15b', '$_15c', '$_15d','$_15e')"); 
  
 
 
