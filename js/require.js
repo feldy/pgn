@@ -13,6 +13,7 @@ dojo.require("dijit.form.DateTextBox");
 dojo.require("dojo.data.ItemFileReadStore");
 dojo.require("dijit.Tree");
 dojo.require("dojo.parser");
+dojo.require("dojo.date.locale");
 
 dojo.require("dojox.charting.Chart2D");
 dojo.require("dojox.charting.widget.Legend");
