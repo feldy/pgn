@@ -1,18 +1,21 @@
 <div data-dojo-type="dijit.layout.BorderContainer" data-dojo-props='style:"width: 100%; height: 100%; "'>
-    <div data-dojo-type="dijit.layout.ContentPane" data-dojo-props='region:"top", style:"height: 60px;"'>
+    <div data-dojo-type="dijit.layout.ContentPane" data-dojo-props='region:"top", style:"height: 65px;"'>
             <div style="text-align: center;  font-weight:bold;"><font face="tahoma" size="4" color="#0099FF">OERATION & MAINTENANCE ELECTRONIC VOLUME CORRECTOR</Font><br/></div>
+             <span dojoType="dojo.data.ItemFileReadStore" url='system/generate_pelanggan.php' jsid="storePelanggan"></span>
             <table border="0" cellpadding="5" cellspacing="5" width="100%">
               <tr>
-                    <td>Tanggal Inspeksi</td>
-                <td>:</td>
-                  <td ><input class="myField" style="width: 100px;" dojoType="dijit.form.DateTextBox" /></td>
-                  <td>Nama Pelanggan</td>
-                  <td>:</td>
-                  <td><input class="myField" style="width: 150px;" dojotype="dijit.form.TextBox" /></td>
-                  <td>Identifikasi</td>
-                  <td>:</td>
-                  <td><input class="myField" style="width: 150px;" dojotype="dijit.form.TextBox" /></td>
-                  <td><button dojoType="dijit.form.Button">Simpan</button><button dojoType="dijit.form.Button">Refresh</button></td>
+                <td width="15%"><strong>Tanggal Inspeksi:</strong></td>
+                <td width="25%"><strong>Nama Pelanggan: </strong></td>
+                <td width="50%"><strong>Identifikasi: </strong></td>
+                <td rowspan="2" width="20">
+                    <button dojoType="dijit.form.Button" id="btnSimpan" ><strong>Simpan</strong></button>
+                    <button dojoType="dijit.form.Button"><strong>Refresh</strong></button>
+                </td>
+              </tr>
+              <tr>
+                   <td><input name="tanggal" class="myField" id="tanggal" style="width: 100%;" dojotype="dijit.form.DateTextBox" /></td>
+                <td><input name="pelanggan" class="myField" id="pelanggan" style="width: 100%;" highlightmatch:="highlightMatch:""all" autoComplete="false" queryexpr="*${0}*" dojotype="dijit.form.FilteringSelect" store="storePelanggan" searchattr="nama" pagesize="5"/></td>
+                  <td ><input name="identifikasi" class="myField" id="identifikasi" style="width: 100%;" dojotype="dijit.form.TextBox" /></td>
                 </tr>
             </table>
     </div>

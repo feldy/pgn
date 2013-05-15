@@ -11,9 +11,14 @@ dojo.require("dijit.form.TextBox");
 dojo.require("dijit.tree.ForestStoreModel");
 dojo.require("dijit.form.DateTextBox");
 dojo.require("dojo.data.ItemFileReadStore");
+dojo.require("dojo.data.ItemFileWriteStore");
 dojo.require("dijit.Tree");
 dojo.require("dojo.parser");
 dojo.require("dojo.date.locale");
+
+dojo.require("dojox.grid.LazyTreeGridStoreModel");
+dojo.require("dojox.grid.LazyTreeGrid");
+
 
 dojo.require("dojox.charting.Chart2D");
 dojo.require("dojox.charting.widget.Legend");

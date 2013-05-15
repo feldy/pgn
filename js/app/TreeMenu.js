@@ -7,7 +7,7 @@ js.app.TreeMenu.create = function () {
 	    "items": [
 	    {
 	        "id": "menu1",
-	        "name": "Menu 1",
+	        "name": "Master",
 	        "type": "rootNode",
 	        "children": [{
 	            "id": "menu_1",
@@ -18,8 +18,8 @@ js.app.TreeMenu.create = function () {
 	            "name": "O&M EVC",
 	            "type": "subNode"
 	        }, {
-	            "id": "menu_laporan",
-	            "name": "Laporan",
+	            "id": "menu_pelanggan",
+	            "name": "Entry Pelanggan",
 	            "type": "subNode"
 	        }, {
 	            "id": "menu_3",
@@ -28,7 +28,7 @@ js.app.TreeMenu.create = function () {
 	        }]   
 	    }, {
 	        "id": "menu2",
-	        "name": "Chart",
+	        "name": "Report",
 	        "type": "rootNode",
 	        "children": [{
 	            "id": "chart_1",
@@ -45,6 +45,18 @@ js.app.TreeMenu.create = function () {
 	        }, {
 	            "id": "chart_4",
 	            "name": "Contoh Chart 4",
+	            "type": "subNode"
+	        }, {
+	            "id": "menu_laporan",
+	            "name": "Report",
+	            "type": "subNode"
+	        }, {
+	            "id": "menu_laporan2",
+	            "name": "Report 2",
+	            "type": "subNode"
+	        }, {
+	            "id": "logout",
+	            "name": "Logout",
 	            "type": "subNode"
 	        }]   
 	    }]
@@ -92,11 +104,20 @@ js.app.TreeMenu.create = function () {
 	        } else if (evt.id == "chart_4") {
 	            dijit.byId('mainCenterPanel').set('href', 'form/chart/4.html');
 	            setTimeout(js.app.chartUtil.chart4, 50);
+	        } else if (evt.id == "menu_laporan") {
+	            dijit.byId('mainCenterPanel').set('href', 'form/report/report_1.html');
+	            setTimeout(js.app.eventUtil.formLaporan1, 100);
+	        } else if (evt.id == "menu_laporan2") {
+	            dijit.byId('mainCenterPanel').set('href', 'form/report/report_jquery.html');
+	            setTimeout(js.app.eventUtil.formLaporan2, 50);
+	        } else if (evt.id == "logout") {
+	            dojo.xhrPost({
+                   url: 'system/proses_logout.php',
+                   load: function (callback) {
+                        window.location = 'index.php';
+                   }
+                });
 	        } 
-	        // else if (evt.id == "menu_laporan") {
-	        //     dijit.byId('mainCenterPanel').set('href', 'form/laporan.html');
-	        //     setTimeout(js.app.eventUtil.formLaporan, 1000);
-	        // }
 	    }
 	});
 }

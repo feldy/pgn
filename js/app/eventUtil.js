@@ -4,7 +4,7 @@ js.app.eventUtil.formOMMRS = function() {
 	dojo.connect(dijit.byId('btnSimpan'), "onClick", this, function() {
 		var tanggal = dijit.byId('tanggal').get('value');
 		var content = {
-			tanggal		: dojo.date.locale.format(tanggal,{selector: 'date', datePattern: 'yyyy-MM-dd'}),
+			tanggal		: dojo.date.locale.format(tanggal,{datePattern: 'yyyy-MM-dd'}),
 			pelanggan	: dijit.byId('pelanggan').get('value'),
 			identifikasi: dijit.byId('identifikasi').get('value'),
 			_1a : document.getElementById('_1aSel').value +" | "+ dijit.byId('_1aKet').get('value'),
@@ -100,4 +100,190 @@ js.app.eventUtil.formOMMRS = function() {
 	});
 }
 
+js.app.eventUtil.formLaporan1a = function() {
+	var rows = 5;
+	var continentItems = [
+		{name:'South America', type:'continent', population:'', area:''},
+		{name:'North America', type:'continent', population:'', area:''},
+		{name:'Asia', type:'continent', population:'', area:''},
+		{name:'Oceania', type:'continent', population:'', area:''},
+		{name:'Europe', type:'continent', population:'', area:''}
+	];
 
+	var continentChildrenList = [];
+	for(var i=0; i < continentItems.length; i++){
+		continentChildrenList.push(dojo.mixin({ id: 'continent_' + i }, continentItems[i]));
+	}
+	
+	rows = 100;
+	var countryItems = [
+		{name:'Egypt', type:'country', population:'', area:''},
+		{name: 'Kenya', type: 'country', population:'', area:''},
+		{name:'Sudan', type:'country', population:'', area:''},
+		{name:'China', type:'country' , population:'', area:''},
+        {name:'India', type:'country' , population:'', area:''},
+        {name:'Russia', type:'country' , population:'', area:''},
+        {name:'Mongolia', type:'country', population:'', area:'' },
+		{name:'Australia', type:'country', population:'21 million', area:''},
+        {name:'Germany', type:'country', population:'', area:'' },
+        {name:'France', type:'country', population:'', area:'' },
+        {name:'Spain', type:'country', population:'', area:'' },
+        {name:'Italy', type:'country', population:'', area:'' },
+        {name:'Mexico', type:'country',  population:'108 million', area:'1,972,550 sq km'},
+		{name:'Canada', type:'country',  population:'33 million', area:'9,984,670 sq km'},
+		{name:'United States of America', type:'country', population:'', area:'' },
+		{name:'Brazil', type:'country', population:'186 million', area:'' },
+        {name:'Argentina', type:'country', population:'40 million', area:'' }
+	];
+	
+	var countryChildrenList = [];
+	for(var i = 0; i < countryItems.length; i++){
+		countryChildrenList.push(dojo.mixin({ id: 'country_' + i }, countryItems[i]));
+	}
+	
+	cityItems = [
+		{name:'Nairobi', type:'city', population:'', area:''},
+        {name:'Mombasa', type:'city', population:'', area:''},
+        {name:'Khartoum', type:'city', population:'', area:''},
+		{name:'Mexico City', type:'city', population:'19 million', area:'', timezone:'-6 UTC'},
+        {name:'Guadalajara', type:'city', population:'4 million', area:'', timezone:'-6 UTC' },
+        {name:'Ottawa', type:'city', population:'0.9 million', area:'', timezone:'-5 UTC'},
+        {name:'Toronto', type:'city', population:'2.5 million', area:'', timezone:'-5 UTC' },
+	];
+	
+	var cityChildrenList = [];
+	for(var i=0; i < cityItems.length; i++){
+		cityChildrenList.push(dojo.mixin({ id: 'city_' + i }, cityItems[i]));
+	}
+
+	var dataItems = {
+		identifier: 'id',
+        label: 'name',
+		items: [
+			{id:'Continent', name:'Continent', type:'', population: '', area: '', children: continentChildrenList},
+			{id:"Country", name:"Country", type:"", population: '', area: '', children: countryChildrenList},
+			{id:"City", name:"City", type:"", population: '', area: '', children: cityChildrenList}
+		]
+	};
+	var jsonStore = new dojo.data.ItemFileWriteStore({
+		data : dataItems
+	});
+
+	var continentModel = new dijit.tree.ForestStoreModel({
+		store: jsonStore,
+		// query: "{type:'*'}", 
+		childrenAttrs: ["children"]
+	});
+
+	// var continentModel = new dojox.grid.LazyTreeGridStoreModel({
+	// 	store: jsonStore,
+	// 	query: "{type:'*'}", 
+	// 	childrenAttrs: "children"
+	// });
+
+	var layout = [
+		{field: 'name', name: 'Name', width: 'auto'},
+		{field: 'type', name: 'Type', width: 'auto'},
+		{field: 'population', name: 'Population', width: 'auto'},
+		{field: 'area', name: 'Area', width: 'auto'}
+	];
+	var treeGridWidget = new dojox.grid.LazyTreeGrid({
+	// var treeGridWidget = new dojox.grid.DataGrid({
+		// 'class' : 'treeGrid',
+		// id: 'treeGridWid',
+		// store: jsonStore,
+		treeModel: continentModel,
+		// defaultOpen: true,
+		structure: layout,
+		style: 'width: 100%; height: 300px;'
+	});
+	dijit.byId('mainCenterPanel').set('content', treeGridWidget);
+	treeGridWidget.startup();
+}
+
+js.app.eventUtil.formLaporan1 = function() {
+	var jsonStore = new dojo.data.ItemFileWriteStore({
+		url : 'system/generate_report.php'
+	});
+
+	var continentModel = new dijit.tree.ForestStoreModel({
+		store: jsonStore,
+		// query: "{type:'*'}", 
+		childrenAttrs: ["children"]
+	});
+
+	
+	var headerNamaPelanggan = 
+			'Area<hr />' +
+		    '&emsp;&emsp;#SBU | #Area | Nama Pelanggan';
+	var layout = [
+	
+		{field: 'area', name: headerNamaPelanggan, width: '200px'},
+		{field: 'identifikasi', name: 'Identifikasi', width: '100px'},
+		{field: 'pressure_gauge_inlet_2', name: 'Inlet', width: '100px'},
+		{field: 'pressure_gauge_inlet_3', name: 'Kalibrasi', width: '100px'},
+		{field: 'pressure_gauge_outlet_2', name: 'Outlet', width: '100px'},
+		{field: 'pressure_gauge_outlet_3', name: 'Kalibrasi', width: '100px'},
+		
+		{field: 'regulator_active_a_4', name: 'Active_Stream_A', width: '100px'},
+		{field: 'regulator_monitor_a_4', name: 'Monitor_Stream_A', width: '100px'},
+		{field: 'pressure_gauge_regulator_stream_a_3', name: 'Masa_Kalibrasi', width: '100px'},
+		{field: 'regulator_active_a_2', name: 'Merk_/_type', width: '100px'},
+		{field: 'regulator_active_a_3', name: 'Diameter', width: '100px'},
+		{field: 'regulator_active_b_4', name: 'Active_Stream_B', width: '100px'},
+		{field: 'regulator_monitor_b_4', name: 'Monitor_Stream_B', width: '100px'},
+		{field: 'pressure_gauge_regulator_stream_b_3', name: 'Masa_Kalibrasi', width: '100px'},
+		{field: 'regulator_active_b_2', name: 'Merk_/_type', width: '100px'},
+		{field: 'regulator_active_b_3', name: 'Diameter', width: '100px'},
+		
+		{field: 'ssov_stream_a_4', name: 'SSOV_Stream_A', width: '100px'},
+		{field: 'ssov_stream_b_4', name: 'SSOV_Stream_B', width: '100px'},
+		
+		{field: 'thermometer_2', name: 'Suhu', width: '100px'},
+		{field: 'thermometer_3', name: 'Kalibrasi', width: '100px'},
+		
+		{field: 'merk_meter_dan_gsize_1', name: 'Merk', width: '100px'},
+		{field: 'merk_meter_dan_gsize_2', name: 'G_Size', width: '100px'},
+		{field: 'dia_panjang_dan_lubang_baut_2', name: 'Panjang_Meter', width: '100px'},
+		{field: 'dia_panjang_dan_lubang_baut_1', name: 'Diameter', width: '100px'},
+		{field: 'meter_berfungsi_2', name: 'Waktu_Kalibrasi', width: '100px'},
+		{field: 'angka_stand_meter_1', name: 'Stand_Meter', width: '100px'},
+		{field: 'dia_panjang_dan_lubang_baut_3', name: 'Lubang_Baut', width: '100px'},
+		{field: 'type_meter_1', name: 'Type_Meter', width: '100px'},
+		{field: 'type_meter_2', name: 'Tahun', width: '100px'},
+		{field: 'type_meter_3', name: 'Serial_Number', width: '100px'},
+		{field: 'tanggal', name: 'Tanggal', width: '100px'}
+	];
+	var treeGridWidget = new dojox.grid.LazyTreeGrid({
+	// var treeGridWidget = new dojox.grid.DataGrid({
+		// 'class' : 'treeGrid',
+		// id: 'treeGridWid',
+		// store: jsonStore,
+		treeModel: continentModel,
+		// defaultOpen: true,
+		structure: layout,
+		style: 'width: 100%; height: 300px;'
+	});
+	dijit.byId('mainCenterPanel').set('content', treeGridWidget);
+	treeGridWidget.startup();
+}
+
+js.app.eventUtil.formLaporan2 = function() {
+	$('#treeGridReport').treegrid({  
+	    url:'system/generate_report.php',  
+	    idField:'treeGridReport',  
+        // showFooter: true,
+        // animate: true,  
+        // height: '800px',
+        // style: 'height: 500;overflow: true;',
+        idField: 'id',  
+
+        // fitColumns: true,
+        collapsible: true,
+
+        treeField: 'area'
+	});  
+
+	// $('#treegridId').treegrid({  
+    // url:'someURL.action?code=01&name=name01'});  
+}

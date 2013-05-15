@@ -1,18 +1,20 @@
 <div data-dojo-type="dijit.layout.BorderContainer" data-dojo-props='style:"width: 100%; height: 100%; "'>
-    <div data-dojo-type="dijit.layout.ContentPane" data-dojo-props='region:"top", style:"height: 60px;"'>
+    <div data-dojo-type="dijit.layout.ContentPane" data-dojo-props='region:"top", style:"height: 65px;"'>
       <div style="text-align: center; font-weight:bold;"><font face="tahoma" size="4" color="#0099FF">OPERATION & MAINTENANCE METER REGULATING STATION</Font><br/></div>
+            <span dojoType="dojo.data.ItemFileReadStore" url='system/generate_pelanggan.php' jsid="storePelanggan"></span>
             <table border="0" cellpadding="5" cellspacing="5" width="100%">
               <tr>
-                    <td>Tanggal Inspeksi</td>
-                <td>:</td>
-                  <td ><input name="tanggal" class="myField" id="tanggal" style="width: 100px;" dojoType="dijit.form.DateTextBox" /></td>
-                  <td>Nama Pelanggan</td>
-                  <td>:</td>
-                  <td><input name="pelanggan" class="myField" id="pelanggan" style="width: 150px;" dojotype="dijit.form.TextBox" /></td>
-                  <td>Identifikasi</td>
-                  <td>:</td>
-                  <td><input name="identifikasi" class="myField" id="identifikasi" style="width: 150px;" dojotype="dijit.form.TextBox" /></td>
-                  <td><button dojoType="dijit.form.Button" id="btnSimpan" >Simpan</button><button dojoType="dijit.form.Button">Refresh</button></td>
+                <td width="15%"><strong>Tanggal Inspeksi:</strong></td>
+                <td width="25%"><strong>Nama Pelanggan: </strong></td>
+                <td width="50%"><strong>Identifikasi: </strong></td>
+                <td rowspan="2" width="20">
+                    <button dojoType="dijit.form.Button" id="btnSimpan" ><strong>Simpan</strong></button>
+                    <button dojoType="dijit.form.Button"><strong>Refresh</strong></button></td>
+              </tr>
+              <tr>
+                    <td><input name="tanggal" class="myField" id="tanggal" style="width: 100%;" dojotype="dijit.form.DateTextBox" /></td>
+                <td><input name="pelanggan" class="myField" id="pelanggan" style="width: 100%;" highlightmatch:="highlightMatch:""all" autoComplete="false" queryexpr="*${0}*" dojotype="dijit.form.FilteringSelect" store="storePelanggan" searchattr="nama" pagesize="5"/></td>
+                  <td ><input name="identifikasi" class="myField" id="identifikasi" style="width: 100%;" dojotype="dijit.form.TextBox" /></td>
                 </tr>
             </table>
     </div>
@@ -192,7 +194,7 @@
                                 <td>
                                     Type: <input id="_3aKet1" class="myField" style="width: 100px;" dojoType="dijit.form.TextBox" placeHolder="Pressure gauge" />
                                     Dia : <input id="_3aKet2" class="myField" style="width: 50px;" dojoType="dijit.form.TextBox" placeHolder="Inch" />
-                                    Pset: <input id="_3aKet3" class="myField" style="width: 87px;" dojoType="dijit.form.TextBox" placeHolder="BarG" />   
+                                    Pset: <input id="_3aKet3" class="myField" style="width: 27px;" dojoType="dijit.form.TextBox" placeHolder="BarG" />   
                                 </td>
                             </tr> 
                                 <tr valign="top">
@@ -210,7 +212,7 @@
                                 <td>
                                     Type: <input id="_3bKet1" class="myField" style="width: 100px;" dojoType="dijit.form.TextBox" placeHolder="Pressure gauge" />
                                     Dia : <input id="_3bKet2" class="myField" style="width: 50px;" dojoType="dijit.form.TextBox" placeHolder="Inch" />
-                                    Pset: <input id="_3bKet3" class="myField" style="width: 87px;" dojoType="dijit.form.TextBox" placeHolder="BarG" />   
+                                    Pset: <input id="_3bKet3" class="myField" style="width: 27px;" dojoType="dijit.form.TextBox" placeHolder="BarG" />   
                                 </td>
                             </tr> 
                                 <tr valign="top">
@@ -228,7 +230,7 @@
                                 <td>
                                     Type: <input id="_3cKet1" class="myField" style="width: 100px;" dojoType="dijit.form.TextBox" placeHolder="Pressure gauge" />
                                     Dia : <input id="_3cKet2" class="myField" style="width: 50px;" dojoType="dijit.form.TextBox" placeHolder="Inch" />
-                                    Pset: <input id="_3cKet3" class="myField" style="width: 87px;" dojoType="dijit.form.TextBox" placeHolder="BarG" />   
+                                    Pset: <input id="_3cKet3" class="myField" style="width: 27px;" dojoType="dijit.form.TextBox" placeHolder="BarG" />   
                                 </td>
                             </tr>
                             <tr valign="top">
@@ -246,7 +248,7 @@
                                 <td>
                                     Type: <input id="_3dKet1" class="myField" style="width: 100px;" dojoType="dijit.form.TextBox" placeHolder="Pressure gauge" />
                                     Dia : <input id="_3dKet2" class="myField" style="width: 50px;" dojoType="dijit.form.TextBox" placeHolder="Inch" />
-                                    Pset: <input id="_3dKet3" class="myField" style="width: 87px;" dojoType="dijit.form.TextBox" placeHolder="BarG" />   
+                                    Pset: <input id="_3dKet3" class="myField" style="width: 27px;" dojoType="dijit.form.TextBox" placeHolder="BarG" />   
                                 </td> 
                             </tr>
                             <tr valign="top">
@@ -263,7 +265,7 @@
                                 <td>
                                     Type: <input id="_3eKet1" class="myField" style="width: 100px;" dojoType="dijit.form.TextBox" placeHolder="Pressure gauge" />
                                     Dia : <input id="_3eKet2" class="myField" style="width: 50px;" dojoType="dijit.form.TextBox" placeHolder="Inch" />
-                                    Pset: <input id="_3eKet3" class="myField" style="width: 87px;" dojoType="dijit.form.TextBox" placeHolder="BarG" />   
+                                    Pset: <input id="_3eKet3" class="myField" style="width: 27px;" dojoType="dijit.form.TextBox" placeHolder="BarG" />   
                                 </td> 
                             </tr>
                             <tr valign="top">
@@ -280,7 +282,7 @@
                                 <td>
                                     Type: <input id="_3fKet1" class="myField" style="width: 100px;" dojoType="dijit.form.TextBox" placeHolder="Pressure gauge" />
                                     Dia : <input id="_3fKet2" class="myField" style="width: 50px;" dojoType="dijit.form.TextBox" placeHolder="Inch" />
-                                    Pset: <input id="_3fKet3" class="myField" style="width: 87px;" dojoType="dijit.form.TextBox" placeHolder="BarG" />   
+                                    Pset: <input id="_3fKet3" class="myField" style="width: 27px;" dojoType="dijit.form.TextBox" placeHolder="BarG" />   
                                 </td> 
                             </tr>
                             <tr valign="top">
@@ -298,7 +300,7 @@
                                 <td>
                                     Type: <input id="_3gKet1" class="myField" style="width: 100px;" dojoType="dijit.form.TextBox" placeHolder="Pressure gauge" />
                                     Dia : <input id="_3gKet2" class="myField" style="width: 50px;" dojoType="dijit.form.TextBox" placeHolder="Inch" />
-                                    Pset: <input id="_3gKet3" class="myField" style="width: 87px;" dojoType="dijit.form.TextBox" placeHolder="BarG" />   
+                                    Pset: <input id="_3gKet3" class="myField" style="width: 27px;" dojoType="dijit.form.TextBox" placeHolder="BarG" />   
                                 </td> 
                             </tr>                               
                             <tr valign="top">
@@ -316,7 +318,7 @@
                                 <td>
                                     Type: <input id="_3hKet1" class="myField" style="width: 100px;" dojoType="dijit.form.TextBox" placeHolder="Pressure gauge" />
                                     Dia : <input id="_3hKet2" class="myField" style="width: 50px;" dojoType="dijit.form.TextBox" placeHolder="Inch" />
-                                    Pset: <input id="_3hKet3" class="myField" style="width: 87px;" dojoType="dijit.form.TextBox" placeHolder="BarG" />   
+                                    Pset: <input id="_3hKet3" class="myField" style="width: 27px;" dojoType="dijit.form.TextBox" placeHolder="BarG" />   
                                 </td> 
                             </tr>
                             <tr valign="top">
@@ -359,7 +361,7 @@
                                 <td>
                                     Suhu:<input id="_3kKet1" class="myField" style="width: 100px; margin-left: 3px;" dojoType="dijit.form.TextBox" placeHolder="Degree's" />
                                     *C &emsp;Waktu Kalibrasi: 
-                                    <input id="_3kKet2" class="myField" style="width: 80px;" dojoType="dijit.form.TextBox" placeHolder="Month,Year" />                                       
+                                    <input id="_3kKet2" class="myField" style="width: 50px" dojoType="dijit.form.TextBox" placeHolder="Month,Year" />                                       
                               </td>
                             </tr> 
                             <tr valign="top">
@@ -375,7 +377,7 @@
                                 </td>
                                 <td> 
                                     <input id="_3lKet1" dojoType="dijit.form.TextBox" class="myField" placeHolder="Pressure" style="width: 100px; margin-left: 34px;" />BarG                                    
-                                    Waktu Kalibrasi: <input id="_3lKet2" class="myField" style="width: 80px;" dojoType="dijit.form.TextBox" placeHolder="Month,Year" />                                       
+                                    Waktu Kalibrasi: <input id="_3lKet2" class="myField" style="width: 50px;" dojoType="dijit.form.TextBox" placeHolder="Month,Year" />                                       
                                 </td>
                             </tr> 
                             <tr valign="top">
@@ -391,7 +393,7 @@
                                 </td>
                                 <td> 
                                     <input id="_3mKet1" dojoType="dijit.form.TextBox" class="myField" placeHolder="Pressure" style="width: 100px; margin-left: 34px;" />BarG                                    
-                                    Waktu Kalibrasi: <input id="_3mKet2" class="myField" style="width: 80px;" dojoType="dijit.form.TextBox" placeHolder="Month,Year" />                                       
+                                    Waktu Kalibrasi: <input id="_3mKet2" class="myField" style="width: 50px;" dojoType="dijit.form.TextBox" placeHolder="Month,Year" />                                       
                                 </td>
                             </tr> 
                             <tr valign="top">
@@ -407,7 +409,7 @@
                                 </td>
                                 <td> 
                                     <input id="_3nKet1" dojoType="dijit.form.TextBox" class="myField" placeHolder="Pressure" style="width: 100px; margin-left: 34px;" />BarG                                    
-                                    Waktu Kalibrasi: <input id="_3nKet2" class="myField" style="width: 80px;" dojoType="dijit.form.TextBox" placeHolder="Month,Year" />                                       
+                                    Waktu Kalibrasi: <input id="_3nKet2" class="myField" style="width: 50px;" dojoType="dijit.form.TextBox" placeHolder="Month,Year" />                                       
                                 </td>
                             </tr> 
                             <tr valign="top">
@@ -423,7 +425,7 @@
                                 </td>
                                 <td> 
                                     <input id="_3oKet1" dojoType="dijit.form.TextBox" class="myField" placeHolder="Pressure" style="width: 100px; margin-left: 34px;" />BarG                                    
-                                    Waktu Kalibrasi: <input id="_3oKet2" class="myField" style="width: 80px;" dojoType="dijit.form.TextBox" placeHolder="Month,Year" />                                       
+                                    Waktu Kalibrasi: <input id="_3oKet2" class="myField" style="width: 50px;" dojoType="dijit.form.TextBox" placeHolder="Month,Year" />                                       
                                 </td>
                             </tr>
                             <tr valign="top">
@@ -656,7 +658,7 @@
                                     </select> 
                                 </td>
                                 <td>
-                                    Waktu Kalibrasi: <input id="_6cKet" class="myField" style="width: 80px;" dojoType="dijit.form.TextBox" placeHolder="Month,Year" />                                                                                                         
+                                    Waktu Kalibrasi: <input id="_6cKet" class="myField" style="width: 50px;" dojoType="dijit.form.TextBox" placeHolder="Month,Year" />                                                                                                         
                                 </td>
                             </tr>
                             <tr valign="top">
@@ -723,7 +725,7 @@
                                 <td>
                                     QMin :<input id="_6eKet1" class="myField" style="width: 52px;" dojoType="dijit.form.TextBox" placeHolder="M3/Jam" />
                                     QMax :<input id="_6eKet2" class="myField" style="width: 52px;" dojoType="dijit.form.TextBox" placeHolder="M3/Jam" />
-                                    PMax :<input id="_6eKet3" class="myField" style="width: 40px;" dojoType="dijit.form.TextBox" placeHolder="BarG" />                                                                                                         
+                                    PMax :<input id="_6eKet3" class="myField" style="width: 20px;" dojoType="dijit.form.TextBox" placeHolder="BarG" />                                                                                                         
                                 </td>
                             </tr>
                             <tr valign="top">
