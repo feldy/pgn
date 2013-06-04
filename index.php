@@ -12,6 +12,8 @@ if (empty($_SESSION['username']) || empty($_SESSION['password']) ) {
         <title>Test View</title>
         <script type="text/javascript" src="lib/jquery-easyui-1.3.3/jquery.min.js"></script>  
         <script type="text/javascript" src="lib/jquery-easyui-1.3.3/jquery.easyui.min.js"></script>  
+        <!-- // <script type="text/javascript" src="lib/notif/jquery-1.4.4.min.js"></script>   -->
+        <script type="text/javascript" src="lib/notif/notification.js"></script>  
         <style type="text/css"> 
             @import "lib/jquery-easyui-1.3.3/themes/default/easyui.css";
             @import "lib/jquery-easyui-1.3.3/themes/icon.css";
@@ -28,9 +30,10 @@ if (empty($_SESSION['username']) || empty($_SESSION['password']) ) {
             @import "lib/dojo1.6/dojox/grid/resources/Grid.css";
             @import "lib/dojo1.6/dojox/grid/resources/tundraGrid.css";
             @import "lib/dojo1.6/dojox/grid/resources/claroGrid.css";
-             @import "lib/dojo1.6/dojox/grid/resources/soriaGrid.css";
+            @import "lib/dojo1.6/dojox/grid/resources/soriaGrid.css";
 
-			@import "css/custom.css";
+            @import "css/custom.css";
+			@import "css/broadcast.css";
         </style>
 
         <script>
@@ -49,19 +52,21 @@ if (empty($_SESSION['username']) || empty($_SESSION['password']) ) {
             dojo.ready(function() {
                 //#code Dojo
                 js.app.TreeMenu.create();
+                js.app.showBroadcastUtil.show();
             });
         </script>
     </head>
     <body class="soria">
+        
         <div data-dojo-type="dijit.layout.BorderContainer" data-dojo-props='style:"width: 100%; height: 100%;"'>
         <div data-dojo-type="dijit.layout.ContentPane" data-dojo-props='region:"top", style:"height: 100px;", href: "form/header.html"'></div>
         <div  data-dojo-type="dijit.layout.ContentPane" data-dojo-props='region:"left", style:"padding: -10px; width: 15%;", splitter:false, minSize:150, maxSize:250'>
             <div data-dojo-type="dijit.layout.AccordionContainer" data-dojo-props='style: "padding: -10px; margin: -9px;"' >
-                <div data-dojo-type="dijit.layout.ContentPane"  data-dojo-props='title: "Menu"'>
-                    <div id="mainTree"></div>
+                <div data-dojo-type="dijit.layout.ContentPane"  data-dojo-props='title: "Master"'>
+                    <div id="mainTreeMaster"></div>
                 </div>
-                 <div data-dojo-type="dijit.layout.ContentPane"  data-dojo-props='title: "Menu 2"'>
-                    ajdaj
+                 <div data-dojo-type="dijit.layout.ContentPane"  data-dojo-props='title: "Transaksi & Report"'>
+                    <div id="mainTreeTransaksi"></div>
                 </div>
             </div>
         </div>

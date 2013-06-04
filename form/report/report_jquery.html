@@ -1,20 +1,29 @@
 <table width="100%" >
     <tr>
-        <td width="50%">
-            <button dojoType="dijit.form.Button"><img src="image/export.png" width="17px"/> <strong> Export</strong></button>
-            <button dojoType="dijit.form.Button"><img src="image/printp.png" width="17px"/> <strong> Print</strong></button></td>
-        <td width="38%">
-            <select dojoType="dijit.form.FilteringSelect" class="myFieldSelect">
-                <option>Criteria 1</option>
-                <option>Criteria 2</option>
-                <option>Criteria 3</option>
-            </select>
-            <input dojoType="dijit.form.TextBox" class="myField" />
+        <td >
+            <span dojoType="dojo.data.ItemFileReadStore" url='system/generate_month_exist.php' 
+            jsid="storeBulanExist"></span>
+            Pilih Bulan : 
+            <input name="bulanExist" class="myField" id="bulanExist" style="width: 65%;" required="false" 
+            invalidMessage="Data tidak ditemukan !" highlightmatch:="highlightMatch:""all" 
+            autoComplete="false" queryexpr="*${0}*" dojotype="dijit.form.FilteringSelect" 
+            store="storeBulanExist" searchattr="periode" pagesize="5"/>
         </td>
-        <td width="11%"><button dojoType="dijit.form.Button" ><img src="image/search.png" width="17px"/> <strong> Search</strong></button></td>
+        <td align="right">
+            <select dojoType="dijit.form.FilteringSelect" class="myFieldSelect" style="width: 100px;" id="cmbCriteria">
+                <option value="area.area">Area</option>
+                <option value="pel.nama">Pelanggan</option>
+                <option value="om.tanggal">Tanggal OMMRS</option>
+                <option value="evc.tanggal">Tanggal OMEVC</option>
+            </select>
+            <input dojoType="dijit.form.TextBox" id="txtSearchBox" style="padding: 2.1px;width: 100px;"/>
+            <button dojoType="dijit.form.Button" id="btnSearchReport" ><img src="image/search.png" width="17px"/> <strong> Search</strong></button>
+            <button dojoType="dijit.form.Button"><img src="image/export.png" width="17px"/> <strong> Export</strong></button>
+            <button dojoType="dijit.form.Button"><img src="image/printp.png" width="17px"/> <strong> Print</strong></button>
+        </td>
     </tr>
     <tr>
-        <td colspan="3">
+        <td colspan="2">
             <table style="height:480px" title="DATA TEKNIS KERJASAMA PENYEDIAAN INFORMASI DAN PENGENDALIAN DATA TERINTEGRASI PEMAKAIAN GAS PELANGGAN" id="treeGridReport">  
                 <thead frozen="true"  >  
                     <tr>  

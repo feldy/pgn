@@ -26,7 +26,8 @@
             dojo.require("dijit.form.TextBox");
             dojo.require("dijit.form.ValidationTextBox");
 			dojo.require("dijit.form.Button");
-			dojo.require("dijit.Dialog");
+            dojo.require("dijit.Dialog");
+			dojo.require("dojo.cookie");
 			
             var reset = function() {
                 dijit.byId('username').reset(); 
@@ -48,11 +49,15 @@
                                 username: dijit.byId('username').get('value'), 
                                 password: dijit.byId('password').get('value')
                             },
-                            load: function (callback) {
-                                if (callback == "true") {
-                                    window.location = 'index.php'
-                                } else {
+                            load: function (data) {
+                                var pars = JSON.parse(data);
+                                if (pars.length == 0) {
                                     dojo.byId('msg').innerHTML = '<font color="red"><img src="image/failed.png" width="16px" />  Maaf, Username atau Password Salah !</font>'
+                                } else {
+                                    dojo.cookie('authorized', pars[0].session);
+                                    dojo.cookie('userId', pars[0].userId);
+                                    dojo.cookie('userName', pars[0].userName);
+                                    window.location = 'index.php';
                                 }
                            }
                         });

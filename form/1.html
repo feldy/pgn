@@ -12,8 +12,8 @@
                     <button dojoType="dijit.form.Button"><strong>Refresh</strong></button></td>
               </tr>
               <tr>
-                    <td><input name="tanggal" class="myField" id="tanggal" style="width: 100%;" dojotype="dijit.form.DateTextBox" /></td>
-                <td><input name="pelanggan" class="myField" id="pelanggan" style="width: 100%;" highlightmatch:="highlightMatch:""all" autoComplete="false" queryexpr="*${0}*" dojotype="dijit.form.FilteringSelect" store="storePelanggan" searchattr="nama" pagesize="5"/></td>
+                    <td><input name="tanggal" class="myField"  id="tanggal" style="width: 100%;" dojotype="dijit.form.DateTextBox" constraints="{datePattern:'dd-MM-yyyy'}" /></td>
+                <td><input name="pelanggan" class="myField" id="pelanggan" style="width: 100%;" required="false" invalidMessage="Pelanggan Tidak Ada" highlightmatch:="highlightMatch:""all" autoComplete="false" queryexpr="*${0}*" dojotype="dijit.form.FilteringSelect" store="storePelanggan" searchattr="nama" pagesize="5"/></td>
                   <td ><input name="identifikasi" class="myField" id="identifikasi" style="width: 100%;" dojotype="dijit.form.TextBox" /></td>
                 </tr>
             </table>

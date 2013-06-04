@@ -1,7 +1,9 @@
 	<?php
 	include("../configuration/config.php");
 	$objAll = array('identifier' => 'id', 'label' => 'area');
-
+	$getCriteria = $_GET['criteria'];
+	$getValue = $_GET['value'];
+	$bulan = $_GET['bulan'];
 	$strSqlArea = 
 	   'SELECT     		area.area as area,
 	   					area.kode as kode,
@@ -9,9 +11,13 @@
 		FROM       		m_ommrs om
 		INNER JOIN 		m_pelanggan pel ON om.id_pelanggan = pel.id
 		INNER JOIN 		m_area area ON area.id = pel.id_area
+		LEFT  JOIN 		m_omevc evc ON evc.id_pelanggan = om.id_pelanggan
+		WHERE 			'.$getCriteria.' like "%'.$getValue.'%"
+		AND 			area.is_active = 1
+		AND 			om.periode like "%'.$bulan.'%"
 		GROUP BY 		area.id
-	;';
-
+	';
+	// echo $strSqlArea."<br />";
 	$objArea = array();
 	
 	$sqlArea = mysql_query($strSqlArea);
@@ -57,7 +63,8 @@
 			 INNER JOIN d_pemeriksaan_kondisi_operasi_peralatan d1 ON d1.id_master = om.id
 			 INNER JOIN d_pengecekan_kepastian_meter_berfungsi_dan_terkalibrasi d2 ON d2.id_master = om.id
 			 LEFT  JOIN m_omevc evc ON evc.id_pelanggan = om.id_pelanggan
-			 WHERE 		pel.id_area = "'.$idArea.'"
+			 WHERE 		pel.is_active = 1
+			 AND 		pel.id_area = "'.$idArea.'"
 			';
 	
 		$sqlOM = mysql_query($strSqlOM);

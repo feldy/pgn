@@ -3,8 +3,11 @@ dojo.provide("js.app.eventUtil");
 js.app.eventUtil.formOMMRS = function() {
 	dojo.connect(dijit.byId('btnSimpan'), "onClick", this, function() {
 		var tanggal = dijit.byId('tanggal').get('value');
+		var tgl = dijit.byId('tanggal').get('displayedValue');
+		var splitBln = tgl.split("-");
 		var content = {
 			tanggal		: dojo.date.locale.format(tanggal,{datePattern: 'yyyy-MM-dd'}),
+			periode 	: js.app.eventUtil.getNamaBulan(splitBln[1]) +" "+splitBln[2],
 			pelanggan	: dijit.byId('pelanggan').get('value'),
 			identifikasi: dijit.byId('identifikasi').get('value'),
 			_1a : document.getElementById('_1aSel').value +" | "+ dijit.byId('_1aKet').get('value'),
@@ -91,7 +94,46 @@ js.app.eventUtil.formOMMRS = function() {
 		}; 
 
 		dojo.xhrPost({
-			url: 'system/simpan.php',
+			url: 'system/simpan.php?content=ommrs',
+			content: content,
+			load: function(data) {
+				alert('berhasil');
+			}
+		});
+	});
+}
+
+js.app.eventUtil.formOMEVC = function() {
+	dojo.connect(dijit.byId('btnSimpan'), "onClick", this, function() {
+		var tanggal = dijit.byId('tanggal').get('value');
+		var tgl = dijit.byId('tanggal').get('displayedValue');
+		var splitBln = tgl.split("-");
+		var content = {
+			tanggal		: dojo.date.locale.format(tanggal,{datePattern: 'yyyy-MM-dd'}),
+			periode 	: js.app.eventUtil.getNamaBulan(splitBln[1]) +" "+splitBln[2],
+			pelanggan	: dijit.byId('pelanggan').get('value'),
+			identifikasi: dijit.byId('identifikasi').get('value'),
+			lokasi : dijit.byId('lokasi').get('value'),
+			merk : dijit.byId('merk').get('value'),
+			model : dijit.byId('model').get('value'), 
+			nomor : dijit.byId('nomor').get('value'), 
+			tahun : dijit.byId('tahun').get('value'), 
+			download : document.getElementById('download').value,
+			segel1 : document.getElementById('segel1').value +" | "+ dijit.byId('segel1a').get('value'),
+			segel2 : document.getElementById('segel2').value +" | "+ dijit.byId('segel2a').get('value'),
+			segel3 : document.getElementById('segel3').value +" | "+ dijit.byId('segel3a').get('value'),
+			segel4 : document.getElementById('segel4').value +" | "+ dijit.byId('segel4a').get('value'),
+			pulsa : document.getElementById('pulsa1').value +" | "+ dijit.byId('pulsa1a').get('value'),
+			sMeter : dijit.byId('meter').get('value'), 
+			sUncorrection : dijit.byId('uncorrection').get('value'), 
+			sCorrection : dijit.byId('correction').get('value'), 
+			tekanan : document.getElementById('tekanan1').value +" | "+dijit.byId('tekanan1a').get('value'), 
+			tempratur : document.getElementById('tempratur1').value +" | "+dijit.byId('tempratur1a').get('value'),
+			baterai : dijit.byId('baterai').get('value'),
+			catatan : dijit.byId('catatan').get('value')
+		};
+		dojo.xhrPost({
+			url: 'system/simpan.php?content=omevc',
 			content: content,
 			load: function(data) {
 				alert('berhasil');
@@ -203,7 +245,7 @@ js.app.eventUtil.formLaporan1a = function() {
 
 js.app.eventUtil.formLaporan1 = function() {
 	var jsonStore = new dojo.data.ItemFileWriteStore({
-		url : 'system/generate_report.php'
+		url : 'system/generate_report.php?area=xxx'
 	});
 
 	var continentModel = new dijit.tree.ForestStoreModel({
@@ -283,7 +325,134 @@ js.app.eventUtil.formLaporan2 = function() {
 
         treeField: 'area'
 	});  
+	dojo.connect(dijit.byId('btnSearchReport'), 'onClick', this, function(){
+		var value = dijit.byId('txtSearchBox').get('value');
+		var criteria = dijit.byId('cmbCriteria').get('value');
+		var bulan = dijit.byId('bulanExist').get('value');
+		$('#treeGridReport').treegrid({url:'system/generate_report.php?bulan='+bulan+'&criteria='+criteria+'&value='+value});  
+	});
+	dojo.connect(dijit.byId('txtSearchBox'), 'onKeyPress', this, function(e){
+		if (e.keyCode == 13) {
+			dijit.byId('btnSearchReport').onClick();	
+		}
+	});
+	dojo.connect(dijit.byId('bulanExist'), 'onChange', this, function(value){
+		setTimeout("dijit.byId('btnSearchReport').onClick()", 400);
+	});
+}
 
-	// $('#treegridId').treegrid({  
-    // url:'someURL.action?code=01&name=name01'});  
+js.app.eventUtil.formBroadcast = function() {
+	dojo.connect(dijit.byId('btnBroadcast'), 'onClick', this, function(){
+		var isi =  dijit.byId('isi').get('value');
+		var format = isi.replace(/\<br\ \/>/g, " ");
+		 
+		var content = {
+			to : dijit.byId('to').get('value'),
+			isi : format
+		};
+		dojo.xhrPost({
+			url: 'system/simpan.php?content=broadcast',
+			content: content,
+			load: function(data) {
+				alert('berhasil');
+			}
+		});
+	});
+}
+
+js.app.eventUtil.formPelanggan = function() {
+	dojo.connect(dijit.byId('btnRefresh'), 'onClick', this, function(){
+		var grid = dijit.byId('gridPelanggan');
+		dijit.byId('idPelanggan').reset();
+		dijit.byId('kodePelanggan').reset();
+		dijit.byId('namaPelanggan').reset();
+		dijit.byId('areaPelanggan').reset();
+		dojo.byId('lblSave').innerHTML = 'Save';
+
+		grid.setQuery();
+	});
+
+	dojo.connect(dijit.byId('gridPelanggan').selection, 'onSelected', this, function(index){
+		var grid = dijit.byId('gridPelanggan');
+		var id = grid.store.getValue(grid.getItem(index), "id");
+		var kode = grid.store.getValue(grid.getItem(index), "kode");
+		var nama = grid.store.getValue(grid.getItem(index), "nama");
+		var area = grid.store.getValue(grid.getItem(index), "id_area");
+
+		dijit.byId('idPelanggan').set('value', id);
+		dijit.byId('kodePelanggan').set('value', kode);
+		dijit.byId('namaPelanggan').set('value', nama);
+		dijit.byId('areaPelanggan').set('value', area);
+
+		dojo.byId('lblSave').innerHTML = 'Update';
+	});
+
+	dojo.connect(dijit.byId('btnDelete'), 'onClick', this, function(){
+		var grid = dijit.byId('gridPelanggan');
+		if (grid.selection.getSelected().length > 0) {
+			dojo.xhrGet({
+				url: 'system/delete.php?content=pelanggan&id='+grid.selection.getSelected()[0].id,
+				load: function() {
+					alert('data berhasil di hapus');
+					grid.selection.clear();
+					grid.setQuery();
+				}
+			});
+		} else {
+			alert("Harap Pilih data Yang mau Di Hapus");
+		} 
+	});
+
+	dojo.connect(dijit.byId('btnSave'), 'onClick', this, function(){
+		var grid = dijit.byId('gridPelanggan');
+		var kode = dijit.byId('kodePelanggan').get('value');
+		var nama = dijit.byId('namaPelanggan').get('value');
+		var area = dijit.byId('areaPelanggan').get('value');
+
+		var content = {
+			id : dijit.byId('idPelanggan').get('value'),
+			kode : kode,
+			nama : nama,
+			area : area
+		};
+		var xhrArgs = {
+			url: 'system/update.php?content=pelanggan',
+			content: content,
+			load: function(data) {
+				var pars = JSON.parse(data);
+				alert('Berhasil');
+				if (pars.length == 0) {
+					dijit.byId('btnRefresh').onClick();
+					grid.selection.clear();
+				}
+					grid.setQuery();
+			}
+		}
+		if (kode == "" || nama == "") {
+			alert("Data Tidak boleh ada yang kosong");
+		} else if (!dijit.byId('areaPelanggan').validate()) {
+			alert("Pilih Area Yang Benar dan Tidak Boleh kosong !!");
+		} else {
+ 			dojo.xhrPost(xhrArgs);
+		}
+	});
+}
+
+js.app.eventUtil.getNamaBulan = function(idx) {
+	var bln  = [
+	"JANUARI",
+	"FEBRUARI",
+	"MARET",
+	"APRIL",
+	"MEI",
+	"JUNI",
+	"JULI",
+	"AGUSTUS",
+	"SEPTEMBER",
+	"OKTOBER",
+	"NOVEMBER",
+	"DESEMBER",
+	];
+
+	return bln[idx - 1];
 }

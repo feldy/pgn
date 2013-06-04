@@ -1,0 +1,66 @@
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title>Notify! - A Free jQuery Notification Bar Plugin</title>
+    <link href="style/default.css" rel="stylesheet" type="text/css" />
+    <script type="text/javascript" src="js/jquery-1.4.4.min.js"></script>
+    <script type="text/javascript" src="js/notification.js"></script>
+    <script type="text/javascript">
+        $(document).ready(function () {
+            $('#tete').notify();
+            setTimeout(function(){
+                $('#rr').click();
+                
+            }, 5000);
+            // $('.button').click(function () {
+            //     $('.notification').removeClass('hide').addClass('hide').removeClass('visible');
+            //     $('.notification.' + $(this).attr('id') + '').notify({ type: $(this).attr('id') });
+
+            // });
+
+        });
+    </script>
+</head>
+<body>
+    <div id="tete" class="notification floated hide">
+         <span><p style="width: 100%">
+            <marquee>halooooooootertertertert</marquee>
+        </p></span>
+        <a id="rr" class="close" href="javascript:">
+            </a>
+    </div>
+   <!--  <div class="notification sticky hide">
+        <span><p>
+            This is a sample notification!</p></span>
+        <a id="rr" class="close" href="javascript:">
+            <img src="images/icon-close.png" /></a>
+            <button id="rr" class="close">as</button>
+    </div> -->
+
+        <ul>
+            <li><a href="#" class="round green button" id="sticky"><span>Sticky bar</span></a> will
+                remain visible even user scroll the page.</li>
+            <li><a href="#" class="round blue button" id="floated"><span>Floated bar</span></a>
+                will float with scrollbar with a nice floating animation.</li>
+            <li><a href="#" class="round purple button" id="fixed"><span>Fixed bar</span></a> will
+                always stay on the top of the page.</li>
+            <li><a href="#" class="round red button" id="ondemand"><span>On-demand bar</span></a>
+                will show up on user request.</li>
+        </ul>
+    </div>
+
+<script type="text/javascript">
+
+  // var _gaq = _gaq || [];
+  // _gaq.push(['_setAccount', 'UA-6579611-1']);
+  // _gaq.push(['_trackPageview']);
+
+  // (function() {
+  //   var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+  //   ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+  //   var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+  // })();
+
+</script>
+</body>
+</html>

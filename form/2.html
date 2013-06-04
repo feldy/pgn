@@ -13,8 +13,8 @@
                 </td>
               </tr>
               <tr>
-                   <td><input name="tanggal" class="myField" id="tanggal" style="width: 100%;" dojotype="dijit.form.DateTextBox" /></td>
-                <td><input name="pelanggan" class="myField" id="pelanggan" style="width: 100%;" highlightmatch:="highlightMatch:""all" autoComplete="false" queryexpr="*${0}*" dojotype="dijit.form.FilteringSelect" store="storePelanggan" searchattr="nama" pagesize="5"/></td>
+                   <td><input name="tanggal" class="myField" id="tanggal" style="width: 100%;" dojotype="dijit.form.DateTextBox" constraints="{datePattern:'dd-MM-yyyy'}"/></td>
+                <td><input name="pelanggan" class="myField" id="pelanggan" style="width: 100%;" highlightmatch:="highlightMatch:""all" autoComplete="false" queryexpr="*${0}*" dojotype="dijit.form.FilteringSelect" required="false" invalidMessage="Pelanggan Tidak Ada" store="storePelanggan" searchattr="nama" pagesize="5"/></td>
                   <td ><input name="identifikasi" class="myField" id="identifikasi" style="width: 100%;" dojotype="dijit.form.TextBox" /></td>
                 </tr>
             </table>
@@ -22,48 +22,48 @@
     <div data-dojo-type="dijit.layout.ContentPane" data-dojo-props='region:"center", style:"height: 50px;"'>
         <table border="0" cellpadding="3" cellspacing="3" width="100%">
             <tr valign="top">
-                <td>2.</td>
+                <td>1.</td>
                 <td width="25%">Lokasi</td>
                 <td>:</td>
-                <td><input class="myField" style="width: 300px;" dojoType="dijit.form.TextBox" placeHolder=" " /></td>                                
+                <td><input name="lokasi" class="myField" id="lokasi" style="width: 300px;" dojoType="dijit.form.TextBox" placeHolder=" " /></td>                                
+                </tr>
+            <tr valign="top">
+                <td>2.</td>
+                <td>Merk EVC</td>
+                <td>:</td>
+                <td><input name="merk" class="myField" id="merk" style="width: 300px;" dojoType="dijit.form.TextBox" placeHolder=" " /></td>                                
                 </tr>
             <tr valign="top">
                 <td>3.</td>
-                <td>Merk EVC</td>
+                <td>Model/Type EVC</td>
                 <td>:</td>
-                <td><input class="myField" style="width: 300px;" dojoType="dijit.form.TextBox" placeHolder=" " /></td>                                
+                <td><input name="model" class="myField" id="model" style="width: 300px;" dojoType="dijit.form.TextBox" placeHolder=" " /></td>                                
                 </tr>
             <tr valign="top">
                 <td>4.</td>
-                <td>Model/Type EVC</td>
+                <td>Nomor Seri EVC</td>
                 <td>:</td>
-                <td><input class="myField" style="width: 300px;" dojoType="dijit.form.TextBox" placeHolder=" " /></td>                                
+                <td><input name="nomor" class="myField" id="nomor" style="width: 300px;" dojoType="dijit.form.TextBox" placeHolder=" " /></td>                                
                 </tr>
             <tr valign="top">
                 <td>5.</td>
-                <td>Nomor Seri EVC</td>
+                <td>Tahun</td>
                 <td>:</td>
-                <td><input class="myField" style="width: 300px;" dojoType="dijit.form.TextBox" placeHolder=" " /></td>                                
+                <td><input name="tahun" class="myField" id="tahun" style="width: 300px;" dojoType="dijit.form.TextBox" placeHolder=" " /></td>                                
                 </tr>
             <tr valign="top">
                 <td>6.</td>
-                <td>Tahun</td>
-                <td>:</td>
-                <td><input class="myField" style="width: 300px;" dojoType="dijit.form.TextBox" placeHolder=" " /></td>                                
-                </tr>
-            <tr valign="top">
-                <td>7.</td>
                 <td>Download & Back-up Data</td>
                 <td>:</td>
                 <td>
-                    <select class="myFieldSelect"  >
-                        <option value="Ya">Ya</option>
+                    <select name="download" class="myFieldSelect" id="download"  >
+                        <option value="Ya" selected="selected">Ya</option>
                         <option value="Tidak">Tidak</option>                                       
                     </select>
                 </td>                                
             </tr>
             <tr valign="top">
-                <td>8.</td>
+                <td>7.</td>
                 <td>Kondisi Segel</td>
                 <td> </td>                 
             </tr>
@@ -72,11 +72,11 @@
                         <td>- Segel Body L/F</td>
                         <td>:</td>
                         <td>
-                        <select class="myFieldSelect"  >
-                            <option value="Baik">Baik</option>
+                        <select name="segel1" class="myFieldSelect" id="segel1"  >
+                            <option value="Baik" selected="selected">Baik</option>
                             <option value="Tidak">Tidak</option>                                       
                         </select>
-                        No. Segel :<input class="myField" style="width: 170px;" dojotype="dijit.form.TextBox" placeholder=" " />
+                        No. Segel :<input name="segel1a" class="myField" id="segel1a" style="width: 170px;" dojotype="dijit.form.TextBox" placeholder=" " />
                         </td>                
                     </tr>                                        
                     <tr valign="top">
@@ -84,11 +84,11 @@
                         <td>- Segel Body EVC</td>
                         <td>:</td>
                         <td>
-                        <select class="myFieldSelect"  >
-                            <option value="Baik">Baik</option>
+                        <select name="segel2" class="myFieldSelect" id="segel2"  >
+                            <option value="Baik" selected="selected">Baik</option>
                             <option value="Tidak">Tidak</option>                                       
                         </select>
-                        No. Segel :<input class="myField" style="width: 170px;" dojotype="dijit.form.TextBox" placeholder=" " />
+                        No. Segel :<input name="segel2a" class="myField" id="segel2a" style="width: 170px;" dojotype="dijit.form.TextBox" placeholder=" " />
                         </td>
                     </tr>
                     <tr valign="top">
@@ -96,11 +96,11 @@
                         <td>- Segel Pressure Tranducer</td>
                         <td>:</td>
                         <td>
-                        <select class="myFieldSelect"  >
-                            <option value="Baik">Baik</option>
+                        <select name="segel3" class="myFieldSelect" id="segel3"  >
+                            <option value="Baik" selected="selected">Baik</option>
                             <option value="Tidak">Tidak</option>                                       
                         </select>
-                        No. Segel :<input class="myField" style="width: 170px;" dojotype="dijit.form.TextBox" placeholder=" " />
+                        No. Segel :<input name="segel3a" class="myField" id="segel3a" style="width: 170px;" dojotype="dijit.form.TextBox" placeholder=" " />
                         </td>
                     </tr>
                     <tr valign="top">
@@ -108,15 +108,15 @@
                         <td>- Segel Thermometer Probe</td>
                         <td>:</td>
                         <td>
-                        <select class="myFieldSelect"  >
-                            <option value="Baik">Baik</option>
+                        <select name="segel4" class="myFieldSelect" id="segel4"  >
+                            <option value="Baik" selected="selected">Baik</option>
                             <option value="Tidak">Tidak</option>                                       
                         </select>
-                        No. Segel :<input class="myField" style="width: 170px;" dojotype="dijit.form.TextBox" placeholder=" " />
+                        No. Segel :<input name="segel4a" class="myField" id="segel4a" style="width: 170px;" dojotype="dijit.form.TextBox" placeholder=" " />
                         </td>
                     </tr>
             <tr valign="top">
-                <td>9.</td>
+                <td>8.</td>
                 <td>Kesesuaian Pengukuran</td>
                 <td> </td>                 
             </tr>
@@ -125,41 +125,41 @@
                         <td>- Pengukuran Pulsa</td>
                         <td>:</td>
                         <td>
-                        <select class="myFieldSelect"  >
-                            <option value="Baik">Baik</option>
+                        <select name="pulsa1" class="myFieldSelect" id="pulsa1"  >
+                            <option value="Baik" selected="selected">Baik</option>
                             <option value="Tidak">Tidak</option>                                       
                         </select>
-                        Pengamatan :<input class="myField" style="width: 155px;" dojotype="dijit.form.TextBox" placeholder="5-10 Menit" />
+                        Pengamatan :<input name="pulsa1a" class="myField" id="pulsa1a" style="width: 155px;" dojotype="dijit.form.TextBox" placeholder="5-10 Menit" />
                         </td>
                     </tr>
                             <tr valign="top">
                                 <td> </td>
                                 <td> </td>
                                 <td> </td>                                                
-                                <td><B>Stand Meter________:</B><input class="myField" style="width: 155px;" dojotype="dijit.form.TextBox" placeholder="m3" /></td>
+                                <td><B>Stand Meter________:</B><input name="meter" class="myField" id="meter" style="width: 155px;" dojotype="dijit.form.TextBox" placeholder="m3" /></td>
                             </tr>
                             <tr valign="top">
                                 <td> </td>
                                 <td> </td>
                                 <td> </td>                                                
-                                <td><B>Stand Uncorrection__:</B><input class="myField" style="width: 155px;" dojotype="dijit.form.TextBox" placeholder="m3" /></td>
+                                <td><B>Stand Uncorrection__:</B><input name="uncorrection" class="myField" id="uncorrection" style="width: 155px;" dojotype="dijit.form.TextBox" placeholder="m3" /></td>
                             </tr>
                             <tr valign="top">
                                 <td> </td>
                                 <td> </td>
                                 <td> </td>                                                
-                                <td><B>Stand Correction____:</B><input class="myField" style="width: 155px;" dojotype="dijit.form.TextBox" placeholder="Nm3" /></td>
+                                <td><B>Stand Correction____:</B><input name="correction" class="myField" id="correction" style="width: 155px;" dojotype="dijit.form.TextBox" placeholder="Nm3" /></td>
                             </tr>
                     <tr valign="top">
                         <td> </td>
                         <td>- Pengukuran Tekanan</td>
                         <td>:</td>
                         <td>
-                        <select class="myFieldSelect"  >
-                            <option value="Baik">Baik</option>
+                        <select name="tekanan1" class="myFieldSelect" id="tekanan1"  >
+                            <option value="Baik" selected="selected">Baik</option>
                             <option value="Tidak">Tidak</option>                                       
                         </select>
-                        <input class="myField" style="width: 235px;" dojotype="dijit.form.TextBox" placeholder="Bar Absolute" />
+                        <input name="tekanan1a" class="myField" id="tekanan1a" style="width: 235px;" dojotype="dijit.form.TextBox" placeholder="Bar Absolute" />
                         </td>
                     </tr>
                     <tr valign="top">
@@ -167,24 +167,24 @@
                         <td>- Pengukuran Temperatur</td>
                         <td>:</td>
                         <td>
-                        <select class="myFieldSelect"  >
-                            <option value="Baik">Baik</option>
+                        <select name="tempratur1" class="myFieldSelect" id="tempratur1"  >
+                            <option value="Baik" selected="selected">Baik</option>
                             <option value="Tidak">Tidak</option>                                       
                         </select>
-                        <input class="myField" style="width: 235px;" dojotype="dijit.form.TextBox" placeholder="Derajat Celcius" />
+                        <input name="tempratur1a" class="myField" id="tempratur1a" style="width: 235px;" dojotype="dijit.form.TextBox" placeholder="Derajat Celcius" />
                         </td>
                     </tr>
             <tr valign="top">
-                <td>10.</td>
+                <td>9.</td>
                 <td>Level Battery</td>
                 <td>:</td>      
-                <td><input class="myField" style="width: 300px;" dojotype="dijit.form.TextBox" placeholder="Day's/Percent" /></td>           
+                <td><input name="baterai" class="myField" id="baterai" style="width: 300px;" dojotype="dijit.form.TextBox" placeholder="Day's/Percent" /></td>           
             </tr>
             <tr valign="top">
-                <td>11.</td>
+                <td>10.</td>
                 <td>Catatan Khusus</td>
                 <td>:</td>      
-                <td><input class="myField" style="width: 300px;" dojotype="dijit.form.TextBox" placeholder=" " /></td>           
+                <td><input name="catatan" class="myField" id="catatan" style="width: 300px;" dojotype="dijit.form.TextBox" placeholder=" " /></td>           
             </tr>
                 </table>
     </div>
