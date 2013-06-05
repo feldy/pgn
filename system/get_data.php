@@ -15,9 +15,12 @@
 		$obj = array();
 		$arrObj = array();
 		$sql = mysql_query($strSql);
-		while($att = mysql_fetch_assoc($sql)) {
-			$arrObj[] = $att;
-		};
+		$count = mysql_num_rows($sql);
+		if ($count > 0) {
+			while($att = mysql_fetch_assoc($sql)) {
+				$arrObj[] = $att;
+			};
+		}
 
 		
 		$obj = $arrObj;
@@ -57,6 +60,30 @@
 			 INNER join 	m_area area on pel.id_area = area.id
 			 WHERE 			pel.is_active = 1
 			 ORDER BY 		pel.tanggal	DESC
+			";
+
+		$obj = array();
+		$arrObj = array();
+		$sql = mysql_query($strSql);
+		while($att = mysql_fetch_assoc($sql)) {
+			$arrObj[] = $att;
+		};
+
+		
+		$obj = $arrObj;
+
+
+		echo json_encode($obj);
+	} else if ($content == "area") {
+		
+		$strSql = 
+			"SELECT 		
+							area.id as id,
+							area.kode as kode,
+							area.area as area
+			 FROM 			m_area area 
+			 WHERE 			area.is_active = 1
+			 ORDER BY 		area.kode	DESC
 			";
 
 		$obj = array();

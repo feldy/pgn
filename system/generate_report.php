@@ -14,6 +14,7 @@
 		LEFT  JOIN 		m_omevc evc ON evc.id_pelanggan = om.id_pelanggan
 		WHERE 			'.$getCriteria.' like "%'.$getValue.'%"
 		AND 			area.is_active = 1
+		AND 		 	om.is_active = 1 
 		AND 			om.periode like "%'.$bulan.'%"
 		GROUP BY 		area.id
 	';
@@ -28,6 +29,7 @@
 		$idArea = $arr1['id_area'];
 		$strSqlOM = 
 			'SELECT 	pel.nama as nama_pelanggan,
+						pel.id as id_pelanggan,
 						om.id as id_ommrs,
 						om.identifikasi as identifikasi,
 						d1.pressure_gauge_inlet as pressure_gauge_inlet,
@@ -64,11 +66,34 @@
 			 INNER JOIN d_pengecekan_kepastian_meter_berfungsi_dan_terkalibrasi d2 ON d2.id_master = om.id
 			 LEFT  JOIN m_omevc evc ON evc.id_pelanggan = om.id_pelanggan
 			 WHERE 		pel.is_active = 1
+			 AND 		om.is_active = 1
 			 AND 		pel.id_area = "'.$idArea.'"
+			 AND 		om.periode like "%'.$bulan.'%"
 			';
 	
 		$sqlOM = mysql_query($strSqlOM);
 		while ($arr2 = mysql_fetch_array($sqlOM)) {
+			//query selisih stand meter
+			$querySelisih = mysql_query(
+				"SELECT 	d1.angka_stand_meter as angka_stand_meter
+				FROM  		d_pengecekan_kepastian_meter_berfungsi_dan_terkalibrasi d1
+				INNER JOIN  m_ommrs om ON d1.id_master = om.id
+				WHERE 		om.id_pelanggan = '".$arr2['id_pelanggan']."'
+				AND 		SUBSTRING(date(om.tanggal), 1, 7) = SUBSTRING(date('".$arr2['tanggal']."' - INTERVAL 1 MONTH), 1, 7)
+				AND 		om.is_active = 1
+				ORDER BY   	om.tanggal DESC ");
+			$arr3 = mysql_fetch_array($querySelisih);
+			$count = mysql_num_rows($querySelisih);
+			$xx = explode("|", $arr2['angka_stand_meter']);
+			if ($count > 0) {
+				$standMeter = $arr2['angka_stand_meter'] - $arr3['angka_stand_meter'];
+			} else {
+				$standMeter = $arr2['angka_stand_meter'] - 0;
+			}
+			
+			// echo $standMeter."<br />";
+
+
 
 			$pressure_gauge_inlet = explode("|", $arr2['pressure_gauge_inlet']);
 			$pressure_gauge_outlet = explode("|", $arr2['pressure_gauge_outlet']);
@@ -85,7 +110,7 @@
 			$merk_meter_dan_gsize = explode("|", $arr2['merk_meter_dan_gsize']);
 			$dia_panjang_dan_lubang_baut = explode("|", $arr2['dia_panjang_dan_lubang_baut']);
 			$meter_berfungsi = explode("|", $arr2['meter_berfungsi']);
-			$angka_stand_meter = explode("|", $arr2['angka_stand_meter']);
+			// $angka_stand_meter = explode("|", $arr2['angka_stand_meter']);
 			$type_meter = explode("|", $arr2['type_meter']);
 
 			$merk_evc = $arr2['merk_evc'];
@@ -94,14 +119,15 @@
 			$nomor_seri_evc = $arr2['nomor_seri_evc'];
 			$stand_correction =$arr2['stand_correction'];
 			$stand_uncorrection =$arr2['stand_uncorrection'];
-			$pengukuran_tekanan = $arr2['pengukuran_tekanan'];
-			$pengukuran_themperature = $arr2['pengukuran_themperature'];
+			$pengukuran_tekanan =  explode("|", $arr2['pengukuran_tekanan']);
+			$pengukuran_themperature =  explode("|", $arr2['pengukuran_themperature']);
 			$tahun = $arr2['tahun'];
 			$level_battery = $arr2['level_battery'];
 
 			$objChild[] = 
 			array(
 				'id' 				=> 'obj_children_'.$arr2['id_ommrs'], 
+				'id_ommrs' 				=> $arr2['id_ommrs'], 
 				// 'area' 				=> '', 
 				'area' 		=> $i." | ".$j." |  ".$arr2['nama_pelanggan'], 
 				'kode' 				=> '', 
@@ -131,7 +157,7 @@
 				'dia_panjang_dan_lubang_baut_2' => $dia_panjang_dan_lubang_baut[1],
 				'dia_panjang_dan_lubang_baut_1' => $dia_panjang_dan_lubang_baut[0],
 				'meter_berfungsi_2' => $meter_berfungsi[1],
-				'angka_stand_meter_1' => $angka_stand_meter[0],
+				'angka_stand_meter_1' => "<strong>".$standMeter."</strong>",//$angka_stand_meter[0],
 				'dia_panjang_dan_lubang_baut_3' => $dia_panjang_dan_lubang_baut[2],
 				'type_meter_1' => $type_meter[0],
 				'type_meter_2' => $type_meter[1],
@@ -147,7 +173,7 @@
 				'pengukuran_themperature' => $pengukuran_themperature[1],
 				'tahun' => $tahun,
 				'level_battery' => $level_battery,
-				'nama_pelanggan' 	=> ''
+				'id_pelanggan' 	=> $arr2['id_pelanggan']
 			);
 			$j++;
 			$i++;
@@ -195,4 +221,5 @@
 	$objAll['items'] = $objArea;
 
 	echo json_encode($objArea);
+	// echo $standMeter;
 ?>

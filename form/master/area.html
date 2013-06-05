@@ -1,0 +1,42 @@
+<div data-dojo-type="dijit.layout.BorderContainer" data-dojo-props='design: "sidebar", gutters:true, style:"width: 100%; height: 100%;"'>
+	<div data-dojo-type="dijit.layout.ContentPane" data-dojo-props='region:"top"'>
+		<table cellspacing="5" cellpadding="5" >
+			<tr>
+				<td><strong>Kode Area</strong></td>
+				<td>:</td>
+				<td>
+					<input uppercase="true" class="myField" style="padding: 3px;" id="kodeArea" required="true"  dojotype="dijit.form.ValidationTextBox" missingMessage="Tidak Boleh Kosong !!"  />
+					<input type="hidden" id="idArea"  dojotype="dijit.form.TextBox" />
+				</td>
+			</tr>
+			<tr>
+				<td><strong>Nama Area</strong></td>
+				<td>:</td>
+				<td><input uppercase="true" class="myField" style="padding: 3px;" id="namaArea" required="true"  dojotype="dijit.form.ValidationTextBox" missingMessage="Tidak Boleh Kosong !!"  /></td>
+			</tr>
+			<tr>
+				<td></td>
+				<td></td>
+				<td>
+					<button dojoType="dijit.form.Button" id="btnSave"><img src="image/16x16/plus.png" /> <strong> <label id="lblSave">Save</label></strong></button>
+					<button dojoType="dijit.form.Button" id="btnDelete"><img src="image/16x16/basket.png" /> <strong> Delete</strong></button>
+					<button dojoType="dijit.form.Button" id="btnRefresh"><img src="image/16x16/statistics.png" /> <strong> Refresh</strong></button>
+				</td>
+			</tr>
+		</table>
+	</div>
+	<div data-dojo-type="dijit.layout.ContentPane" data-dojo-props='region:"center"'>
+	<span dojoType="dojo.store.JsonRest" jsId="jsonStore" target="system/get_data.php?content=area"></span>
+	<span dojoType="dojo.data.ObjectStore" jsId="objStore" objectStore="jsonStore"></span>
+	<!-- plugins="{filter: {closeFilterbarButton: true, ruleCount: 9}}" -->
+	<table dojoType="dojox.grid.EnhancedGrid" 
+store="objStore" jsid="gridArea" id="gridArea" rowsPerPage="20" style="width: 100%">
+		<thead>
+			<tr align="center">
+				<th field="kode" width="auto"><strong>Kode Area</strong></th>
+				<th field="area" width="auto"><strong>Nama Area</strong></th>
+			</tr>
+		</thead>
+	</table>
+	</div>
+</div>

@@ -12,12 +12,12 @@ js.app.TreeMenu.create = function () {
 		        "name": "Master",
 		        "type": "rootNode",
 		        "children": [{
-		            "id": "menu_pelanggan",
-		            "name": "Entry Pelanggan",
+		            "id": "menu_area",
+		            "name": "Entry Area",
 		            "type": "subNode"
 		        }, {
-		             "id": "menu_area",
-		            "name": "Entry Area",
+		            "id": "menu_pelanggan",
+		            "name": "Entry Pelanggan",
 		            "type": "subNode"
 		        }]   
 		    }, {
@@ -48,12 +48,12 @@ js.app.TreeMenu.create = function () {
 		        "name": "Master",
 		        "type": "rootNode",
 		        "children": [{
-		            "id": "menu_pelanggan",
-		            "name": "Entry Pelanggan",
+		            "id": "menu_faq",
+		            "name": "F.A.Q",
 		            "type": "subNode"
 		        }, {
-		             "id": "menu_area",
-		            "name": "Entry Area",
+		            "id": "menu_notif",
+		            "name": "Notification",
 		            "type": "subNode"
 		        }]   
 		    }, {
@@ -158,12 +158,16 @@ js.app.TreeMenu.create = function () {
 	var treeMaster = new dijit.Tree({
 	    id:'treeMenuMaster',
 	    model:treeModel,
+	    openOnClick:false, 
+	    openOnDblClick:true,
 	    showRoot:false
 	}, "mainTreeMaster");
 
 	var treeTransaksi = new dijit.Tree({
 	    id:'treeMenuTransaksi',
 	    model:treeModel2,
+	    openOnClick:false, 
+	    openOnDblClick:true,
 	    showRoot:false
 	}, "mainTreeTransaksi");
 
@@ -177,9 +181,10 @@ js.app.TreeMenu.create = function () {
 	            setTimeout(js.app.eventUtil.formOMEVC, 1000);
 	        } else if (evt.id == "menu_report") {
 	            dijit.byId('mainCenterPanel').set('href', 'form/report/report_jquery.html');
-	            setTimeout(js.app.eventUtil.formLaporan2, 1000);
+	            setTimeout(js.app.eventUtil.formLaporan2, 50);
 	        } else if (evt.id == "menu_chart") {
-	        	//menu chart
+	        	dijit.byId('mainCenterPanel').set('href', 'form/chart/chart.html');
+	            setTimeout(js.app.chartUtil.contentMaster, 100);
 	        }
 		}
 	});
@@ -187,7 +192,10 @@ js.app.TreeMenu.create = function () {
 	    // if (evt.type != "rootNode") {
 	    	if (evt.id == "menu_pelanggan") {
 	    		dijit.byId('mainCenterPanel').set('href', 'form/master/pelanggan.html');
-	            setTimeout(js.app.eventUtil.formPelanggan , 1000);
+	            setTimeout(js.app.eventUtil.formPelanggan , 100);
+	    	} else if (evt.id == "menu_area") {
+	    		dijit.byId('mainCenterPanel').set('href', 'form/master/area.html');
+	            setTimeout(js.app.eventUtil.formArea , 100);
 	    	} else if (evt.id == "menu_1") {
 	            dijit.byId('mainCenterPanel').set('href', 'form/1.html');
 	            setTimeout(js.app.eventUtil.formOMMRS, 1000);

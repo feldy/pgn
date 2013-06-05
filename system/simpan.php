@@ -107,7 +107,7 @@
 
 		$gen = gen_uuid(); 
 		
-		mysql_query("INSERT INTO m_ommrs VALUES ('$gen','$tanggal', '$periode','$pelanggan', '$identifikasi')");
+		mysql_query("INSERT INTO m_ommrs VALUES ('$gen','$tanggal', '$periode','$pelanggan', '$identifikasi', 1)");
 		mysql_query("INSERT INTO d_pemeriksaan_kondisi_lingkungan VALUES ('', '$gen', '$_1a', '$_1b', '$_1c', '$_1d')"); 
 		mysql_query("INSERT INTO d_pemeriksaan_kebocoran VALUES ('', '$gen', '$_2a', '$_2b', '$_2c', '$_2d','$_2e', '$_2f')"); 
 		mysql_query("INSERT INTO d_pemeriksaan_kondisi_operasi_peralatan VALUES ('', '$gen', '$_3a', '$_3b', '$_3c', '$_3d','$_3e', '$_3f', '$_3g', '$_3h','$_3i', '$_3j', '$_3k', '$_3l', '$_3m', '$_3n', '$_3o', '$_3p','$_3q', '$_3r', '$_3s', '$_3t')"); 
@@ -150,7 +150,7 @@
 		$catatan = $_POST['catatan']; 
 
 		$gen = gen_uuid(); 
-		mysql_query("INSERT INTO m_omevc VALUES ('$gen',  '$tanggal', '$periode',	'$pelanggan',	'$identifikasi',	'$lokasi',	'$merk',	'$model',	'$nomor',	'$tahun',	'$download',	'$segel1',	'$segel2',	'$segel3',	'$segel4',	'$pulsa',	'$sMeter',	'$sUncorrection',	'$sCorrection',	'$tekanan',	'$tempratur',	'$baterai',	'$catatan')");
+		mysql_query("INSERT INTO m_omevc VALUES ('$gen',  '$tanggal', '$periode',	'$pelanggan',	'$identifikasi',	'$lokasi',	'$merk',	'$model',	'$nomor',	'$tahun',	'$download',	'$segel1',	'$segel2',	'$segel3',	'$segel4',	'$pulsa',	'$sMeter',	'$sUncorrection',	'$sCorrection',	'$tekanan',	'$tempratur',	'$baterai',	'$catatan', 1)");
 
 	} else if ($contentPage == "broadcast") {
 		$to = $_POST['to'];

@@ -20,5 +20,24 @@
 
 		mysql_query($str);
 		echo json_encode($obj);
-	}
+	} else if ($content == "area") {
+		$gen = gen_uuid(); 
+		$id = $_POST['id'];
+		$kode = $_POST['kode'];
+		$nama = $_POST['nama'];
+		if ($id != "" ) {
+			$obj[] = array("type" => 'update'); 
+			$str = "UPDATE m_area SET kode = '".$kode."' , area = '".$nama."' WHERE id = '".$id."'";
+		} else {
+			$obj = array(); 
+			$str = "INSERT INTO m_area VALUES ('$gen','$kode','$nama', 1)";
+		}
+
+		mysql_query($str);
+		echo json_encode($obj);
+	} else if ($content == "report") {
+		$id = $_POST['id'];
+		$strQuery = "UPDATE m_ommrs SET is_active = 0 WHERE id = '".$id."'";
+		mysql_query($strQuery);
+	}	
 ?>

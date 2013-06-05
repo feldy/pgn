@@ -1,23 +1,23 @@
 dojo.provide("js.app.chartUtil");
 
-js.app.chartUtil.chart1 = function () {
-    var chartData = [10000,9200,11811,12000,7662];
-    var chart = new dojox.charting.Chart2D("chartNode");
+js.app.chartUtil.chart1 = function (id, data) {
+    // var chartData = [10000,9200,11811,12000,7662];
+    var chart = new dojox.charting.Chart2D(id);
     chart.setTheme(dojox.charting.themes.MiamiNice);
     // chart.setTheme(dojox.charting.themes.Claro);
     chart.addPlot("default", {
         type: "Pie",
         markers: true,
-        radius: 100,
-        labelOffset: -20 //label position
+        radius: 65,
+        labelOffset: 25 //label position
     });
     chart.addAxis("x");
     chart.addAxis("y", { min: 5000, max: 30000, vertical: true, fixLower: "major", fixUpper: "major" });
-    chart.addSeries("Monthly Sales - 2010", chartData);
+    chart.addSeries("Monthly Sales - 2010", data);
     var tip = new dojox.charting.action2d.Tooltip(chart,"default");
     var mag = new dojox.charting.action2d.MoveSlice(chart,"default");
     chart.render();
-    var legend = new dojox.charting.widget.Legend({ chart: chart }, "legend");
+    // var legend = new dojox.charting.widget.Legend({ chart: chart }, "legend");
 }
 
 js.app.chartUtil.chart2 = function() {
@@ -91,7 +91,7 @@ js.app.chartUtil.chart2 = function() {
         }];
 
         var dc = dojox.charting;
-        pieChart = new dc.Chart("chartNode");
+        pieChart = new dc.Chart("chartNodeContent5");
         // pieChart.setTheme(dojox.charting.themes.PlotKit.green);
         pieChart.setTheme(dojox.charting.themes.MiamiNice);
         pieChart.addPlot("default", {
@@ -99,11 +99,11 @@ js.app.chartUtil.chart2 = function() {
             font: "normal normal 10pt Tahoma",
             fontColor: "#000",
             labelWiring: "#000",
-            radius: 100,
+            radius: 80,
             labelStyle: "columns",
             htmlLabels: true,
             // labelOffset: 0,
-            startAngle: -10
+            startAngle: 30
         });
         // pieChart.addAxis("x", {title: 'Kependudukan Nasional'});
         // pieChart.addAxis("y", { min: 5000, max: 30000, vertical: true, fixLower: "major", fixUpper: "major" });
@@ -112,18 +112,18 @@ js.app.chartUtil.chart2 = function() {
         var anim_c = new dc.action2d.Tooltip(pieChart, "default"); 
         var mag = new dojox.charting.action2d.MoveSlice(pieChart,"default");
         pieChart.render();
-        legend = new dojox.charting.widget.Legend({
-            chart: pieChart
-            // horizontal:false
-        }, "legend");
+        // legend = new dojox.charting.widget.Legend({
+        //     chart: pieChart
+        //     // horizontal:false
+        // }, "legend");
 }
 
 js.app.chartUtil.chart3 = function() {
-    var data1 = [10000,9200,11811,12000,7662,13887];
-    var data2 = [3000,12000,17733,9876,12783,12899];
-    var data3 = [10000,9200,11811,12000,7662,13887].reverse();
+    var data1 = [10000,9200,11811,12000,7662,13887,3000,12000,17733,9876, 7777];
+    var data2 = [3000,12000,17733,9876,12783,12899,10000,9200,11811,12000, 9898];
+    var data3 = [10000,9200,11811,12000,7662,13887,17733,9876,12783,12899,10000].reverse();
 
-    var chart = new dojox.charting.Chart2D("chartNode", {title: "Test Title"});
+    var chart = new dojox.charting.Chart2D("chartNodeContent4", {title: "Test Title"});
     chart.setTheme(dojox.charting.themes.MiamiNice);
     // chart.setTheme(dojox.charting.theme.Claro);
     chart.addPlot("default", {
@@ -131,7 +131,7 @@ js.app.chartUtil.chart3 = function() {
         markers: true
     });
     // Add axes
-    chart.addAxis("x", {title: 'title yang X', titleGap: 20,  natural: true, fixLower: "major", fixUpper: "major" });
+    chart.addAxis("x", {title: 'title yang X', titleGap: 12,  natural: true });
     chart.addAxis("y", {title: 'title Yang Y', min: 5000, max: 20000, vertical: true, fixLower: "major", fixUpper: "major" });
 
     // Add the series of data
@@ -149,7 +149,7 @@ js.app.chartUtil.chart3 = function() {
     chart.render();
     
     // Create the legend
-    var legend = new dojox.charting.widget.Legend({ chart: chart }, "legend");
+    // var legend = new dojox.charting.widget.Legend({ chart: chart }, "legend");
 
 }
 
@@ -174,4 +174,30 @@ js.app.chartUtil.chart4 = function() {
     chart.render();
     // Create the legend
     var legend = new dojox.charting.widget.Legend({ chart: chart }, "legend");
+}
+
+js.app.chartUtil.contentMaster = function() {
+    js.app.chartUtil.content1();
+    js.app.chartUtil.content2();
+    js.app.chartUtil.content3();
+    js.app.chartUtil.content4();
+    js.app.chartUtil.content5();
+}
+js.app.chartUtil.content1 = function() {
+    var data = [10000,9200,11811,12000,7662];
+    js.app.chartUtil.chart1('chartNodeContent1', data);
+}
+js.app.chartUtil.content2 = function() {
+    var data = [15000,9200,11812,10000,7662];
+    js.app.chartUtil.chart1('chartNodeContent2', data);
+}
+js.app.chartUtil.content3 = function() {
+    var data = [8000,9200,11891,12200,7662];
+    js.app.chartUtil.chart1('chartNodeContent3', data);
+}
+js.app.chartUtil.content4 = function() {
+    js.app.chartUtil.chart3();
+}
+js.app.chartUtil.content5 = function() {
+    js.app.chartUtil.chart2();
 }

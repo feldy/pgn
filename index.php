@@ -9,10 +9,9 @@ if (empty($_SESSION['username']) || empty($_SESSION['password']) ) {
 <html>
 <head>
     <meta charset="utf-8">
-        <title>Test View</title>
+        <title>PGAS Application</title>
         <script type="text/javascript" src="lib/jquery-easyui-1.3.3/jquery.min.js"></script>  
         <script type="text/javascript" src="lib/jquery-easyui-1.3.3/jquery.easyui.min.js"></script>  
-        <!-- // <script type="text/javascript" src="lib/notif/jquery-1.4.4.min.js"></script>   -->
         <script type="text/javascript" src="lib/notif/notification.js"></script>  
         <style type="text/css"> 
             @import "lib/jquery-easyui-1.3.3/themes/default/easyui.css";

@@ -104,7 +104,7 @@ js.app.eventUtil.formOMMRS = function() {
 }
 
 js.app.eventUtil.formOMEVC = function() {
-	dojo.connect(dijit.byId('btnSimpan'), "onClick", this, function() {
+	dojo.connect(dijit.byId('btnSimpanOMEVC'), "onClick", this, function() {
 		var tanggal = dijit.byId('tanggal').get('value');
 		var tgl = dijit.byId('tanggal').get('displayedValue');
 		var splitBln = tgl.split("-");
@@ -325,6 +325,26 @@ js.app.eventUtil.formLaporan2 = function() {
 
         treeField: 'area'
 	});  
+
+	if (dojo.cookie("authorized") == "admin") {
+		dojo.byId('spanID').style.display = 'inline';
+	} else {
+		dojo.byId('spanID').style.display = 'none';
+	}
+
+	dojo.connect(dijit.byId('btnClosingReport'), 'onClick', this, function(){
+		var objID = $('#treeGridReport').treegrid('getSelected').id_ommrs;
+		dojo.xhrPost({
+			url: 'system/update.php?content=report',
+			content: {
+				id: objID
+			},
+			load: function(data) {
+				alert('Berhasil di Closing !!');
+				dijit.byId('btnSearchReport').onClick();	
+			}
+		});
+	});
 	dojo.connect(dijit.byId('btnSearchReport'), 'onClick', this, function(){
 		var value = dijit.byId('txtSearchBox').get('value');
 		var criteria = dijit.byId('cmbCriteria').get('value');
@@ -359,6 +379,81 @@ js.app.eventUtil.formBroadcast = function() {
 		});
 	});
 }
+
+js.app.eventUtil.formArea = function() {
+	dojo.connect(dijit.byId('btnRefresh'), 'onClick', this, function(){
+		var grid = dijit.byId('gridArea');
+		dijit.byId('idArea').reset();
+		dijit.byId('kodeArea').reset();
+		dijit.byId('namaArea').reset();
+		dojo.byId('lblSave').innerHTML = 'Save';
+
+		grid.setQuery();
+	});
+
+	dojo.connect(dijit.byId('gridArea').selection, 'onSelected', this, function(index){
+		var grid = dijit.byId('gridArea');
+		var id = grid.store.getValue(grid.getItem(index), "id");
+		var kode = grid.store.getValue(grid.getItem(index), "kode");
+		var area = grid.store.getValue(grid.getItem(index), "area");
+		
+
+		dijit.byId('idArea').set('value', id);
+		dijit.byId('kodeArea').set('value', kode);
+		dijit.byId('namaArea').set('value', area);
+		
+
+		dojo.byId('lblSave').innerHTML = 'Update';
+	});
+
+	dojo.connect(dijit.byId('btnDelete'), 'onClick', this, function(){
+		var grid = dijit.byId('gridArea');
+		if (grid.selection.getSelected().length > 0) {
+			dojo.xhrGet({
+				url: 'system/delete.php?content=area&id='+grid.selection.getSelected()[0].id,
+				load: function() {
+					alert('data berhasil di hapus');
+					grid.selection.clear();
+					grid.setQuery();
+				}
+			});
+		} else {
+			alert("Harap Pilih data Yang mau Di Hapus");
+		} 
+	});
+
+	dojo.connect(dijit.byId('btnSave'), 'onClick', this, function(){
+		var grid = dijit.byId('gridArea');
+		var kode = dijit.byId('kodeArea').get('value');
+		var nama = dijit.byId('namaArea').get('value');
+		
+
+		var content = {
+			id : dijit.byId('idArea').get('value'),
+			kode : kode,
+			nama : nama
+		};
+		var xhrArgs = {
+			url: 'system/update.php?content=area',
+			content: content,
+			load: function(data) {
+				console.log(data);
+				var pars = JSON.parse(data);
+				alert('Berhasil');
+				if (pars.length == 0) {
+					dijit.byId('btnRefresh').onClick();
+					grid.selection.clear();
+				}
+				grid.setQuery();
+			}
+		}
+		if (kode == "" || nama == "") {
+			alert("Data Tidak boleh ada yang kosong");
+		} else {
+ 			dojo.xhrPost(xhrArgs);
+		}
+	});
+},
 
 js.app.eventUtil.formPelanggan = function() {
 	dojo.connect(dijit.byId('btnRefresh'), 'onClick', this, function(){
@@ -436,6 +531,40 @@ js.app.eventUtil.formPelanggan = function() {
  			dojo.xhrPost(xhrArgs);
 		}
 	});
+}
+
+js.app.eventUtil.chartAll = function() {
+	var data1 = [10000,9200,11811,12000,7662,13887];
+    var data2 = [3000,12000,17733,9876,12783,12899];
+    var data3 = [10000,9200,11811,12000,7662,13887].reverse();
+
+    var chart = new dojox.charting.Chart2D("chartNode", {title: "Test Title"});
+    chart.setTheme(dojox.charting.themes.MiamiNice);
+    // chart.setTheme(dojox.charting.theme.Claro);
+    chart.addPlot("default", {
+        type: "Lines",
+        markers: true
+    });
+    // Add axes
+    chart.addAxis("x", {title: 'title yang X', titleGap: 20,  natural: true, fixLower: "major", fixUpper: "major" });
+    chart.addAxis("y", {title: 'title Yang Y', min: 5000, max: 20000, vertical: true, fixLower: "major", fixUpper: "major" });
+
+    // Add the series of data
+    chart.addSeries(" Data Tahun - 2010", data1);
+    chart.addSeries(" Data Tahun - 2009", data2);
+    chart.addSeries(" Data Tahun - 2008", data3);
+
+    // Create the tooltip
+    var tip = new dojox.charting.action2d.Tooltip(chart,"default");
+    
+    // Create the magnifier
+    var mag = new dojox.charting.action2d.Magnify(chart,"default");
+    
+    // Render the chart!
+    chart.render();
+    
+    // Create the legend
+    // var legend = new dojox.charting.widget.Legend({ chart: chart }, "legend");
 }
 
 js.app.eventUtil.getNamaBulan = function(idx) {
