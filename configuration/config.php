@@ -1,7 +1,7 @@
 <?php 
 	$host = "localhost";
 	$username = "root";
-	$password = "admin";
+	$password = "";
 	$database = "db_pipdtpgp";
 
 	$connect = mysql_connect($host, $username, $password);
