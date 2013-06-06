@@ -112,5 +112,27 @@
 		$obj['items'] = $arrObj;
 
 		echo json_encode($obj);
+	} else if ($content == "user") {
+		
+		$strSql = 
+			"SELECT 		*
+			 FROM 			m_user user 
+			 WHERE 			user.is_active = 1
+			 AND 			user.has_role not in ('admin')
+			 ORDER BY 		user.username DESC
+			";
+
+		$obj = array();
+		$arrObj = array();
+		$sql = mysql_query($strSql);
+		while($att = mysql_fetch_assoc($sql)) {
+			$arrObj[] = $att;
+		};
+
+		
+		$obj = $arrObj;
+
+
+		echo json_encode($obj);
 	}
 ?>

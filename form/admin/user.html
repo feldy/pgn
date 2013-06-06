@@ -9,10 +9,12 @@
 					<input type="hidden" id="idUser"  dojotype="dijit.form.TextBox" />
 				</td>
 			</tr>
-			<tr>
+			<tr valign="top">
 				<td><strong>Password</strong></td>
 				<td>:</td>
-				<td><input uppercase="true" class="myField" style="padding: 3px;" id="password" required="true"  dojotype="dijit.form.ValidationTextBox" missingMessage="Tidak Boleh Kosong !!"  /></td>
+				<td><input type="password" uppercase="true" class="myField" style="padding: 3px;" id="password" required="true"  dojotype="dijit.form.ValidationTextBox" missingMessage="Tidak Boleh Kosong !!"  />
+					<input dojoType="dijit.form.CheckBox" id="showHidePass" /> Lihat
+				</td>
 			</tr>
 			<tr>
 				<td></td>
@@ -26,15 +28,16 @@
 		</table>
 	</div>
 	<div data-dojo-type="dijit.layout.ContentPane" data-dojo-props='region:"center"'>
-	<span dojoType="dojo.store.JsonRest" jsId="jsonStore" target="system/get_data.php?content=area"></span>
+	<span dojoType="dojo.store.JsonRest" jsId="jsonStore" target="system/get_data.php?content=user"></span>
 	<span dojoType="dojo.data.ObjectStore" jsId="objStore" objectStore="jsonStore"></span>
 	<!-- plugins="{filter: {closeFilterbarButton: true, ruleCount: 9}}" -->
 	<table dojoType="dojox.grid.EnhancedGrid" 
-store="objStore" jsid="gridArea" id="gridArea" rowsPerPage="20" style="width: 100%">
+store="objStore" jsid="gridUser" id="gridUser" rowsPerPage="20" style="width: 100%">
 		<thead>
 			<tr align="center">
-				<th field="kode" width="auto"><strong>Kode Area</strong></th>
-				<th field="area" width="auto"><strong>Nama Area</strong></th>
+				<th field="username" width="auto"><strong>Username</strong></th>
+				<th field="has_role" width="auto"><strong>Role</strong></th>
+				<th field="is_broadcast" width="auto"><strong>Status Broadcast</strong></th>
 			</tr>
 		</thead>
 	</table>

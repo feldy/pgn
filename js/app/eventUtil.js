@@ -381,7 +381,87 @@ js.app.eventUtil.formBroadcast = function() {
 }
 
 js.app.eventUtil.formUser = function() {
+	dojo.connect(dijit.byId('btnRefreshUser'), 'onClick', this, function(){
+		var grid = dijit.byId('gridUser');
+		dijit.byId('idUser').reset();
+		dijit.byId('username').reset();
+		dijit.byId('password').reset();
+		dojo.byId('lblSave').innerHTML = 'Save';
+		grid.selection.clear();
+		grid.setQuery();
+	});
 
+	dojo.connect(dijit.byId('gridUser').selection, 'onSelected', this, function(index){
+		var grid = dijit.byId('gridUser');
+		var id = grid.store.getValue(grid.getItem(index), "id");
+		var username = grid.store.getValue(grid.getItem(index), "username");
+		var password = grid.store.getValue(grid.getItem(index), "password");
+		
+
+		dijit.byId('idUser').set('value', id);
+		dijit.byId('username').set('value', username);
+		dijit.byId('password').set('value', password);
+		
+
+		dojo.byId('lblSave').innerHTML = 'Update';
+	});
+
+	dojo.connect(dijit.byId('btnDeleteUser'), 'onClick', this, function(){
+		var grid = dijit.byId('gridUser');
+		if (grid.selection.getSelected().length > 0) {
+			dojo.xhrGet({
+				url: 'system/delete.php?content=user&id='+grid.selection.getSelected()[0].id,
+				load: function() {
+					alert('Data berhasil di hapus');
+					dijit.byId('btnRefreshUser').onClick();
+					grid.selection.clear();
+					grid.setQuery();
+				}
+			});
+		} else {
+			alert("Harap Pilih data Yang mau Di Hapus");
+		} 
+	});
+
+	dojo.connect(dijit.byId('showHidePass'), 'onChange', this, function(value){
+		if (value) {
+			document.getElementById('password').setAttribute('type', 'text')
+		} else {
+			document.getElementById('password').setAttribute('type', 'password')
+		}
+	})
+
+	dojo.connect(dijit.byId('btnSaveUser'), 'onClick', this, function(){
+		var grid = dijit.byId('gridUser');
+		var username = dijit.byId('username').get('value');
+		var password = dijit.byId('password').get('value');
+		
+
+		var content = {
+			id : dijit.byId('idUser').get('value'),
+			username : username,
+			password : password
+		};
+		var xhrArgs = {
+			url: 'system/update.php?content=user',
+			content: content,
+			load: function(data) {
+				console.log(data);
+				var pars = JSON.parse(data);
+				alert('Berhasil');
+				if (pars.length == 0) {
+					dijit.byId('btnRefreshUser').onClick();
+					grid.selection.clear();
+				}
+				grid.setQuery();
+			}
+		}
+		if (username == "" || password == "") {
+			alert("Data Tidak boleh ada yang kosong");
+		} else {
+ 			dojo.xhrPost(xhrArgs);
+		}
+	});
 }
 
 js.app.eventUtil.formArea = function() {
@@ -417,6 +497,7 @@ js.app.eventUtil.formArea = function() {
 				url: 'system/delete.php?content=area&id='+grid.selection.getSelected()[0].id,
 				load: function() {
 					alert('data berhasil di hapus');
+					dijit.byId('btnRefresh').onClick();
 					grid.selection.clear();
 					grid.setQuery();
 				}
@@ -495,6 +576,7 @@ js.app.eventUtil.formPelanggan = function() {
 					alert('data berhasil di hapus');
 					grid.selection.clear();
 					grid.setQuery();
+					dijit.byId('btnRefresh').onClick();
 				}
 			});
 		} else {

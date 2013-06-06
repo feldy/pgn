@@ -35,6 +35,21 @@
 
 		mysql_query($str);
 		echo json_encode($obj);
+	} else if ($content == "user") {
+		$gen = gen_uuid(); 
+		$id = $_POST['id'];
+		$username = $_POST['username'];
+		$password = $_POST['password'];
+		if ($id != "" ) {
+			$obj[] = array("type" => 'update'); 
+			$str = "UPDATE m_user SET username = '".$username."' , password = '".$password."' WHERE id = '".$id."'";
+		} else {
+			$obj = array(); 
+			$str = "INSERT INTO m_user VALUES ('$gen','$username','$password', 'user', 1, 0)";
+		}
+
+		mysql_query($str);
+		echo json_encode($obj);
 	} else if ($content == "report") {
 		$id = $_POST['id'];
 		$strQuery = "UPDATE m_ommrs SET is_active = 0 WHERE id = '".$id."'";
