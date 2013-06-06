@@ -3,7 +3,7 @@
 
 	$obj = array();
 	$arrObj = array();
-	$sql = mysql_query("SELECT id, nama FROM m_pelanggan");
+	$sql = mysql_query("SELECT id, nama FROM m_pelanggan where is_active = 1");
 	while($att = mysql_fetch_assoc($sql)) {
 		$arrObj[] = $att;
 	};

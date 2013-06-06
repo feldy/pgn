@@ -20,110 +20,39 @@ js.app.chartUtil.chart1 = function (id, data) {
     // var legend = new dojox.charting.widget.Legend({ chart: chart }, "legend");
 }
 
-js.app.chartUtil.chart2 = function() {
+js.app.chartUtil.chart2 = function(id, objData2) {
     var pieChart = null;
     var legend = null;
 
-    var objData = [{
-            y: 12.1,
-            text: "China",
-            tooltip: "1,210 million"
-        },{
-            y: 9.52,
-            text: "India",
-            tooltip: "952 million"
-        }, {
-            y: 2.66,
-            text: "USA",
-            tooltip: "266 million"
-        }, {
-            y: 2.06,
-            text: "Indonisia",
-            tooltip: "206 million"
-        }, {
-            y: 1.63,
-            text: "Brazil",
-            tooltip: "163 million"
-        },{
-            y: 1.48,
-            text: "Russian",
-            tooltip: "148 million"
-        },{
-            y: 1.29,
-            text: "Pakistan",
-            tooltip: "129 million"
-        },{
-            y: 1.25,
-            text: "Japan",
-            tooltip: "125 million"
-        },{
-            y: 1.23,
-            text: "Bangladesh",
-            tooltip: "123 million"
-        },{
-            y: 1.04,
-            text: "Nigeria",
-            tooltip: "104 million"
-        },{
-            y: 0.96,
-            text: "Mexico",
-            tooltip: "96 million"
-        },{
-            y: 0.84,
-            text: "Germany",
-            tooltip: "84 million"
-        },{
-            y: 0.74,
-            text: "Phillippines",
-            tooltip: "74 million"
-        },{
-            y: 0.74,
-            text: "Viet Nam",
-            tooltip: "74 million"
-        },{
-            y: 0.66,
-            text: "Iran",
-            tooltip: "66 million"
-        },{
-            y: 0.64,
-            text: "Egypt",
-            tooltip: "64 million"
-        }];
-
-        var dc = dojox.charting;
-        pieChart = new dc.Chart("chartNodeContent5");
-        // pieChart.setTheme(dojox.charting.themes.PlotKit.green);
-        pieChart.setTheme(dojox.charting.themes.MiamiNice);
-        pieChart.addPlot("default", {
-            type: "Pie",
-            font: "normal normal 10pt Tahoma",
-            fontColor: "#000",
-            labelWiring: "#000",
-            radius: 80,
-            labelStyle: "columns",
-            htmlLabels: true,
-            // labelOffset: 0,
-            startAngle: 30
-        });
-        // pieChart.addAxis("x", {title: 'Kependudukan Nasional'});
-        // pieChart.addAxis("y", { min: 5000, max: 30000, vertical: true, fixLower: "major", fixUpper: "major" });
-        pieChart.addSeries("Feldy Series", objData);
-        var anim_b = new dc.action2d.Highlight(pieChart, "default");
-        var anim_c = new dc.action2d.Tooltip(pieChart, "default"); 
-        var mag = new dojox.charting.action2d.MoveSlice(pieChart,"default");
-        pieChart.render();
-        // legend = new dojox.charting.widget.Legend({
-        //     chart: pieChart
-        //     // horizontal:false
-        // }, "legend");
+    var dc = dojox.charting;
+    pieChart = new dc.Chart(id);
+    // pieChart.setTheme(dojox.charting.themes.PlotKit.green);
+    pieChart.setTheme(dojox.charting.themes.MiamiNice);
+    pieChart.addPlot("default", {
+        type: "Pie",
+        font: "normal normal 10pt Tahoma",
+        fontColor: "#000",
+        labelWiring: "#000",
+        radius: 80,
+        labelStyle: "columns",
+        htmlLabels: true,
+        markers: true,
+        startAngle: 0
+    });
+    pieChart.addSeries("Feldy Series", objData2);
+    var anim_b = new dc.action2d.Highlight(pieChart, "default");
+    var anim_c = new dc.action2d.Tooltip(pieChart, "default"); 
+    var mag = new dojox.charting.action2d.MoveSlice(pieChart,"default");
+    pieChart.render();
 }
 
 js.app.chartUtil.chart3 = function() {
-    var data1 = [10000,9200,11811,12000,7662,13887,3000,12000,17733,9876, 7777];
-    var data2 = [3000,12000,17733,9876,12783,12899,10000,9200,11811,12000, 9898];
-    var data3 = [10000,9200,11811,12000,7662,13887,17733,9876,12783,12899,10000].reverse();
+    var data1 = [null,9200,11811,12000,7662,13887,3000,12000,17733,9876, 7777, 9299];
+    var data2 = [3000,12000,17733,9876,12783,12899,10000,9200,11811,12000, 9898, 9349];
+    var data3 = [10000,9200,11811,12000,7662,13887,17733,9876,12783,12899,10000, 3669].reverse();
 
-    var chart = new dojox.charting.Chart2D("chartNodeContent4", {title: "Test Title"});
+    // var chart = new dojox.charting.Chart2D("chartNodeContent4", {title: "Test Title"});
+    var chart = new dojox.charting.Chart2D("chartNodeContent4");
     chart.setTheme(dojox.charting.themes.MiamiNice);
     // chart.setTheme(dojox.charting.theme.Claro);
     chart.addPlot("default", {
@@ -131,13 +60,21 @@ js.app.chartUtil.chart3 = function() {
         markers: true
     });
     // Add axes
-    chart.addAxis("x", {title: 'title yang X', titleGap: 12,  natural: true });
-    chart.addAxis("y", {title: 'title Yang Y', min: 5000, max: 20000, vertical: true, fixLower: "major", fixUpper: "major" });
+    chart.addAxis("x", {title: 'Bulan', titleGap: 5, titleOrientation: "away",  
+        labels: [
+                {value: 0, text: ""},{value: 1, text: "Jan"},{value: 2, text: "Feb"},
+                {value: 3, text: "Mar"},{value: 4, text: "Aprl"},{value: 5, text: "May"},
+                {value: 6, text: "Jun"},{value: 7, text: "Jul"},{value: 8, text: "Ags"},
+                {value: 9, text: "Sep"},{value: 10, text: "Okt"}, {value: 11, text: "Nop"},
+                {value: 12, text: "Des"}
+            ]
+    });
+    chart.addAxis("y", {title: 'Jumlah Meter Kubik',vertical: true, fixLower: "major", fixUpper: "major" });
 
     // Add the series of data
-    chart.addSeries(" Data Tahun - 2010", data1);
-    chart.addSeries(" Data Tahun - 2009", data2);
-    chart.addSeries(" Data Tahun - 2008", data3);
+    chart.addSeries("2010", data1);
+    chart.addSeries("2009", data2);
+    chart.addSeries("2008", data3);
 
     // Create the tooltip
     var tip = new dojox.charting.action2d.Tooltip(chart,"default");
@@ -149,7 +86,7 @@ js.app.chartUtil.chart3 = function() {
     chart.render();
     
     // Create the legend
-    // var legend = new dojox.charting.widget.Legend({ chart: chart }, "legend");
+    var legend = new dojox.charting.widget.Legend({ chart: chart }, "legendLines");
 
 }
 
@@ -196,8 +133,99 @@ js.app.chartUtil.content3 = function() {
     js.app.chartUtil.chart1('chartNodeContent3', data);
 }
 js.app.chartUtil.content4 = function() {
-    js.app.chartUtil.chart3();
+    dojo.xhrGet({
+        url: 'system/generate_report_chart.php?content=chart2',
+        load: function(data) {
+            var pars = JSON.parse(data);
+            if (pars.length > 0) { 
+                var chart = new dojox.charting.Chart2D("chartNodeContent4");
+                chart.setTheme(dojox.charting.themes.MiamiNice);
+                // chart.setTheme(dojox.charting.theme.Claro);
+                chart.addPlot("default", {
+                    type: "Lines",
+                    markers: true
+                });
+                chart.addAxis("x", {title: 'Bulan',titleGap: 1,  max: 12, titleOrientation: "away",  
+                    labels: [
+                            {value: 0, text: "a"},{value: 1, text: "Jan"},{value: 2, text: "Feb"},
+                            {value: 3, text: "Mar"},{value: 4, text: "Aprl"},{value: 5, text: "May"},
+                            {value: 6, text: "Jun"},{value: 7, text: "Jul"},{value: 8, text: "Ags"},
+                            {value: 9, text: "Sep"},{value: 10, text: "Okt"}, {value: 11, text: "Nop"},
+                            {value: 12, text: "Des"}
+                        ]
+                });
+                chart.addAxis("y", {title: 'Jumlah Meter Kubik',vertical: true, min: 0, max: 650});
+
+                for (var i = 0; i < pars.length; i++) {
+                    var objArray = [null,null,null,null,null,null,null,null,null,null,null,null];
+                    var data = pars[i];
+                    if (data.items.length > 0) { 
+                        for (var j = 0 ; j < data.items.length; j++) {
+                            objArray[data.items[j].bulan - 1] = parseInt(data.items[j].data);
+                        }
+                        chart.addSeries(pars[i].tahun, objArray);
+                    }
+                }
+                // console.log(data2);
+                
+                var tip = new dojox.charting.action2d.Tooltip(chart,"default");
+                var mag = new dojox.charting.action2d.Magnify(chart,"default");
+                chart.render();
+                var legend = new dojox.charting.widget.Legend({ chart: chart }, "legendLines");
+            }
+        }
+    });
 }
 js.app.chartUtil.content5 = function() {
-    js.app.chartUtil.chart2();
+    var pieChart = null;
+    var legend = null;
+
+    var dc = dojox.charting;
+    pieChart = new dc.Chart("chartNodeContent5");
+    // pieChart.setTheme(dojox.charting.themes.PlotKit.green);
+    pieChart.setTheme(dojox.charting.themes.MiamiNice);
+    pieChart.addPlot("default", {
+        type: "Pie",
+        font: "normal normal 10pt Tahoma",
+        fontColor: "#000",
+        labelWiring: "#000",
+        radius: 80,
+        labelStyle: "columns",
+        htmlLabels: true,
+        markers: true,
+        startAngle: 0
+    });
+    var anim_b = new dc.action2d.Highlight(pieChart, "default");
+    var anim_c = new dc.action2d.Tooltip(pieChart, "default"); 
+    var mag = new dojox.charting.action2d.MoveSlice(pieChart,"default");
+    dijit.byId('yearExists').set('value', new Date().getFullYear());
+    dojo.connect(dijit.byId("yearExists"), "onChange", this, function(value){
+        dojo.xhrGet({
+        url: 'system/generate_report_chart.php?content=chart1&tahun='+value,
+            load: function(data) {
+                var pars = JSON.parse(data);
+                if (pars.length > 0) {
+
+                    pieChart.addSeries("Feldy Series", pars);
+                    pieChart.render();
+                } else {
+
+                }
+            }
+        });
+    });
+
+    dojo.xhrGet({
+        url: 'system/generate_report_chart.php?content=chart1&tahun='+ new Date().getFullYear(),
+        load: function(data) {
+            var pars = JSON.parse(data);
+            if (pars.length > 0) {
+                pieChart.addSeries("Feldy Series", pars);
+                pieChart.render();
+            } else {
+
+            }
+        }
+    });
+
 }

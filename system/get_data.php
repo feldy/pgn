@@ -83,7 +83,7 @@
 							area.area as area
 			 FROM 			m_area area 
 			 WHERE 			area.is_active = 1
-			 ORDER BY 		area.kode	DESC
+			 ORDER BY 		area.kode DESC
 			";
 
 		$obj = array();
@@ -96,6 +96,20 @@
 		
 		$obj = $arrObj;
 
+
+		echo json_encode($obj);
+	} else if ($content == "yearExist") {
+		
+		$obj = array();
+		$arrObj = array();
+		$sql = mysql_query("SELECT distinct(year(om.tanggal)) as year FROM m_ommrs om Where om.is_active = 1") or die(mysql_error());
+		while($att = mysql_fetch_assoc($sql)) {
+			$arrObj[] = $att;
+		};
+
+		$obj['identifier'] = 'year';
+		$obj['label'] = 'year';
+		$obj['items'] = $arrObj;
 
 		echo json_encode($obj);
 	}

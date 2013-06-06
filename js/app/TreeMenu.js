@@ -205,10 +205,9 @@ js.app.TreeMenu.create = function () {
 	        } else if (evt.id == "menu_broadcast") {
 	            dijit.byId('mainCenterPanel').set('href', 'form/admin/broadcast.html');
 	            setTimeout(js.app.eventUtil.formBroadcast, 1000);
-	        } else if (evt.id == "menu_3") {
-	           dijit.byId('mainCenterPanel').set('href', 'form/3.html');
-				// dijit.byId('mainCenterPanel').set('href', 'slide_show/index.html');
-	            setTimeout(js.app.chartUtil.chart1, 50);
+	        } else if (evt.id == "menu_user") {
+	           dijit.byId('mainCenterPanel').set('href', 'form/admin/user.html');
+	            setTimeout(js.app.eventUtil.formUser, 1000);
 	        } else if (evt.id == "chart_1") {
 	            dijit.byId('mainCenterPanel').set('href', 'form/chart/1.html');
 	            setTimeout(js.app.chartUtil.chart1, 50);

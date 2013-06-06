@@ -8,6 +8,8 @@ dojo.require("dijit.layout.LinkPane");
 dojo.require("dijit.form.FilteringSelect");
 dojo.require("dijit.form.TextBox");
 dojo.require("dijit.form.SimpleTextarea");
+dojo.require("dijit.TitlePane");
+
 
 // dojo.require("dijit.form.Select");
 dojo.require("dijit.tree.ForestStoreModel");
@@ -42,6 +44,7 @@ dojo.require("dojox.charting.themes.Tom");
 dojo.require("dojox.charting.themes.PlotKit.green");
 dojo.require("dojox.charting.action2d.Magnify");
 dojo.require("dojox.charting.themes.MiamiNice");
+// dojo.require("dojox.charting.theme.Claro");
 dojo.require("dojox.timing._base");
 
 //===============MY CLASS==============

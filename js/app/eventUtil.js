@@ -380,6 +380,10 @@ js.app.eventUtil.formBroadcast = function() {
 	});
 }
 
+js.app.eventUtil.formUser = function() {
+
+}
+
 js.app.eventUtil.formArea = function() {
 	dojo.connect(dijit.byId('btnRefresh'), 'onClick', this, function(){
 		var grid = dijit.byId('gridArea');
