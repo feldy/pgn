@@ -1,0 +1,46 @@
+<div data-dojo-type="dijit.layout.BorderContainer" data-dojo-props='design: "sidebar", gutters:true, style:"width: 100%; height: 100%;"'>
+	<div data-dojo-type="dijit.layout.ContentPane" style="height: 50%;" data-dojo-props='region:"top"'>
+		<table cellspacing="5" cellpadding="5" width="100%" height="100%">
+			<tr>
+				<td width="50%"><strong>Question :</strong></td>
+				<td width="50%"><strong>Answer :</strong></td>
+				
+			</tr>
+			<tr valign="top">
+				<td style="border: solid 1px #efefef;" width="50%">
+					<div id="spanQuestion" style="display: none; overflow: auto;"></div>
+					<div dojoType="dijit.Editor" id="question" width="100%"  height="100%" ></div>
+				</td>
+				<td style="border: solid 1px #efefef;" width="50%">
+					<div id="spanAnswer" style="display: none; overflow: auto;"></div>
+					<div dojoType="dijit.Editor" id="answer" width="100%"  height="100%"></div>
+					<input type="hidden" id="idFAQ"  dojotype="dijit.form.TextBox" />
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<button dojoType="dijit.form.Button" id="btnSaveFAQ"><img src="image/16x16/plus.png" /> <strong> <label id="lblSave">Send</label></strong></button>
+					<button dojoType="dijit.form.Button" id="btnDeleteFAQ" style="display: none;"><img src="image/16x16/basket.png" /> <strong> Delete</strong></button>
+					<button dojoType="dijit.form.Button" id="btnRefresFAQ"><img src="image/16x16/statistics.png" /> <strong> Refresh</strong></button>
+				</td>
+				<td></td>
+			</tr>
+		</table>
+	</div>
+	<div data-dojo-type="dijit.layout.ContentPane" style="height: 50%;" data-dojo-props='region:"center"'>
+	<span dojoType="dojo.store.JsonRest" jsId="jsonStore" target="system/get_data.php"></span>
+	<span dojoType="dojo.data.ObjectStore" jsId="objStore" objectStore="jsonStore"></span>
+	<!-- plugins="{filter: {closeFilterbarButton: true, ruleCount: 9}}" -->
+	<table dojoType="dojox.grid.EnhancedGrid" 
+store="objStore" jsid="gridFAQ" id="gridFAQ" rowsPerPage="20" style="width: 100%">
+		<thead>
+			<tr align="center">
+				<th field="tanggal" width="auto"><strong>Tanggal</strong></th>
+				<th field="question" width="auto"><strong>Pertanyaan</strong></th>
+				<th field="answer" width="auto"><strong>Jawaban</strong></th>
+				<th field="from" width="auto"><strong>Pengirim</strong></th>
+			</tr>
+		</thead>
+	</table>
+	</div>
+</div>

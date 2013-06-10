@@ -32,6 +32,14 @@ js.app.TreeMenu.create = function () {
 		        	"id": "menu_broadcast",
 		            "name": "Broadcast",
 		            "type": "subNode"
+		        }, {
+		            "id": "menu_notif",
+		            "name": "Notification",
+		            "type": "subNode"
+		        }, {
+		            "id": "menu_faq",
+		            "name": "F.A.Q",
+		            "type": "subNode"
 		        }]   
 		    }, {
 		    	"id": "logout",
@@ -48,12 +56,12 @@ js.app.TreeMenu.create = function () {
 		        "name": "Master",
 		        "type": "rootNode",
 		        "children": [{
-		            "id": "menu_faq",
-		            "name": "F.A.Q",
-		            "type": "subNode"
-		        }, {
 		            "id": "menu_notif",
 		            "name": "Notification",
+		            "type": "subNode"
+		        }, {
+		            "id": "menu_faq",
+		            "name": "F.A.Q",
 		            "type": "subNode"
 		        }]   
 		    }, {
@@ -206,8 +214,14 @@ js.app.TreeMenu.create = function () {
 	            dijit.byId('mainCenterPanel').set('href', 'form/admin/broadcast.html');
 	            setTimeout(js.app.eventUtil.formBroadcast, 1000);
 	        } else if (evt.id == "menu_user") {
-	           dijit.byId('mainCenterPanel').set('href', 'form/admin/user.html');
+	            dijit.byId('mainCenterPanel').set('href', 'form/admin/user.html');
 	            setTimeout(js.app.eventUtil.formUser, 1000);
+	        } else if (evt.id == "menu_notif") {
+	            dijit.byId('mainCenterPanel').set('href', 'form/master/notification.html');
+	            setTimeout(js.app.eventUtil.formNotification, 1000);
+	        } else if (evt.id == "menu_faq") {
+	            dijit.byId('mainCenterPanel').set('href', 'form/master/faq.html');
+	            setTimeout(js.app.eventUtil.formFAQ, 500);
 	        } else if (evt.id == "chart_1") {
 	            dijit.byId('mainCenterPanel').set('href', 'form/chart/1.html');
 	            setTimeout(js.app.chartUtil.chart1, 50);

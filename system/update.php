@@ -50,6 +50,24 @@
 
 		mysql_query($str);
 		echo json_encode($obj);
+	} else if ($content == "faq") {
+		$gen = gen_uuid(); 
+		$id = $_POST['id'];
+		$question = $_POST['question'];
+		$answer = $_POST['answer'];
+		$user = $_POST['user'];
+
+		if ($id != "" ) {
+			$obj[] = array("type" => 'update'); 
+			$str = "UPDATE m_faq SET tanggal = now(),  question = '".$question."' , answer = '".$answer."' WHERE id = '".$id."' ";
+		} else {
+			$obj = array(); 
+			$str = "INSERT INTO m_faq VALUES ('$gen', now(), '$question','$answer', '$user', 1)";
+		}
+
+		mysql_query($str);
+		echo json_encode($obj);
+		
 	} else if ($content == "report") {
 		$id = $_POST['id'];
 		$strQuery = "UPDATE m_ommrs SET is_active = 0 WHERE id = '".$id."'";

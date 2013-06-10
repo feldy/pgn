@@ -26,6 +26,8 @@
 	while ($arr1 = mysql_fetch_array($sqlArea)) {
 		$j = 1;
 		$objChild = array();
+		$objChild1 = array();
+		$objChild2 = array();
 		$idArea = $arr1['id_area'];
 		$strSqlOM = 
 			'SELECT 	pel.nama as nama_pelanggan,
@@ -72,6 +74,7 @@
 			';
 	
 		$sqlOM = mysql_query($strSqlOM);
+		$standMeterNew = 0;
 		while ($arr2 = mysql_fetch_array($sqlOM)) {
 			//query selisih stand meter
 			$querySelisih = mysql_query(
@@ -91,6 +94,7 @@
 				$standMeter = $arr2['angka_stand_meter'] - 0;
 			}
 			
+			$standMeterNew = $standMeterNew + $standMeter;
 			// echo $standMeter."<br />";
 
 
@@ -124,7 +128,7 @@
 			$tahun = $arr2['tahun'];
 			$level_battery = $arr2['level_battery'];
 
-			$objChild[] = 
+			$objChild1[] = 
 			array(
 				'id' 				=> 'obj_children_'.$arr2['id_ommrs'], 
 				'id_ommrs' 				=> $arr2['id_ommrs'], 
@@ -178,6 +182,61 @@
 			$j++;
 			$i++;
 		}
+		$objChild2 = 
+		array(
+				'id' 				=> 'obj_total_', 
+				'id_ommrs' 			=> $arr2['id_ommrs']."_total", 
+				// 'area' 				=> '', 
+				'area' 				=> '<strong>Total</strong>', 
+				'kode' 				=> '', 
+				'identifikasi' 		=> '',
+				'tanggal' 			=> '',
+				'pressure_gauge_inlet_2' => '',
+				'pressure_gauge_inlet_3' => '',
+				'pressure_gauge_outlet_2' => '',
+				'pressure_gauge_outlet_3' => '',
+				'regulator_active_a_4' => '',
+				'regulator_monitor_a_4' => '',
+				'pressure_gauge_regulator_stream_a_3' => '',
+				'regulator_active_a_2' => '',
+				'regulator_active_a_3' => '',
+				'regulator_active_b_4' => '',
+				'regulator_monitor_b_4' => '',
+				'pressure_gauge_regulator_stream_b_3' => '',
+				'regulator_active_b_2' => '',
+				'regulator_active_b_3' => '',
+				'ssov_stream_a_4' => '',
+				'ssov_stream_b_4' => '',
+				'thermometer_2' => '',
+				'thermometer_3' => '',
+
+				'merk_meter_dan_gsize_1' => '',
+				'merk_meter_dan_gsize_2' => '',
+				'dia_panjang_dan_lubang_baut_2' => '',
+				'dia_panjang_dan_lubang_baut_1' => '',
+				'meter_berfungsi_2' => '',
+				'angka_stand_meter_1' => '<font color="blue"><strong>'.$standMeterNew.'</strong></font>',
+				'dia_panjang_dan_lubang_baut_3' => '',
+				'type_meter_1' => '',
+				'type_meter_2' => '',
+				'type_meter_3' => '',
+
+				'merk_evc' => '',
+				'model_type_evc' => '',
+				'download_dan_backup_data' => '',
+				'nomor_seri_evc' => '',
+				'stand_correction' => '',
+				'stand_uncorrection' => '',
+				'pengukuran_tekanan' => '',
+				'pengukuran_themperature' => '',
+				'tahun' => '',
+				'level_battery' => '',
+				'id_pelanggan' 	=> 'xx'
+			);
+		// if (!empty($objChild1)) {
+			array_push($objChild1, $objChild2);
+			
+		// }
 
 		$objArea[] = 
 			array(
@@ -214,7 +273,7 @@
 				// 'type_meter_1' => '',
 				// 'type_meter_2' => '',
 				// 'type_meter_3' => '',
-				'children'  	=> $objChild
+				'children'  	=> $objChild1
 			);
 	}
 

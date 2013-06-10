@@ -134,5 +134,59 @@
 
 
 		echo json_encode($obj);
+	} else if ($content == "notif") {
+		$tujuan = $_GET['tujuan'];
+		$strAppend = "";
+		if ($tujuan != "admin") {
+			$strAppend = "AND 	broadcast.tujuan = '".$tujuan."' ";
+		}
+		$strSql = 
+			"SELECT 		*
+			 FROM 			m_broadcast broadcast 
+			 WHERE 			broadcast.is_active = 1 OR broadcast.tujuan = 'ALL'
+			 $strAppend
+			 ORDER BY 		broadcast.tanggal DESC
+			";
+
+		$obj = array();
+		$arrObj = array();
+		$sql = mysql_query($strSql);
+		while($att = mysql_fetch_assoc($sql)) {
+			$arrObj[] = $att;
+		};
+
+		
+		$obj = $arrObj;
+
+
+		echo json_encode($obj);
+	} else if ($content == "FAQ") {
+		$tujuan = $_GET['tujuan'];
+		$strAppend = "";
+		if ($tujuan != "admin") {
+			$strAppend = "AND 	faq.from = '".$tujuan."' ";
+		}
+		$strSql = 
+			"SELECT 		*
+			 FROM 			m_faq faq 
+			 WHERE 			faq.is_active = 1
+			 $strAppend
+			 ORDER BY 		faq.tanggal DESC
+			";
+
+		$obj = array();
+		$arrObj = array();
+		$sql = mysql_query($strSql);
+		while($att = mysql_fetch_assoc($sql)) {
+			$arrObj[] = $att;
+		};
+
+		
+		$obj = $arrObj;
+
+
+		echo json_encode($obj);
+	} else {
+		echo json_encode(array());
 	}
 ?>

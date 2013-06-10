@@ -6,7 +6,7 @@ js.app.eventUtil.formOMMRS = function() {
 		var tgl = dijit.byId('tanggal').get('displayedValue');
 		var splitBln = tgl.split("-");
 		var content = {
-			tanggal		: dojo.date.locale.format(tanggal,{datePattern: 'yyyy-MM-dd'}),
+			tanggal		: dojo.date.locale.format(tanggal,{datePattern: 'yyyy-MM-dd'}).substr(0, 10),
 			periode 	: js.app.eventUtil.getNamaBulan(splitBln[1]) +" "+splitBln[2],
 			pelanggan	: dijit.byId('pelanggan').get('value'),
 			identifikasi: dijit.byId('identifikasi').get('value'),
@@ -109,7 +109,7 @@ js.app.eventUtil.formOMEVC = function() {
 		var tgl = dijit.byId('tanggal').get('displayedValue');
 		var splitBln = tgl.split("-");
 		var content = {
-			tanggal		: dojo.date.locale.format(tanggal,{datePattern: 'yyyy-MM-dd'}),
+			tanggal		: dojo.date.locale.format(tanggal,{datePattern: 'yyyy-MM-dd'}).substr(0, 10),
 			periode 	: js.app.eventUtil.getNamaBulan(splitBln[1]) +" "+splitBln[2],
 			pelanggan	: dijit.byId('pelanggan').get('value'),
 			identifikasi: dijit.byId('identifikasi').get('value'),
@@ -380,6 +380,113 @@ js.app.eventUtil.formBroadcast = function() {
 	});
 }
 
+js.app.eventUtil.formNotification = function() {
+
+	var grid = dijit.byId('gridNotif');
+	grid.setQuery({
+		content: 'notif',
+		tujuan: dojo.cookie("userName")
+	});
+
+	dojo.connect(grid.selection, 'onSelected', this, function(idx){
+		var tanggal = grid.store.getValue(grid.getItem(idx), "tanggal");
+		var isi = grid.store.getValue(grid.getItem(idx), "isi");
+
+		dojo.byId('tanggalNotif').innerHTML = tanggal;
+		dojo.byId('isiNotif').innerHTML = isi;
+	});
+}
+
+js.app.eventUtil.formFAQ = function() {
+	var grid = dijit.byId('gridFAQ');
+	grid.setQuery({
+		content: 'FAQ',
+		tujuan: dojo.cookie("userName")
+	});
+
+	if (dojo.cookie('userName') == 'admin') {
+		// dojo.byId('spanAnswer').style.display = 'none';
+		// dojo.byId('question').style.display = 'none';
+		// dojo.byId('spanQuestion').style.display = 'block';
+		// dojo.byId('answer').style.display = 'block';
+		
+		dijit.byId('answer').set('disabled', false);
+		dijit.byId('question').set('disabled', true);
+		dojo.style(dijit.byId('btnDeleteFAQ'), 'display', 'block');
+		// dojo.byId('spanBtnDelete').style.display = 'block';
+	} else {
+		dijit.byId('answer').set('disabled', true);
+		dijit.byId('question').set('disabled', false);
+		// dojo.byId('spanAnswer').style.display = 'block';
+		// dojo.byId('question').style.display = 'block';
+		// dojo.byId('spanQuestion').style.display = 'none';
+		// dojo.byId('answer').style.display = 'none';
+
+		// dojo.style(dijit.byId('btnDeleteFAQ'), 'display', 'block');
+		// dojo.byId('btnDeleteFAQ').style.display = 'none';
+	}
+
+	dojo.connect(grid.selection, 'onSelected', this, function(idx){
+		var id = grid.store.getValue(grid.getItem(idx), "id");
+		var question = grid.store.getValue(grid.getItem(idx), "question");
+		var answer = grid.store.getValue(grid.getItem(idx), "answer");
+
+		dijit.byId('idFAQ').set('value', id);
+		dijit.byId('question').set('value', question);
+		dijit.byId('answer').set('value', answer);
+		dojo.byId('spanQuestion').innerHTML = question;
+		dojo.byId('spanAnswer').innerHTML = answer;
+
+		dojo.byId('lblSave').innerHTML = 'Update';
+	});	
+
+	dojo.connect(dijit.byId('btnRefresFAQ'), 'onClick', this, function(){
+		var grid = dijit.byId('gridFAQ');
+		dijit.byId('question').set('value', "");
+		dijit.byId('answer').set('value', "");
+		dojo.byId('spanQuestion').innerHTML = "";
+		dojo.byId('spanAnswer').innerHTML = "";
+		dojo.byId('lblSave').innerHTML = 'Save';
+		grid.selection.clear();
+		grid.setQuery({
+			content: 'FAQ',
+			tujuan: dojo.cookie("userName")
+		});
+	});
+
+	dojo.connect(dijit.byId('btnSaveFAQ'), 'onClick', this, function(){
+		var grid = dijit.byId('gridFAQ');
+		var question = dijit.byId('question').get('value');
+		var answer = dijit.byId('answer').get('value');
+		
+		
+		var content = {
+			id : dijit.byId('idFAQ').get('value'),
+			question : question,
+			answer : answer,
+			user : dojo.cookie("userName"),
+		};
+
+		dojo.xhrPost({
+			url: 'system/update.php?content=faq',
+			content: content,
+			load: function(data) {
+				console.log(data);
+				var pars = JSON.parse(data);
+				alert('Berhasil');
+				if (pars.length == 0) {
+					dijit.byId('btnRefresFAQ').onClick();
+					grid.selection.clear();
+				}
+				grid.setQuery({
+					content: 'FAQ',
+					tujuan: dojo.cookie("userName")
+				});
+			}
+		});
+	});
+}
+
 js.app.eventUtil.formUser = function() {
 	dojo.connect(dijit.byId('btnRefreshUser'), 'onClick', this, function(){
 		var grid = dijit.byId('gridUser');
@@ -538,7 +645,7 @@ js.app.eventUtil.formArea = function() {
  			dojo.xhrPost(xhrArgs);
 		}
 	});
-},
+}
 
 js.app.eventUtil.formPelanggan = function() {
 	dojo.connect(dijit.byId('btnRefresh'), 'onClick', this, function(){
