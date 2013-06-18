@@ -121,8 +121,55 @@ js.app.chartUtil.contentMaster = function() {
     js.app.chartUtil.content5();
 }
 js.app.chartUtil.content1 = function() {
-    var data = [10000,9200,11811,12000,7662];
-    js.app.chartUtil.chart1('chartNodeContent1', data);
+    var pieChart = null;
+    var legend = null;
+
+    var dc = dojox.charting;
+    pieChart = new dc.Chart("chartNodeContent1");
+    // pieChart.setTheme(dojox.charting.themes.PlotKit.green);
+    pieChart.setTheme(dojox.charting.themes.MiamiNice);
+    pieChart.addPlot("default", {
+        type: "Pie",
+        markers: true,
+        radius: 65,
+        labelOffset: 25 //label position
+    });
+    // var anim_b = new dc.action2d.Highlight(pieChart, "default");
+    var anim_c = new dc.action2d.Tooltip(pieChart, "default"); 
+    var mag = new dojox.charting.action2d.MoveSlice(pieChart,"default");
+    dijit.byId('yearExists').set('value', new Date().getFullYear());
+    dojo.connect(dijit.byId("yearExists"), "onChange", this, function(value){
+        dojo.xhrGet({
+        url: 'system/generate_report_chart.php?content=chart3&periode='+value,
+            load: function(data) {
+                var pars = JSON.parse(data);
+                if (pars.length > 0) {
+
+                    pieChart.addSeries("Feldy Series", pars);
+                    pieChart.render();
+
+                    var legend = new dojox.charting.widget.Legend({ chart: pieChart, horizontal:false}, "legendChart1");
+                } else {
+
+                }
+            }
+        });
+    });
+
+    dojo.xhrGet({
+        url: 'system/generate_report_chart.php?content=chart3&periode='+ new Date().getFullYear(),
+        load: function(data) {
+            var pars = JSON.parse(data);
+            if (pars.length > 0) {
+                pieChart.addSeries("Feldy Series", pars);
+                pieChart.render();
+
+                var legend = new dojox.charting.widget.Legend({ chart: pieChart, horizontal:false}, "legendChart1");
+            } else {
+
+            }
+        }
+    });
 }
 js.app.chartUtil.content2 = function() {
     var data = [15000,9200,11812,10000,7662];
