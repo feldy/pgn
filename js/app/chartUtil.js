@@ -137,8 +137,14 @@ js.app.chartUtil.content1 = function() {
     // var anim_b = new dc.action2d.Highlight(pieChart, "default");
     var anim_c = new dc.action2d.Tooltip(pieChart, "default"); 
     var mag = new dojox.charting.action2d.MoveSlice(pieChart,"default");
-    dijit.byId('yearExists').set('value', new Date().getFullYear());
-    dojo.connect(dijit.byId("yearExists"), "onChange", this, function(value){
+    
+    dojo.connect(dojo.byId("divContent"), "onmouseover", this, function(){
+        console.log('focus');
+    });
+    dojo.connect(dojo.byId("divContent"), "onmouseout", this, function(){
+        console.log('focus out');
+    });
+    dojo.connect(dijit.byId("bulanExist"), "onChange", this, function(value){
         dojo.xhrGet({
         url: 'system/generate_report_chart.php?content=chart3&periode='+value,
             load: function(data) {

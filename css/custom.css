@@ -32,3 +32,20 @@ body {
     height: 30em;
 	border: 1px solid #333333;
 }
+.headerChart {
+    font-size: 10px;
+    color: #2d89ef;
+    font-weight: bold;
+}
+.content {
+    color: #efefef;
+    background-color: #2d89ef;
+    -moz-border-radius: 3px;
+    -webkit-border-radius: 3px;
+    -khtml-border-radius: 3px;
+    height: 20px;
+    vertical-align: middle;
+    width: 125px;
+    margin-left: 10px;
+    margin-top: 100px;
+}
