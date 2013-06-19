@@ -38,7 +38,6 @@
                                     </td>
                                 </tr>
                             </table>
-
                         </div>
                     </td>
                 </tr>
@@ -56,11 +55,15 @@
                         "all" autoComplete="false" queryexpr="*${0}*" dojotype="dijit.form.FilteringSelect" store="storeBulanExist" searchattr="periode" pagesize="5"
                         />
                         
-                        <div class="content" align="center" id="divContent">
+                        <!-- <div class="content" align="center" id="divContent">
                             <img src="image/positive_dynamic-26.png" width="16px">
                             <strong>Mouse Here !</strong>
-                        </div>
-                        <div id="tooltipLegend1" dojoType="dijit.Tooltip">
+                        </div> -->
+                        <button class="btnOver" dojoType="dijit.form.Button" id="divContent" >
+                            <img src="image/positive_dynamic-26.png" width="16px"> 
+                            Mouse Here !
+                        </button>
+                        <div id="tooltipLegend1" dojoType="dijit.Tooltip" connectId="divContent" >
                             <div id="legendChart1"></div>
                         </div>
                     </td>
@@ -70,7 +73,24 @@
                 </tr>
                 <tr valign="top">
                     <td>
-                        KETERANGAN
+                         <span class="headerChart">
+                                        <strong>Populasi Merk EVC <br />Pilih Bulan:</strong>
+                                        </span>
+                        <input name="bulanExist2" class="myField" id="bulanExist2" style="width: 90%;" required="false" invalidMessage="Data tidak ditemukan !" highlightmatch:="highlightMatch:"
+                        "all" autoComplete="false" queryexpr="*${0}*" dojotype="dijit.form.FilteringSelect" store="storeBulanExist" searchattr="periode" pagesize="5"
+                        />
+                        
+                        <!-- <div class="content" align="center" id="divContent">
+                            <img src="image/positive_dynamic-26.png" width="16px">
+                            <strong>Mouse Here !</strong>
+                        </div> -->
+                        <button class="btnOver" dojoType="dijit.form.Button" id="divContent2" >
+                            <img src="image/positive_dynamic-26.png" width="16px"> 
+                            Mouse Here !
+                        </button>
+                        <div id="tooltipLegend2" dojoType="dijit.Tooltip" connectId="divContent2" >
+                            <div id="legendChart2"></div>
+                        </div>
                     </td>
                     <td>
                         <div id="chartNodeContent2" style="width:175px; height:175px;"></div>
@@ -78,7 +98,25 @@
                 </tr>
                 <tr valign="top">
                     <td>
-                        KETERANGAN
+                         <span class="headerChart">
+                                        <strong>Populasi G. Size <br />Pilih Bulan:</strong>
+                                        </span>
+                        
+                        <input name="bulanExist3" class="myField" id="bulanExist3" style="width: 90%;" required="false" invalidMessage="Data tidak ditemukan !" highlightmatch:="highlightMatch:"
+                        "all" autoComplete="false" queryexpr="*${0}*" dojotype="dijit.form.FilteringSelect" store="storeBulanExist" searchattr="periode" pagesize="5"
+                        />
+                        
+                        <!-- <div class="content" align="center" id="divContent">
+                            <img src="image/positive_dynamic-26.png" width="16px">
+                            <strong>Mouse Here !</strong>
+                        </div> -->
+                        <button class="btnOver" dojoType="dijit.form.Button" id="divContent3" >
+                            <img src="image/positive_dynamic-26.png" width="16px"> 
+                            Mouse Here !
+                        </button>
+                        <div id="tooltipLegend3" dojoType="dijit.Tooltip" connectId="divContent3" >
+                            <div id="legendChart3"></div>
+                        </div>
                     </td>
                     <td>
                         <div id="chartNodeContent3" style="width:175px; height:175px;"></div>

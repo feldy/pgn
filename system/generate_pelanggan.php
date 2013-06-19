@@ -34,11 +34,15 @@
 		$sql = mysql_query(
 			"SELECT 	pel.id, pel.nama
 			FROM  		m_pelanggan  pel
-	  		LEFT JOIN 	m_omevc om on pel.id =om.id_pelanggan
+	    	LEFT JOIN   m_omevc om on pel.id =om.id_pelanggan
 			WHERE 		pel.is_active = 1
-		    AND      	om.is_active = 1
-		    AND    		concat(MONTH(om.tanggal), ' ', YEAR(om.tanggal)) <> concat(MONTH(now()), ' ', YEAR(now()))
-		    GROUP BY 	pel.id
+	    	AND       pel.id not in (
+	                SELECT     om.id_pelanggan
+	                FROM       m_omevc om
+	                WHERE      concat(MONTH(om.tanggal), ' ', YEAR(om.tanggal)) = concat(MONTH(now()), ' ', YEAR(now()))
+	                AND        om.is_active = 1
+	                GROUP BY om.id_pelanggan)
+	    	GROUP BY pel.id;
 		");
 		while($att = mysql_fetch_assoc($sql)) {
 			$arrObj[] = $att;
