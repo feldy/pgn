@@ -376,9 +376,15 @@ header a{
       border-radius:2px;
     }
 
-/*styling the pages*/
+/*styling the  pages*/
 .page.random-page{
   background:#DFD4C1;
+}
+.page.bab-a{
+  background:#2FB1BE;
+}
+.page.bab-b{
+  background:#2FB1BE;
 }
 .page.todos{
   background:#2FB1BE;
