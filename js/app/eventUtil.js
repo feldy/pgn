@@ -381,12 +381,23 @@ js.app.eventUtil.formBroadcast = function() {
 }
 
 js.app.eventUtil.formNotification = function() {
+	var store = new dojo.store.JsonRest({
+		target: 'system/get_data.php'
+	});
+
+	var objStore = new dojo.data.ObjectStore({
+		objectStore: store
+	});
 
 	var grid = dijit.byId('gridNotif');
-	grid.setQuery({
+	grid.setStore(objStore, {
 		content: 'notif',
 		tujuan: dojo.cookie("userName")
 	});
+	// grid.setQuery({
+	// 	content: 'notif',
+	// 	tujuan: dojo.cookie("userName")
+	// });
 
 	dojo.connect(grid.selection, 'onSelected', this, function(idx){
 		var tanggal = grid.store.getValue(grid.getItem(idx), "tanggal");
@@ -399,7 +410,16 @@ js.app.eventUtil.formNotification = function() {
 
 js.app.eventUtil.formFAQ = function() {
 	var grid = dijit.byId('gridFAQ');
-	grid.setQuery({
+	
+	var store = new dojo.store.JsonRest({
+		target: 'system/get_data.php'
+	});
+
+	var objStore = new dojo.data.ObjectStore({
+		objectStore: store
+	});
+
+	grid.setStore(objStore, {
 		content: 'FAQ',
 		tujuan: dojo.cookie("userName")
 	});

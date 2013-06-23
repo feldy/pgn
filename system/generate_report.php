@@ -57,8 +57,8 @@
 						evc.nomor_seri_evc as nomor_seri_evc,
 						evc.stand_correction as stand_correction,
 						evc.stand_uncorrection as stand_uncorrection,
-						evc.pengukuran_tekanan as pengukuran_tekanan,
-						evc.pengukuran_themperature as pengukuran_themperature,
+						if(evc.pengukuran_tekanan is null, "", evc.pengukuran_tekanan) as pengukuran_tekanan,
+						if(evc.pengukuran_themperature is null, "", evc.pengukuran_themperature) as pengukuran_themperature,
 						evc.tahun as tahun,
 						evc.level_battery as level_battery,
 						om.tanggal as tanggal
@@ -123,8 +123,16 @@
 			$nomor_seri_evc = $arr2['nomor_seri_evc'];
 			$stand_correction =$arr2['stand_correction'];
 			$stand_uncorrection =$arr2['stand_uncorrection'];
-			$pengukuran_tekanan =  explode("|", $arr2['pengukuran_tekanan']);
-			$pengukuran_themperature =  explode("|", $arr2['pengukuran_themperature']);
+			$pengukuran_tekanan =  $arr2['pengukuran_tekanan'];
+			$pengukuran_themperature = $arr2['pengukuran_themperature'];
+			if ($pengukuran_tekanan != "") {
+				$peng = explode("|", $arr2['pengukuran_tekanan']);
+				$pengukuran_tekanan = $peng[1]; 
+			} 
+			if ($pengukuran_themperature != "") {
+				$peng = explode("|", $arr2['pengukuran_themperature']);
+				$pengukuran_themperature = $peng[1]; 
+			} 
 			$tahun = $arr2['tahun'];
 			$level_battery = $arr2['level_battery'];
 
@@ -173,8 +181,8 @@
 				'nomor_seri_evc' => $nomor_seri_evc,
 				'stand_correction' => $stand_correction,
 				'stand_uncorrection' => $stand_uncorrection,
-				'pengukuran_tekanan' => $pengukuran_tekanan[1],
-				'pengukuran_themperature' => $pengukuran_themperature[1],
+				'pengukuran_tekanan' => $pengukuran_tekanan,
+				'pengukuran_themperature' => $pengukuran_themperature,
 				'tahun' => $tahun,
 				'level_battery' => $level_battery,
 				'id_pelanggan' 	=> $arr2['id_pelanggan']

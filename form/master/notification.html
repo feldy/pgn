@@ -10,11 +10,11 @@
 		</table>	
 	</div>
 	<div data-dojo-type="dijit.layout.ContentPane" data-dojo-props='region:"center"'>
-	<span dojoType="dojo.store.JsonRest" jsId="jsonStore" target="system/get_data.php"></span>
+	<!-- <span dojoType="dojo.store.JsonRest" jsId="jsonStore" target="system/get_data.php?content=notif"></span>
 	<span dojoType="dojo.data.ObjectStore" jsId="objStore" objectStore="jsonStore"></span>
-	<!-- plugins="{filter: {closeFilterbarButton: true, ruleCount: 9}}" -->
+	 --><!-- plugins="{filter: {closeFilterbarButton: true, ruleCount: 9}}" -->
 	<table dojoType="dojox.grid.EnhancedGrid" 
-store="objStore" jsid="gridNotif" id="gridNotif" rowsPerPage="20" style="width: 100%">
+store="null" jsid="gridNotif" id="gridNotif" rowsPerPage="20" style="width: 100%">
 		<thead>
 			<tr align="center">
 				<th field="tanggal" width="auto"><strong>Tanggal</strong></th>
