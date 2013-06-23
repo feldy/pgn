@@ -34,7 +34,7 @@
 		$sql = mysql_query(
 			"SELECT 	pel.id, pel.nama
 			FROM  		m_pelanggan  pel
-	  		LEFT JOIN 	m_omevc om on pel.id =om.id_pelanggan
+	    	LEFT JOIN   m_omevc om on pel.id =om.id_pelanggan
 			WHERE 		pel.is_active = 1
 		    AND       pel.id not in (
                 SELECT     om.id_pelanggan

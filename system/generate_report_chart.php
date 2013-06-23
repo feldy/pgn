@@ -83,6 +83,7 @@
 			WHERE 		om.is_active = 1
 			AND 		pel.is_active = 1
 			AND 		area.is_active = 1
+			AND 		om.periode = '".$periode."'
 			GROUP BY 	substring_index(d2.merek_meter_dan_gsize, '|', 1)";
 		
 		$obj = array();
@@ -98,8 +99,63 @@
 
 		echo json_encode($obj);
 	}	else if ($content == "chart4") {
+		$periode = $_GET['periode'];
+		$strQuery = 
+			"SELECT 	om.merk_evc as tooltip, 
+						om.merk_evc as legend, 
+						count(om.merk_evc) as text, 
+						count(om.merk_evc) as hasil
+			FROM 		m_omevc om
+			INNER JOIN 	m_pelanggan pel ON om.id_pelanggan = pel.id
+			INNER JOIN 	m_area area ON pel.id_area = area.id
+			
+			WHERE 		om.is_active = 1
+			AND 		pel.is_active = 1
+			AND 		area.is_active = 1
+			AND 		om.periode = '".$periode."'
+			GROUP BY 	om.merk_evc";
+		
+		$obj = array();
+		$arrObj = array();
+		$sql = mysql_query($strQuery);
+		while($att = mysql_fetch_assoc($sql)) {
+			$att['y'] = $att['hasil'] + 0;
+			$arrObj[] = $att;
+		};
 
+		
+		$obj = $arrObj;
+
+		echo json_encode($obj);
 	}	else if ($content == "chart5") {
+		$periode = $_GET['periode'];
+		$strQuery = 
+			"SELECT 	trim(SUBSTRING_INDEX(SUBSTRING_INDEX(d2.merek_meter_dan_gsize, '|', 2), '|', -1)) as tooltip, 
+						trim(SUBSTRING_INDEX(SUBSTRING_INDEX(d2.merek_meter_dan_gsize, '|', 2), '|', -1)) as legend, 
+						count(trim(SUBSTRING_INDEX(SUBSTRING_INDEX(d2.merek_meter_dan_gsize, '|', 2), '|', -1))) as text, 
+						count(trim(SUBSTRING_INDEX(SUBSTRING_INDEX(d2.merek_meter_dan_gsize, '|', 2), '|', -1))) as hasil
+			FROM 		m_ommrs om
+			INNER JOIN 	d_pengecekan_kepastian_meter_berfungsi_dan_terkalibrasi d2 ON d2.id_master = om.id
+			INNER JOIN 	m_pelanggan pel ON om.id_pelanggan = pel.id
+			INNER JOIN 	m_area area ON pel.id_area = area.id
+			
+			WHERE 		om.is_active = 1
+			AND 		pel.is_active = 1
+			AND 		area.is_active = 1
+			AND 		om.periode = '".$periode."'
+			GROUP BY 	trim(SUBSTRING_INDEX(SUBSTRING_INDEX(d2.merek_meter_dan_gsize, '|', 2), '|', -1))";
+		
+		$obj = array();
+		$arrObj = array();
+		$sql = mysql_query($strQuery);
+		while($att = mysql_fetch_assoc($sql)) {
+			$att['y'] = $att['hasil'] + 0;
+			$arrObj[] = $att;
+		};
 
+		
+		$obj = $arrObj;
+
+		echo json_encode($obj);
 	}
 ?>
