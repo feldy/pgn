@@ -6,7 +6,7 @@
 	if ($contentPage == "broadcast") {
 		$userId = $_POST['userId'];
 		$status = $_POST['status'];
-		$sql = "UPDATE m_user SET is_broadcast = ".$status." where id = ".$userId;
+		$sql = "UPDATE m_user SET is_broadcast = ".$status." where id = '".$userId."' ";
 		// echo $sql;
 		mysql_query($sql);
 	}
