@@ -134,21 +134,21 @@
     </task>
   </tasks>
   <resource-groups>
-    <group id="1" name="Administrator" admin-name="" admin-phone="" admin-email=""/>
-    <group id="2" name="Tester" admin-name="" admin-phone="" admin-email=""/>
+    <group id="1" name="Programmer" admin-name="" admin-phone="" admin-email=""/>
+    <group id="2" name="System Analyst" admin-name="" admin-phone="" admin-email=""/>
     <group id="3" name="Project Manager" admin-name="" admin-phone="" admin-email=""/>
-    <group id="4" name="System Analyst" admin-name="" admin-phone="" admin-email=""/>
-    <group id="5" name="Programmer" admin-name="" admin-phone="" admin-email=""/>
+    <group id="4" name="Tester" admin-name="" admin-phone="" admin-email=""/>
+    <group id="5" name="Administrator" admin-name="" admin-phone="" admin-email=""/>
   </resource-groups>
   <resources>
-    <resource group="4" id="1" name="Feldy Yusuf" short-name="Feldy" type="1" units="0" email="" note="" std-rate="1000000"/>
-    <resource group="3" id="2" name="Rizky Pratama" short-name="Rizky" type="1" units="0" email="" note="" std-rate="1500000"/>
-    <resource group="5" id="3" name="Feldy Yusuf (P)" short-name="Feldy y" type="1" units="0" email="" note="" std-rate="700000"/>
-    <resource group="5" id="4" name="M Ockta (P)" short-name="Ockta" type="1" units="0" email="" note="" std-rate="700000"/>
-    <resource group="2" id="5" name="Cindy" short-name="Cindy" type="1" units="0" email="" note="" std-rate="500000"/>
-    <resource group="1" id="6" name="Cindy (A)" short-name="Cindy k" type="1" units="0" email="" note="" std-rate="350000"/>
-    <resource group="5" id="7" name="Rizky Pratama (P)" short-name="Rizky p" type="1" units="0" email="" note="" std-rate="700000"/>
-    <resource group="2" id="8" name="M Ockta" short-name="M Ockta" type="1" units="0" email="" note="" std-rate="500000"/>
+    <resource group="2" id="1" name="Feldy Yusuf" short-name="Feldy" type="1" units="0" email="" note="" std-rate="300000"/>
+    <resource group="3" id="2" name="Rizky Pratama" short-name="Rizky" type="1" units="0" email="" note="" std-rate="350000"/>
+    <resource group="1" id="3" name="Feldy Yusuf (P)" short-name="Feldy y" type="1" units="0" email="" note="" std-rate="170000"/>
+    <resource group="1" id="4" name="M Ockta (P)" short-name="Ockta" type="1" units="0" email="" note="" std-rate="170000"/>
+    <resource group="4" id="5" name="Cindy" short-name="Cindy" type="1" units="0" email="" note="" std-rate="150000"/>
+    <resource group="5" id="6" name="Cindy (A)" short-name="Cindy k" type="1" units="0" email="" note="" std-rate="135000"/>
+    <resource group="1" id="7" name="Rizky Pratama (P)" short-name="Rizky p" type="1" units="0" email="" note="" std-rate="170000"/>
+    <resource group="4" id="8" name="M Ockta" short-name="M Ockta" type="1" units="0" email="" note="" std-rate="150000"/>
   </resources>
   <allocations>
     <allocation task-id="34" resource-id="1" units="100"/>
