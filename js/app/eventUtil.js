@@ -127,8 +127,8 @@ js.app.eventUtil.formOMEVC = function() {
 			sMeter : dijit.byId('meter').get('value'), 
 			sUncorrection : dijit.byId('uncorrection').get('value'), 
 			sCorrection : dijit.byId('correction').get('value'), 
-			tekanan : document.getElementById('tekanan1').value +" | "+dijit.byId('tekanan1a').get('value'), 
-			tempratur : document.getElementById('tempratur1').value +" | "+dijit.byId('tempratur1a').get('value'),
+			tekanan : dijit.byId('tekanan1a').get('value'), 
+			tempratur : dijit.byId('tempratur1a').get('value'),
 			baterai : dijit.byId('baterai').get('value'),
 			catatan : dijit.byId('catatan').get('value')
 		};

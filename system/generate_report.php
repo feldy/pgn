@@ -126,12 +126,12 @@
 			$pengukuran_tekanan =  $arr2['pengukuran_tekanan'];
 			$pengukuran_themperature = $arr2['pengukuran_themperature'];
 			if ($pengukuran_tekanan != "") {
-				$peng = explode("|", $arr2['pengukuran_tekanan']);
-				$pengukuran_tekanan = $peng[1]; 
+				// $peng = explode("|", $arr2['pengukuran_tekanan']);
+				$pengukuran_tekanan = $pengukuran_tekanan; 
 			} 
 			if ($pengukuran_themperature != "") {
-				$peng = explode("|", $arr2['pengukuran_themperature']);
-				$pengukuran_themperature = $peng[1]; 
+				// $peng = explode("|", $arr2['pengukuran_themperature']);
+				$pengukuran_themperature = $pengukuran_themperature; 
 			} 
 			$tahun = $arr2['tahun'];
 			$level_battery = $arr2['level_battery'];

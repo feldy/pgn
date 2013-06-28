@@ -33,7 +33,7 @@
 			"SELECT 		id 
 			 FROM 			m_user
 			 WHERE 			is_broadcast = 1
-			 AND 			id = ".$userId." 
+			 AND 			id = '".$userId."'  
 			";
 
 		$obj = array();
