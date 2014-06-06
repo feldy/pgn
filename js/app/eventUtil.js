@@ -202,7 +202,7 @@ js.app.eventUtil.formLaporan1a = function() {
 		identifier: 'id',
         label: 'name',
 		items: [
-			{id:'Continent', name:'Continent', type:'', population: '', area: '', children: continentChildrenList},
+			{id:'Continent', name:'Continent', type:'', population: 'ee', area: 'ee', children: continentChildrenList},
 			{id:"Country", name:"Country", type:"", population: '', area: '', children: countryChildrenList},
 			{id:"City", name:"City", type:"", population: '', area: '', children: cityChildrenList}
 		]
